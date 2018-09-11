@@ -18,9 +18,16 @@ header {
 
 #logo {
 
+	display: block;
 	padding: 30px;
 	width: 135px;
 	margin: 0 auto;
+
+}
+
+#logoMenu {
+
+	color: #f4ff1c;
 
 }
 
@@ -36,6 +43,7 @@ header {
 
 
 #blocImageAccueil {
+	display: none;
 	width: 1250px;
 }
 
@@ -43,6 +51,15 @@ header {
 /********* TABLETTE **********/
 
 @media screen and (min-width: 768px) {
+
+
+#blocImageAccueil {
+
+display: block;
+
+}
+
+}
 
 
 
