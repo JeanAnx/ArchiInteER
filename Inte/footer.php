@@ -2,7 +2,7 @@
 		<footer>
 			
 			<section id="sectionFooter">
-				<img id="logoFooter" src="img/LogoFooter.png">
+				<img id="logoFooter" src="img/LogoFooterNB.png">
 				<article id="infosFooter">
 					<p>Émilie Robert</p>
 					<p>06 07 94 07 96</p>

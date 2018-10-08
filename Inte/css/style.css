@@ -1,6 +1,55 @@
+@font-face {
+	font-family: "Brandon Grotesque";
+	font-weight: normal;
+	font-style: normal;
+	src: url("../police/Brandon_Grotesque/Brandon_reg.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Brandon Grotesque";
+	font-weight: thin;
+	font-style: normal;
+	src: url("../police/Brandon_Grotesque/Brandon_thin.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Brandon Grotesque";
+	font-weight: bold;
+	font-style: normal;
+	src: url("../police/Brandon_Grotesque/Brandon_bld.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Brandon Grotesque";
+	font-weight: medium;
+	font-style: normal;
+	src: url("../police/Brandon_Grotesque/Brandon_med.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Brandon Grotesque";
+	font-weight: lighter;
+	font-style: normal;
+	src: url("../police/Brandon_Grotesque/Brandon_light.otf") format("opentype");
+}
+
+
 html {
 	font-size: 62.5%;
 	font-family: 'Open Sans', sans-serif;
+}
+
+
+h1#titre {
+	font-family: "Brandon Grotesque" , "Open Sans";
+	font-weight: normal;
+	font-size: 3.7rem;
+}
+
+p#sousTitre {
+	font-size: 2.3rem;
+	padding-left: 10px;
+	display: inline;
 }
 
 *:hover {
@@ -10,6 +59,10 @@ html {
 
 body {
 	width: 100%;
+}
+
+div.clear {
+	clear: both;
 }
 
 .container {
@@ -23,13 +76,9 @@ a {
 	text-decoration: none;
 }
 
-header {
-
-}
-
 
 #logo {
-	float: left;
+	float: right;
 	padding: 30px;
 	width: 60px;
 }
@@ -72,37 +121,87 @@ header {
 		background-color: white;
 		position: fixed;
 		z-index: 10;
+
 	}
 
+	#blocCentreHeader {
+		width: 1100px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+	}
+
+	#blocLogoTitre {
+		width: 518px;
+		float: left;
+	}
+
+	#blocLogoTitre h1 {
+		float: left;
+		padding-top: 52px;
+		margin: 0;
+
+	}
+
+	#navMobile {
+		display: none;
+	}
+
+	#navDesktop {
+		float: right;
+	}
+
+	#navDesktop ul {	
+		display: flex;
+		flex-direction: row;
+		padding: 65px 0 0 13px;	
+		margin: 0;
+		list-style: none;
+	}
+
+	#navDesktop ul a {
+		font-family: "Brandon Grotesque";
+		font-size: 2.3rem;
+		padding-left: 30px;
+	}
+
+	#navDesktop ul li:first-child a {
+		padding: 0;
+	}
+
+	
+	#navDesktop ul a:hover {
+		color: grey;
+	}
+
+
+/** FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF **/
+
+
 	footer {
-		margin-top: 70px;
+		margin-top: 120px;
 		background-color: #ffcc00;
 		height: 300px;
 		text-align: center;
-		font-weight: lighter;
+		font-family: "Brandon Grotesque";
 	}
 
 	#sectionFooter {
 		width: 400px;
 		margin: 0 auto;
-		padding-top: 30px;
-		display: flex;
 		justify-content: space-around;
 
 	}
 
 	footer #logoFooter {
-		align-self: start;
+		position: relative;
+		top: -60px;
 		width: 110px;
-		padding: 30px 0 0 0;
 
 	}
 
 	footer #infosFooter {
-		padding-left: 30px;
-		margin-top: 19px;
-		margin-left: 20px;
-		border-left: 2px solid black;
+		margin-top: -40px;
 	}
 
 	footer #infosFooter p {
@@ -121,45 +220,6 @@ header {
 
 	footer #navFooter a {
 		padding: 15px;
-	}
-
-	#blocLogoTitre {
-		width: 500px;
-		margin-left: 250px;
-		float: left;
-	}
-
-	#blocLogoTitre h1 {
-		font-weight: lighter;
-		padding-top: 43px;
-		margin: 0;
-
-	}
-
-	#logo {
-		margin-right: 20px;
-	}
-
-	#navMobile {
-		display: none;
-	}
-
-	#navDesktop {
-		float: right;
-	}
-
-	#navDesktop ul {	
-		display: flex;
-		flex-direction: row;
-		padding: 67px 300px 0 0;	
-		margin: 0;
-		list-style: none;
-		font-size: 2rem;
-
-	}
-
-	#navDesktop ul a {
-		padding-left: 30px;
 	}
 
 
@@ -196,7 +256,7 @@ header {
 
 
 	#mosaique {
-		padding-top: 100px;
+		padding-top: 120px;
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-around;
@@ -204,8 +264,8 @@ header {
 
 	#mosaique .imageMosaique {
 		position: relative;
-		width: 450px;
-		margin-top: 40px;
+		width: 475px;
+		margin-top: 23px;
 	}
 
 	#mosaique .imageMosaique img {
@@ -234,5 +294,27 @@ header {
 	}
 
 
+/**************************** PAGE LE PROJET *************/
+
+	.articleProjet {
+		padding-top: 160px;
+	}
+
+	.blocImages {
+		display: inline-block;
+		float: left;
+		width: 700px;
+	}
+
+	.articleProjet img {
+		width: 100%;
+	}
+
+	.asideProjet {
+		text-align: left;
+		display: inline-block;
+		float: right;
+		width: 500px;
+	}
 
 }

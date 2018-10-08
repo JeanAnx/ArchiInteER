@@ -19,28 +19,31 @@
 
 	<header>
 		
-		<div id="blocLogoTitre">
-			<a href="index.php"><img id="logo" src="img/logoE.png" alt="Émilie Robert"><h1> Émilie Robert<br>
-			architecte d'intérieur</h1></a>
-		</div>
+		<div id="blocCentreHeader">
 
-		<nav id="navMobile">			
-			<i id="logoMenu" class="fas fa-bars"></i>
-		</nav>
+			<div id="blocLogoTitre">
+				<a href="index.php"><h1 id="titre"> émilie robert<p id="sousTitre"> architecte d'intérieur</p></h1><img id="logo" src="img/logoE.png" alt="Émilie Robert"></a>
+			</div>
 
-		<nav id="navDesktop">
-			
-			<ul>
+			<nav id="navMobile">			
+				<i id="logoMenu" class="fas fa-bars"></i>
+			</nav>
+
+			<nav id="navDesktop">
 				
-				<li><a href="?p=projets">projets</li></a> 
-				<li><a href="?p=missions">missions</li></a> 
-				<li><a href="?p=inspirations">inspirations</li></a> 
-				<li><a href="?p=contact">contact</li></a> 
+				<ul>
+					
+					<li><a href="?p=projets">projets</a></li> 
+					<li><a href="?p=missions">missions</a></li> 
+					<li><a href="?p=inspirations">inspirations</a></li> 
+					<li><a href="?p=contact">contact</a></li> 
 
 
-			</ul>
+				</ul>
 
-		</nav>
+			</nav>
+
+		</div>
 
 
 	</header>
