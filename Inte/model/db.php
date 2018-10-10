@@ -29,100 +29,77 @@ function getAdmin($login) {
 	return $user;
 }
 
-function getPlayers() {
+function getProjects() {
 
 	$db = openDatabase(); 
 
-	$sql = "SELECT * FROM players";
+	$sql = "SELECT * FROM projets ORDER BY `created_at` DESC";
 
-	$statement = $db->query($sql,\PDO::FETCH_ASSOC);
+	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 
-	$players = [];
+	$projets = [];
 
 	foreach ($statement as $row) {
-		$players[] = $row;
+		$projects[] = $row;
 	}
 
-	return $players;
+	return $projects;
 
 }
 
-function getPlayerById($playerId) {
+
+function getProjectById($projectId) {
 
 	$db = openDatabase(); 
 
-	$sql = "SELECT * FROM players WHERE `id` = '$playerId'";
+	$sql = "SELECT * FROM projets WHERE `id` = '$projectId'";
 
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 
 	foreach ($statement as $row) {
-		$thePlayer = $row;
+		$theProject = $row;
 	}
 
-	return $thePlayer;
+	return $theProject;
 
 }
 
-function getArticles() {
+
+function getLatestProject() {
 
 	$db = openDatabase(); 
 
-	$sql = "SELECT * FROM articles ORDER BY `created_at` DESC";
+	$sql = "SELECT * FROM projets ORDER BY `created_at` DESC limit 1";
 
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 
-	$articles = [];
+	$latestProjet = '';
 
 	foreach ($statement as $row) {
-		$articles[] = $row;
+		$latestProjet = $row;
 	}
 
-	return $articles;
+	return $latestProjet;
 
 }
 
-function getLatestArticle() {
+function createProject(array $newProject) {
 
 	$db = openDatabase(); 
 
-	$sql = "SELECT * FROM articles ORDER BY `created_at` DESC limit 1";
+	$newProjectData = [
 
-	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
-
-	$article = '';
-
-	foreach ($statement as $row) {
-		$article = $row;
-	}
-
-	return $article;
-
-}
-
-function createUser(array $newUser) {
-
-	$db = openDatabase(); 
-
-	$newUserData = [
-
-		'firstname' => $newUser['firstname'],
-		'lastname' => $newUser['lastname'],
-		'birthdate' => $newUser['birthdate'],
-		'address' => $newUser['address'],
-		'zipcode' => $newUser['zipCode'],
-		'city' => $newUser['city'],
-		'phone' => $newUser['phone'],
-		'email' => $newUser['email'],
-		'pseudo' => $newUser['pseudo'],
-		'password' => password_hash($newUser['password'],PASSWORD_BCRYPT),
+		'title' => $newProject['title'],
+		'subtitle' => $newProject['subtitle'],
+		'content' => $newProject['content']
 	];
 
 
-	$sql = "INSERT INTO `fans` (firstname,lastname,birthdate,address,zipcode,city,phone,email,pseudo,password,created_at)
-	VALUES (:firstname,:lastname,:birthdate,:address,:zipcode,:city,:phone,:email,:pseudo,:password,NOW())";
+	$sql = "INSERT INTO `projets` (title,subtitle,content,created_at)
+	VALUES (:title,:subtitle,:content,NOW())";
 
 	$statement = $db->prepare($sql);
-	$statement->execute($newUserData);
+	$statement->execute($newProjectData);
 
 }
 

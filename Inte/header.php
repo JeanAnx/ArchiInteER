@@ -22,7 +22,13 @@
 		<div id="blocCentreHeader">
 
 			<div id="blocLogoTitre">
-				<a href="index.php"><h1 id="titre"> émilie robert<p id="sousTitre"> architecte d'intérieur</p></h1><img id="logo" src="img/logoE.png" alt="Émilie Robert"></a>
+				<a href="index.php"><img id="logoNom" src="img/LogoNom.png"></a>
+				<a href="index.php"><p id="sousTitre"> architecte d'intérieur</p></a>
+
+			</div>
+
+			<div>
+				<a href="index.php"><img id="logo" src="img/logoE.png" alt="Émilie Robert"></a>
 			</div>
 
 			<nav id="navMobile">			

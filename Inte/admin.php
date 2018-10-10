@@ -39,3 +39,5 @@ if (!empty($_POST)) {
 		exit;
 
 }
+
+$projets = getProjects();
