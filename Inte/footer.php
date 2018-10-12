@@ -6,8 +6,10 @@
 				<article id="infosFooter">
 					<p>06 07 94 07 96</p>
 					<p>contact@emilie-robert.fr</p>
-					<p>44 A rue du Haut Rochassin</p>
-					<p>38660 Saint-Vincent-de-Mercuze</p>
+					<p>88 rue Anatole France, 38100 Grenoble</p>
+					<p>/</p>
+					<p>44 A rue du Haut Rochassin, 38660 Saint-Vincent-de-Mercuze</p>
+					<p>/</p>
 					<p>Zone d'intervention :</p>
 					<p>Grenoble et sa région, Grésivaudan, Chambéry</p>
 					<p>Ouvert du lundi au vendredi de 9h à 18h</p>
@@ -26,6 +28,12 @@
 				<a href="http://projets.cotemaison.fr/"> Côté maison projets</a> - 
 				<a href="https://www.cabestan.fr/">Cabestan</a>
 			</nav>
+
+			<div id="copyright">
+
+				<p>Site réalisé par Jean Annaix</p>
+				<p></p>
+			</div>
 
 
 		</footer>
