@@ -236,10 +236,7 @@ a {
 		align-self: center;
 	}
 
-	#infosFooter div:first-child {
-		width: 100%;
-	}
-
+	
 	footer #infosFooter p {
 		font-size: 1.8rem;
 		margin: 5px;
@@ -402,9 +399,6 @@ a {
 		padding-left: 35px;
 	}
 
-	#infosFooter #tel p {
-		font-size: 1.3rem;
-	}
 
 	/** FOOTER PETIT DESKTOP **/
 
@@ -444,7 +438,7 @@ a {
 			}
 
 			#logo {
-				padding-left: 17px;
+				padding-left: 0;
 				width: 90px;
 			}
 
@@ -470,7 +464,7 @@ a {
 			#navDesktop ul {	
 				display: flex;
 				flex-direction: row;
-				padding: 43px 12px 0 0;	
+				padding: 43px 0 0 0;	
 				margin: 0;
 				list-style: none;
 			}
@@ -478,10 +472,6 @@ a {
 			#navDesktop ul a {
 				font-family: "Brandon Grotesque";
 				padding-left: 15px;
-			}
-
-			#navDesktop ul li:first-child a {
-				padding: 0;
 			}
 
 			
@@ -510,16 +500,14 @@ a {
 			footer #logoFooter {
 				position: relative;
 				top: -83px;
-				width: 110px;
+				width: 12%;
 			}
 
 			#infosFooter div {
 				width: 400px;
 			}
 			
-			#infosFooter #tel p {
-				font-size: 1.6rem;
-			}
+			
 
 			footer #infosFooter {
 				margin-top: -83px;
@@ -581,7 +569,7 @@ a {
 
 
 			#mosaique {
-				padding-top: 100px;
+				padding-top: 70px;
 				display: flex;
 				flex-flow: row wrap;
 				justify-content: space-between;

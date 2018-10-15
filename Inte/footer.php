@@ -4,9 +4,6 @@
 			<section id="sectionFooter">
 				<img id="logoFooter" src="img/ER_jaunePourFooter.png">
 				<article id="infosFooter">
-					<div id="tel">
-						<p>06 07 94 07 96</p>
-					</div>
 					
 					<div>
 						<p>88 rue Anatole France, </p>
