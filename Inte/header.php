@@ -19,7 +19,7 @@
 
 	<header>
 		
-		<div id="blocCentreHeader">
+		<div id="blocCentreHeader" class="container">
 
 			<div id="blocLogoTitre">
 				<a href="index.php"><img id="logoNom" src="img/LogoNom.png"></a>

@@ -76,7 +76,7 @@ p#sousTitre {
 }
 
 #logoNom {
-	width: 100px;
+	width: 110px;
 	margin-top: 17px;
 }
 
@@ -94,7 +94,7 @@ div.clear {
 }
 
 .container {
-	width: 90%;
+	width: 80%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -134,6 +134,10 @@ a {
 
 	@media screen and (min-width: 768px) {
 
+
+	.container {
+		width: 90%;
+	}
 
 	/*
 
@@ -202,13 +206,12 @@ a {
 	footer {
 		margin-top: 220px;
 		background-color: #fbeb1a;
-		height: 600px;
+		height: 450px;
 		text-align: center;
 		font-family: "Brandon Grotesque";
 	}
 
 	#sectionFooter {
-		width: 400px;
 		margin: 0 auto;
 		justify-content: space-around;
 
@@ -216,19 +219,34 @@ a {
 
 	footer #logoFooter {
 		position: relative;
-		top: -83px;
-		width: 110px;
+		top: -45px;
+		width: 9%;
 
 	}
 
 	footer #infosFooter {
-		margin-top: -83px;
+		margin: -45px auto 0 auto;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+
+	#infosFooter div {
+		padding: 10px;
+		align-self: center;
+	}
+
+	#infosFooter div:first-child {
+		width: 100%;
 	}
 
 	footer #infosFooter p {
-		font-size: 2rem;
+		font-size: 1.8rem;
 		margin: 5px;
 	}
+
+
+
 
 	footer #navFooter , #navFooter2 {
 		width: 600px;
@@ -239,7 +257,7 @@ a {
 
 	footer #navFooter {
 		display: flex;
-		flex-flow: row nowrap;
+		flex-flow: row wrap;
 		justify-content: center;
 	}
 
@@ -253,6 +271,10 @@ a {
 
 
 	/******** ACCUEIL SLIDER PRESENTATION IPAD *****/
+
+	.container {
+		width: 90%;
+	}
 
 	#blocImageAccueil {
 		padding-top: 130px;
@@ -289,10 +311,10 @@ a {
 
 
 	#mosaique {
-		padding-top: 100px;
+		padding-top: 50px;
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 
 	#mosaique .imageMosaique {
@@ -310,7 +332,7 @@ a {
 		position: absolute;
 		top: 20px;
 		left: 0px;
-		font-size: 2.8rem;
+		font-size: 2.2rem;
 		width: 80%
 	}
 
@@ -364,7 +386,25 @@ a {
 
 		/*** HEADER PETIT DESK ***/
 
+	p#sousTitre , #navDesktop ul a {
+		font-size: 2.5rem;
+	}
 
+	#introduction {
+		width: 500px;
+	}
+
+	#introduction p {
+		font-size: 2.3rem;
+	}
+
+	#logo {
+		padding-left: 35px;
+	}
+
+	#infosFooter #tel p {
+		font-size: 1.3rem;
+	}
 
 	/** FOOTER PETIT DESKTOP **/
 
@@ -387,14 +427,17 @@ a {
 /*************************************************************/
 
 
-			@media screen and (min-width: 1500px) {
+			@media screen and (min-width: 1400px) {
 
 			/*********************** ACCUEIL GD **************************/
 
+			.container {
+					width: 80%;
+				}
 
 			#blocCentreHeader {
 				width: 80%;
-				height: 150px;
+				height: 120px;
 				margin: 10px auto;
 				display: flex;
 				justify-content: space-between;
@@ -402,36 +445,38 @@ a {
 
 			#logo {
 				padding-left: 17px;
+				width: 90px;
 			}
 
 			#blocLogoTitre {
 				display: flex;
-				width: 415px;
-			
+				width: 415px;		
 			}
 
 			#blocLogoTitre h1 {
 				float: left;
 				padding-top: 52px;
 				margin: 0;
-
 			}
 
 			#navMobile {
 				display: none;
 			}
 
+			#navDesktop ul a , p#sousTitre {
+				font-size: 2.8rem;
+			}
+
 			#navDesktop ul {	
 				display: flex;
 				flex-direction: row;
-				padding: 58px 12px 0 0;	
+				padding: 43px 12px 0 0;	
 				margin: 0;
 				list-style: none;
 			}
 
 			#navDesktop ul a {
 				font-family: "Brandon Grotesque";
-				font-size: 2.8rem;
 				padding-left: 15px;
 			}
 
@@ -451,23 +496,29 @@ a {
 			footer {
 				margin-top: 220px;
 				background-color: #fbeb1a;
-				height: 600px;
+				height: 490px;
 				text-align: center;
 				font-family: "Brandon Grotesque";
 			}
 
 			#sectionFooter {
-				width: 400px;
+				width: 1000px;
 				margin: 0 auto;
 				justify-content: space-around;
-
 			}
 
 			footer #logoFooter {
 				position: relative;
 				top: -83px;
 				width: 110px;
+			}
 
+			#infosFooter div {
+				width: 400px;
+			}
+			
+			#infosFooter #tel p {
+				font-size: 1.6rem;
 			}
 
 			footer #infosFooter {
@@ -482,14 +533,7 @@ a {
 			footer #navFooter , #navFooter2 {
 				width: 600px;
 				margin: 10px auto;
-				font-size: 2.5rem;
-			
-			}
-
-			footer #navFooter {
-				display: flex;
-				flex-flow: row nowrap;
-				justify-content: center;
+				font-size: 2.5rem;		
 			}
 
 			footer #navFooter a , #navFooter2 a {
@@ -503,7 +547,7 @@ a {
 		/******** ACCUEIL SLIDER PRESENTATION GRAND DESKTOP *****/
 
 			#blocImageAccueil {
-				padding-top: 166px;
+				padding-top: 132px;
 				display: block;
 			}
 
@@ -540,12 +584,11 @@ a {
 				padding-top: 100px;
 				display: flex;
 				flex-flow: row wrap;
-				justify-content: space-around;
+				justify-content: space-between;
 			}
 
 			#mosaique .imageMosaique {
 				position: relative;
-				width: 632px;
 				margin-top: 80px;
 			}
 
