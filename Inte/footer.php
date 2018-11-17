@@ -6,19 +6,23 @@
 				<article id="infosFooter">
 					
 					<div>
-						<p>88 rue Anatole France, </p>
-						<p>38100 Grenoble</p>
-						<img src="img/LogoFooterMini15.png" alt="Émilie Robert">
-						<p>44 A rue du Haut Rochassin,</p>
-						<p> 38660 Saint-Vincent-de-Mercuze</p>
+						<p>/// 88 rue Anatole France, </p>
+						<p>38100 <span class="bold" >Grenoble</span> ///</p>
 					</div>
-					
+
 					<div>
 						<p>Zone d'intervention :</p>
 						<p>Grenoble et sa région, Grésivaudan, Chambéry</p>
-						<img src="img/LogoFooterMini15.png" alt="Émilie Robert">
+					</div>
+
+					<div>
+						<p>/// 44 A rue du Haut Rochassin,</p>
+						<p>38660 <span class="bold">Saint-Vincent-de-Mercuze</span> ///</p>
+					</div>
+
+					<div>
 						<p>Ouvert du lundi au vendredi de 9h à 18h</p>
-						<p>Membre de la coopérative d'activité Cabestan</p>
+						<p>Membre de la coopérative d'activité <a class="bold" href="https://www.cabestan.fr/"> Cabestan</a></p>
 					</div>
 
 					
@@ -27,12 +31,14 @@
 			
 			<nav id="navFooter">
 				
-				<a href="https://fr-fr.facebook.com/"><i class="fab fa-facebook-square"></i></a>
-				<a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
-				<a href="https://www.houzz.com"><i class="fab fa-houzz"></i></a>
-				<a href="http://projets.cotemaison.fr/"> Côté maison projets</a>
-				<a href="https://www.cabestan.fr/">Cabestan</a>
-
+				<div>
+					<a href="https://fr-fr.facebook.com/"><i class="fab fa-facebook-square"></i></a>
+					<a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+					<a href="https://www.houzz.com"><i class="fab fa-houzz"></i></a>
+				</div>
+				<div>
+					<a href="http://projets.cotemaison.fr/"> Côté maison projets</a>
+				</div>
 			</nav>
 
 			<nav id="navFooter2">

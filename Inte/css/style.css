@@ -1,15 +1,21 @@
-@font-face {
+/* @font-face {
 	font-family: "Brandon Grotesque";
 	font-weight: normal;
 	font-style: normal;
 	src: url("../police/Brandon_Grotesque/Brandon_reg.otf") format("opentype");
-}
+
+
+Jaune : #FEEB17
+Vert : #5B997B
+Bleu : #003F5A
+
+} */
 
 @font-face {
 	font-family: "Brandon Grotesque";
-	font-weight: thin;
+	font-weight: normal;
 	font-style: normal;
-	src: url("../police/Brandon_Grotesque/Brandon_thin.otf") format("opentype");
+	src: url("../police/Brandon_Grotesque/Brandon_light.otf") format("opentype");
 }
 
 @font-face {
@@ -30,8 +36,10 @@
 	font-family: "Brandon Grotesque";
 	font-weight: lighter;
 	font-style: normal;
-	src: url("../police/Brandon_Grotesque/Brandon_light.otf") format("opentype");
+	src: url("../police/Brandon_Grotesque/Brandon_thin.otf") format("opentype");
 }
+
+
 
 	
 .flex-direction-nav a.flex-next,.flex-direction-nav a.flex-prev{
@@ -46,10 +54,11 @@ div.flexslider {
 html {
 	font-size: 62.5%;
 	font-family: "Brandon Grotesque" , 'Open Sans', sans-serif;
+	font-weight: normal;
 }
 
 h1 {
-	font-size: 4rem;
+	font-size: 3.5rem;
 	font-weight: lighter;
 }
 
@@ -69,9 +78,7 @@ h1#titre {
 
 
 p#sousTitre {
-	font-family: "Brandon Grotesque" , "Open Sans";
-	font-size: 2rem;
-	margin-top: 44px;
+	margin-top: 71px;
 	padding-left: 15px;
 }
 
@@ -84,6 +91,9 @@ p#sousTitre {
 	transition: all .3s ease 0s;
 }
 
+span.bold , a.bold  {
+	font-weight: bold;
+}
 
 body {
 	width: 100%;
@@ -104,10 +114,13 @@ a {
 	text-decoration: none;
 }
 
+#parentLogo {
+	width: 90px;
+}
 
 #logo {
 	padding: 10px 0 10px 0;
-	width: 70px;
+	width: 100%;
 }
 
 
@@ -127,9 +140,34 @@ a {
 
 }
 
+
+ /***********************************************************************/
+ /*  MOBILE 
+ __  __  ___  ____ ___ _     _____ 
+ |  \/  |/ _ \| __ )_ _| |   | ____|
+ | |\/| | | | |  _ \| || |   |  _|  
+ | |  | | |_| | |_) | || |___| |___ 
+ |_|  |_|\___/|____/___|_____|_____|
+                                    
+*/
+
+
+
+
+
+
+
 	/************************************************************/
 	/******************* TABLETTE *******************************/
 	/****************************************************************/
+/*
+	___ ____   _    ____  
+	|_ _|  _ \ / \  |  _ \ 
+	 | || |_) / _ \ | | | |
+	 | ||  __/ ___ \| |_| |
+	|___|_| /_/   \_\____/ 
+						   
+*/
 
 
 	@media screen and (min-width: 768px) {
@@ -139,17 +177,9 @@ a {
 		width: 90%;
 	}
 
-	/*
-
-	ACCUEIL TABLETTE
-
-	*/
-
-
 	#navMobile {
 			display: none;
 		}
-
 
 	header {
 		width: 100%;
@@ -159,44 +189,48 @@ a {
 	}
 
 	#blocCentreHeader {
-		width: 90%;
 		height: 100px;
-		margin: 10px auto;
+		margin-top: 10px;
+		margin-bottom: 10px;
 		display: flex;
+		flex-flow: row nowrap;
 		justify-content: space-between;
 	}
 
 
 	#blocLogoTitre {
-		display: flex;	
+		display: flex;
+		width: 500px;
+	}
+
+	#ImageTitre {
+		height: 30px;
+		margin-top: 39px;
+	}
+
+	p#sousTitre {
+		margin-top: 48px;;
 	}
 
 
-	#navMobile {
-		display: none;
-	}
-
-	#navDesktop ul {	
+	#navDesktop {	
+		width: 500px;
 		display: flex;
 		flex-direction: row;
+		justify-content: right;
 		padding-top: 44px;
 		padding-left: 0px;
 		margin: 0;
 		list-style: none;
 	}
 
-	#navDesktop ul a {
-		font-family: "Brandon Grotesque";
+	#navDesktop a {
 		font-size: 2rem;
 		padding-left: 10px;
 	}
 
-	#navDesktop ul li:first-child a {
-		padding: 0;
-	}
-
 	
-	#navDesktop ul a:hover {
+	#navDesktop a:hover {
 		color: grey;
 	}
 
@@ -208,7 +242,6 @@ a {
 		background-color: #fbeb1a;
 		height: 450px;
 		text-align: center;
-		font-family: "Brandon Grotesque";
 	}
 
 	#sectionFooter {
@@ -219,7 +252,7 @@ a {
 
 	footer #logoFooter {
 		position: relative;
-		top: -45px;
+		top: -20px;
 		width: 9%;
 
 	}
@@ -242,11 +275,8 @@ a {
 		margin: 5px;
 	}
 
-
-
-
 	footer #navFooter , #navFooter2 {
-		width: 600px;
+		width: 300px;
 		margin: 10px auto;
 		font-size: 2.5rem;
 	
@@ -256,6 +286,10 @@ a {
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
+	}
+
+	#navFooter div {
+		padding-top: 20px;
 	}
 
 	footer #navFooter a , #navFooter2 a {
@@ -269,9 +303,6 @@ a {
 
 	/******** ACCUEIL SLIDER PRESENTATION IPAD *****/
 
-	.container {
-		width: 90%;
-	}
 
 	#blocImageAccueil {
 		padding-top: 130px;
@@ -285,14 +316,12 @@ a {
 	#introduction {
 		text-align: center;
 		margin: 100px auto;
-		font-size: 2rem;
 		width: 400px;
 		font-weight: lighter;
 	}
 
 	#introduction p {
 		padding-top: 30px;
-		font-size : 2rem;
 	}
 
 	#introduction img {
@@ -308,7 +337,7 @@ a {
 
 
 	#mosaique {
-		padding-top: 50px;
+		padding-top: 100px;
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-between;
@@ -317,7 +346,7 @@ a {
 	#mosaique .imageMosaique {
 		position: relative;
 		width: 45%;
-		margin-top: 80px;
+		margin-top: 10px;
 	}
 
 	#mosaique .imageMosaique img {
@@ -346,11 +375,40 @@ a {
 	}
 
 
+ /********* PAGE ARTICLE PROJET TABLETTE **********************/
+
+	.blocImages {
+		display: inline-block;
+		float: left;
+	}
 
 
+	.titreArticle {
+		margin-top: 0;
+	}
+
+	.articleProjet {
+		padding-top: 150px;
+		margin: 0 auto;
+	}
 
 
+	.asideProjet {
+		padding-left: 20px;
+		position: sticky;
+		display: inline-block;
+		width: 42%;
+	}
 
+
+	.blocImages {
+		width: 55%;
+	}
+
+	.articleProjet img {
+		width: 100%;
+		padding-bottom: 20px;
+	}
 
 
 	}
@@ -371,8 +429,14 @@ a {
 
 
 
-
-
+/*
+	____  _____ _____ ___ _____   ____  _____ ____  _  _______ ___  ____  
+	|  _ \| ____|_   _|_ _|_   _| |  _ \| ____/ ___|| |/ /_   _/ _ \|  _ \ 
+	| |_) |  _|   | |  | |  | |   | | | |  _| \___ \| ' /  | || | | | |_) |
+	|  __/| |___  | |  | |  | |   | |_| | |___ ___) | . \  | || |_| |  __/ 
+	|_|   |_____| |_| |___| |_|   |____/|_____|____/|_|\_\ |_| \___/|_|    
+		
+	*/
 
 				/*****************************/
 	/**************** PETIT DESKTOP *******************/
@@ -383,8 +447,8 @@ a {
 
 		/*** HEADER PETIT DESK ***/
 
-	p#sousTitre , #navDesktop ul a {
-		font-size: 2.5rem;
+	p#sousTitre , #navDesktop a {
+		font-size: 2.3rem;
 	}
 
 	#introduction {
@@ -396,7 +460,7 @@ a {
 	}
 
 	#logo {
-		padding-left: 35px;
+		padding-left: 0;
 	}
 
 
@@ -412,8 +476,14 @@ a {
 
 
 
+/*
+	____ ____      _    _   _ ____    ____  _____ ____  _  _______ ___  ____  
+	/ ___|  _ \    / \  | \ | |  _ \  |  _ \| ____/ ___|| |/ /_   _/ _ \|  _ \ 
+   | |  _| |_) |  / _ \ |  \| | | | | | | | |  _| \___ \| ' /  | || | | | |_) |
+   | |_| |  _ <  / ___ \| |\  | |_| | | |_| | |___ ___) | . \  | || |_| |  __/ 
+	\____|_| \_\/_/   \_\_| \_|____/  |____/|_____|____/|_|\_\ |_| \___/|_|    
 
-
+*/
 
 
 /*************************************************************/
@@ -430,76 +500,53 @@ a {
 				}
 
 			#blocCentreHeader {
-				width: 80%;
+				width: 85%;
+				margin: 0 auto;
 				height: 120px;
-				margin: 10px auto;
-				display: flex;
-				justify-content: space-between;
 			}
 
 			#logo {
 				padding-left: 0;
-				width: 90px;
 			}
 
-			#blocLogoTitre {
-				display: flex;
-				width: 415px;		
-			}
 
 			#blocLogoTitre h1 {
 				float: left;
-				padding-top: 52px;
+				padding-top: 40px;
 				margin: 0;
 			}
 
-			#navMobile {
-				display: none;
+			#navDesktop a , p#sousTitre {
+				font-size: 2.3rem;
 			}
 
-			#navDesktop ul a , p#sousTitre {
-				font-size: 2.8rem;
-			}
-
-			#navDesktop ul {	
-				display: flex;
-				flex-direction: row;
+			#navDesktop {	
 				padding: 43px 0 0 0;	
 				margin: 0;
 				list-style: none;
 			}
 
-			#navDesktop ul a {
-				font-family: "Brandon Grotesque";
-				padding-left: 15px;
+			#navDesktop a {
+				padding-left: 30px;
 			}
 
-			
-			#navDesktop ul a:hover {
-				color: grey;
-			}
+		
 
 
-		/** FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF **/
+		/** FOO FOO FOO FOO FOOTEEEER **/
 
 
 			footer {
-				margin-top: 220px;
-				background-color: #fbeb1a;
 				height: 490px;
-				text-align: center;
-				font-family: "Brandon Grotesque";
 			}
 
 			#sectionFooter {
 				width: 1000px;
 				margin: 0 auto;
-				justify-content: space-around;
 			}
 
 			footer #logoFooter {
-				position: relative;
-				top: -83px;
+				top: -50px;
 				width: 12%;
 			}
 
@@ -507,60 +554,23 @@ a {
 				width: 400px;
 			}
 			
-			
-
+		
 			footer #infosFooter {
 				margin-top: -83px;
 			}
 
-			footer #infosFooter p {
-				font-size: 2rem;
-				margin: 5px;
-			}
-
-			footer #navFooter , #navFooter2 {
-				width: 600px;
-				margin: 10px auto;
-				font-size: 2.5rem;		
-			}
-
-			footer #navFooter a , #navFooter2 a {
-				padding: 15px;
-			}
-
-			footer #navFooter a:hover , #navFooter2 a:hover {
-				color: grey;
-			}
-
 		/******** ACCUEIL SLIDER PRESENTATION GRAND DESKTOP *****/
 
-			#blocImageAccueil {
-				padding-top: 132px;
-				display: block;
-			}
-
-			#blocImageAccueil img {
-				width: 100%;
-			}
-
 			#introduction {
-				text-align: center;
-				margin: 100px auto;
-				font-size: 2rem;
 				width: 600px;
-				font-weight: lighter;
 			}
 
 			#introduction p {
-				padding-top: 30px;
 				font-size : 2.5rem;
 			}
 
 			#introduction img {
-
 				width: 200px;
-				border-radius: 250px;
-
 			}
 
 
@@ -569,81 +579,33 @@ a {
 
 
 			#mosaique {
-				padding-top: 70px;
-				display: flex;
-				flex-flow: row wrap;
-				justify-content: space-between;
-			}
+				padding-top: 140px;
 
-			#mosaique .imageMosaique {
-				position: relative;
-				margin-top: 80px;
-			}
-
-			#mosaique .imageMosaique img {
-				width: 100%;
 			}
 
 			.imageMosaique .texteVignette {
-				opacity: 0;
-				position: absolute;
-				top: 20px;
-				left: 0px;
 				font-size: 2.8rem;
-				width: 80%
 			}
 
-			#mosaique .imageMosaique:hover img {
-				opacity: 0.5;
-				transition: all 1.2s ease;
+			.imagemosaique {
+				padding-top: 40px;
 			}
 
-			#mosaique .imageMosaique:hover .texteVignette {
-				opacity: 1;
-				transform: translateX(40px);
-				transition: all 1.5s ease;
-
-			}
 
 
 		/**************************** PAGE LE PROJET *************/
 
 			.articleProjet {
-				padding-top: 200px;
-				width: 1500px;
-				margin: 0 auto;
-			}
-
-			.blocImages {
-				display: inline-block;
-				float: left;
-				width: 850px;
-				padding-left: 60px;
-			}
-
-			.titreArticle {
-				margin-top: 0;
+				padding-top: 160px;
 			}
 
 			.articleProjet img {
-				width: 100%;
 				padding-bottom: 20px;
 			}
 
 			.asideProjet {
-				padding-right: 60px;
-				position: sticky;
-				text-align: left;
-				display: inline-block;
-				float: right;
-				width: 455px;
-				top: 200px;
+				top: 160px;
 			}
-
-			.texteArticle p{
-
-			}
-
 
 
 

@@ -22,34 +22,38 @@
 		<div id="blocCentreHeader" class="container">
 
 			<div id="blocLogoTitre">
-				<a href="index.php"><img id="logoNom" src="img/LogoNom.png"></a>
+				<img id="ImageTitre" src="img/TitreEMILIESmall.jpg" alt="Émilie Robert">
 				<a href="index.php"><p id="sousTitre"> architecte d'intérieur</p></a>
 
 			</div>
 
-			<div>
-				<a href="index.php"><img id="logo" src="img/logoE.png" alt="Émilie Robert"></a>
-			</div>
 
-			<nav id="navMobile">			
-				<i id="logoMenu" class="fas fa-bars"></i>
-			</nav>
+
+
+
+		<a id="parentLogo" href="index.php">
+			<img id="logo" src="img/logoE.png" alt="Émilie Robert">
+		</a>
+
+
+			
 
 			<nav id="navDesktop">
 				
-				<ul>
 					
-					<li><a href="?p=projets">projets</a></li> 
-					<li><a href="?p=missions">missions</a></li> 
-					<li><a href="?p=inspirations">inspirations</a></li> 
-					<li><a href="?p=contact">contact</a></li> 
+					<a href="?p=projets">projets</a>
+					<a href="?p=missions">missions</a>
+					<a href="?p=inspirations">inspirations</a>
+					<a href="?p=contact">contact</a>
 
 
-				</ul>
 
 			</nav>
 
 		</div>
 
+			<nav id="navMobile">			
+				<i id="logoMenu" class="fas fa-bars"></i>
+			</nav>
 
 	</header>
