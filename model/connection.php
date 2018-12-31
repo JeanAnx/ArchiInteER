@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include 'model/db.php';
+include 'db.php';
 
 
 
@@ -17,24 +17,24 @@ if (!empty($_POST)) {
 			if (empty($admin)) {
 
 				$_SESSION['admin'] = "error";
-				header('Location:login.php');
+				header('Location: ../login.php');
 
 
-				} else if ($_POST['password'] == $admin['password']) {
+				} else if (password_verify($_POST['password'],$admin['password'])) {
 
 						$_SESSION['admin'] = "yes";
-						header('Location:admin.php');
+						header('Location: ../admin.php');
 
 						} else {
 
 							$_SESSION['admin'] = "error";
-							header('Location:login.php');
+							header('Location: ../login.php');
 
 							}
 
 	} else {
 
-		header('Location: login.php');
+		header('Location: ../login.php');
 	
 
 }

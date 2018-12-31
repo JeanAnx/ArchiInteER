@@ -9,7 +9,6 @@ function openDatabase() {
 	$db->exec('SET NAMES UTF8');
 
 	return $db;
-
 }
 
 function getAdmin($login) {
@@ -27,6 +26,16 @@ function getAdmin($login) {
 		}
 
 	return $user;
+}
+
+function changePassword($login,$password) {
+	
+	$db = openDatabase();
+
+	$sql = "UPDATE `admin` SET `password`= '$password' WHERE `login` = '$login'";
+
+	$statement = $db->exec($sql);
+
 }
 
 function getProjects() {
