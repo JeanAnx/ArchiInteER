@@ -1,14 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Connexion</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+</head>
 
-<main>
+<body>
 	
-	<h1>Connexion</h1>
+	<main>
 		
-		<form action="model/connection.php" method="post" id="seconnecter">
+			<form class="customForm" action="model/connection.php">
 
-			<input required type="txt" name="login" placeholder="login">
-			<input required type="password" name="password" placeholder="Mot de passe">
-			<input type="submit" value="Connexion"></button>
+				<h2>Se connecter</h2>
 
-		</form>
+				<input required type="txt" name="login" placeholder="login">
+				<input required type="password" name="password" placeholder="Mot de passe">
+				<input class="customFormButton" type="submit" value="Connexion"></button>
 
-</main>
+			</form>
+
+	</main>
+
+</body>
+</html>

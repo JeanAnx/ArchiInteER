@@ -40,8 +40,6 @@ Bleu : #003F5A
 }
 
 
-
-	
 .flex-direction-nav a.flex-next,.flex-direction-nav a.flex-prev{
     display:none;
 }
@@ -128,6 +126,40 @@ a {
 	display: none;
 
 }
+
+/*
+		FORMULAIRES
+*/
+
+.customForm {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	width: 300px;
+	margin: 3em auto;
+	padding: 1em;
+	border: .5px solid rgba(189, 195, 199, 1);
+	border-radius: 10px;
+	text-align: center;
+}
+
+.customForm input {
+	text-align: center;
+	display: block;
+	margin: .5em 1em;
+	width: 60%;
+	height: 2em;
+	margin: 1em auto;
+	border: 1px solid rgba(189, 195, 199, 1);
+	border-radius: 10px;
+}
+
+.customForm > .customFormButton {
+	width: 30%;
+}
+
+
+
 
 
  /***********************************************************************/
@@ -378,7 +410,7 @@ p#sousTitre {
 
 
 	#blocImageAccueil {
-		padding-top: 120px;
+		padding-top: 30px;
 		display: block;
 	}
 
@@ -454,7 +486,6 @@ p#sousTitre {
 		display: inline-block;
 		float: left;
 	}
-
 
 	.titreArticle {
 		margin-top: 0;
@@ -711,11 +742,5 @@ p#sousTitre {
 
 
 
-		/*************************************** PAGE ADMIN ************/
-
-			#blocAdmin {
-				background-color: #ffffe6;
-				
-			}
 
 		}

@@ -11,6 +11,38 @@ function openDatabase() {
 	return $db;
 }
 
+
+function getIntro() {
+
+	$db = openDatabase(); 
+
+	$sql = "SELECT * FROM `intro` ORDER BY `id` ASC LIMIT 1 ";
+
+	$statement = $db->query($sql , \PDO::FETCH_ASSOC);
+	
+	$intro = [];
+
+	foreach ($statement as $row) {
+		$intro = $row;
+	}
+
+	return $intro;
+}
+
+function setIntro($string) {
+
+	$string = htmlentities($string);
+
+	$db = openDatabase(); 
+
+	$sql = "INSERT INTO `intro`(`texte`) VALUES ($string)";
+
+	$statement = $db->prepare($sql);
+	$statement = $db->exec($sql);
+	
+}
+
+
 function getAdmin($login) {
 
 	$db = openDatabase(); 
@@ -42,7 +74,7 @@ function getProjects() {
 
 	$db = openDatabase(); 
 
-	$sql = "SELECT * FROM projets ORDER BY `created_at` DESC";
+	$sql = "SELECT * FROM projets ORDER BY `dateCreation` DESC";
 
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 
@@ -102,7 +134,6 @@ function createProject(array $newProject) {
 		'subtitle' => $newProject['subtitle'],
 		'content' => $newProject['content']
 	];
-
 
 	$sql = "INSERT INTO `projets` (title,subtitle,content,created_at)
 	VALUES (:title,:subtitle,:content,NOW())";

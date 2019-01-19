@@ -10,7 +10,7 @@ if (!empty($_POST)) {
 	var_dump($_POST);
 	var_dump($_SESSION);
 
-	$admin = getAdmin($_POST['login']);
+	$admin = getAdmin(htmlentities(($_POST['login'])));
 
 			var_dump($admin);
 
@@ -20,7 +20,7 @@ if (!empty($_POST)) {
 				header('Location: ../login.php');
 
 
-				} else if (password_verify($_POST['password'],$admin['password'])) {
+				} else if (password_verify(htmlentities($_POST['password']),$admin['password'])) {
 
 						$_SESSION['admin'] = "yes";
 						header('Location: ../admin.php');
@@ -36,7 +36,6 @@ if (!empty($_POST)) {
 
 		header('Location: ../login.php');
 	
-
 }
 
 

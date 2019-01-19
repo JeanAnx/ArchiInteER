@@ -18,9 +18,9 @@ if ($_SESSION['admin'] == 'yes') {
 
     if (isset($_POST['password']) && isset($_POST['newPassword']) && isset($_POST['newPasswordConfirm'])) {
         
-        $inputPassword = $_POST['password'];
-        $newPassword = $_POST['newPassword'];
-        $newPasswordConfirm = $_POST['newPasswordConfirm'];
+        $inputPassword = htmlentities($_POST['password']);
+        $newPassword = htmlentities($_POST['newPassword']);
+        $newPasswordConfirm = htmlentities($_POST['newPasswordConfirm']);
         $hash = $admin['password'];
 
         var_dump($inputPassword);

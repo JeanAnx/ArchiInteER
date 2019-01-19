@@ -1,0 +1,64 @@
+html {
+    font-size: 62.5%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: grey;
+}
+
+h1 , h2 , h3 {
+    font-weight: lighter;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+/*************************************** PAGE ADMIN ************/
+
+#blocAdmin table {
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#blocAdmin thead {
+    font-size: 1.3em;
+}
+
+#blocAdmin h2 , #blocAdmin h1 {
+    text-align: center;
+}
+
+tr th:last-child {
+    text-align: center;
+}
+
+.tableauProjets tr {
+    border-bottom: 2px solid grey;
+}
+
+.blocLiensAdmin {
+    width: 100%;
+    height: 50px;
+    background-color: beige;
+    display: flex;
+    font-size: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.blocLiensAdmin a {
+    margin: 0 1em;
+}
+
+.imgMiniature {
+    margin: 0 2px;
+    height: 50px;
+}
