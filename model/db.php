@@ -16,7 +16,7 @@ function getIntro() {
 
 	$db = openDatabase(); 
 
-	$sql = "SELECT * FROM `intro` ORDER BY `id` ASC LIMIT 1 ";
+	$sql = "SELECT * FROM `intro` ORDER BY `id` DESC LIMIT 1 ";
 
 	$statement = $db->query($sql , \PDO::FETCH_ASSOC);
 	
@@ -35,7 +35,7 @@ function setIntro($string) {
 
 	$db = openDatabase(); 
 
-	$sql = "INSERT INTO `intro`(`texte`) VALUES ($string)";
+	$sql = "INSERT INTO `intro`(`texte`) VALUES ('$string')";
 
 	$statement = $db->prepare($sql);
 	$statement = $db->exec($sql);
@@ -70,11 +70,29 @@ function changePassword($login,$password) {
 
 }
 
-function getProjects() {
+function getAllProjects() {
 
 	$db = openDatabase(); 
 
 	$sql = "SELECT * FROM projets ORDER BY `dateCreation` DESC";
+
+	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
+
+	$projets = [];
+
+	foreach ($statement as $row) {
+		$projects[] = $row;
+	}
+
+	return $projects;
+
+}
+
+function getPublishedProjects() {
+
+	$db = openDatabase(); 
+
+	$sql = "SELECT * FROM projets WHERE `published` = 1 ORDER BY `dateCreation` DESC";
 
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 

@@ -127,38 +127,6 @@ a {
 
 }
 
-/*
-		FORMULAIRES
-*/
-
-.customForm {
-	display: flex;
-	flex-flow: column wrap;
-	justify-content: center;
-	width: 300px;
-	margin: 3em auto;
-	padding: 1em;
-	border: .5px solid rgba(189, 195, 199, 1);
-	border-radius: 10px;
-	text-align: center;
-}
-
-.customForm input {
-	text-align: center;
-	display: block;
-	margin: .5em 1em;
-	width: 60%;
-	height: 2em;
-	margin: 1em auto;
-	border: 1px solid rgba(189, 195, 199, 1);
-	border-radius: 10px;
-}
-
-.customForm > .customFormButton {
-	width: 30%;
-}
-
-
 
 
 

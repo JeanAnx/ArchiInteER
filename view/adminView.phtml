@@ -21,47 +21,125 @@
 	<div class="blocLiensAdmin">
 
 		<a href="/SiteEmilie/">Page d'accueil</a>
-		<a href="controller/changePasswordController.php">Changer le mot de passe</a>
+		<a href="#nouveauProjet">Nouveau projet</a>	
+		<a href="#introEdit">Modifier le texte d'intro</a>
+		<a href="change.php">Changer le mot de passe</a>
 		<a href="signout.php">Se déconnecter</a>
-
 
 	</div>
 
+	<section class="messages">
+		
+		<?php 
+		
+			if (isset($_SESSION['intro']) && $_SESSION['intro'] == 'ok') { 
+
+				$_SESSION['intro'] = '';
+		
+		?>
+				<h2 id="successMessage"> <i class="fas fa-check"></i> L'introduction a bien été modifiée </h2>
+
+		<?php 
+		
+			}
+
+		?>
+
+	</section>
+
 	<section id="listeProjets">
 
-	<h2>Projets</h2>
+	<h2>- Projets -</h2>
 
-	<table class="tableauProjets">
-
-	<thead>
-		<tr>
-			<th>Titre</th>
-			<th>Sous-titre</th>
-			<th>Texte</th>
-			<th>Images</th>
-			<th>Modifier</th>
-		</tr>
-	</thead>
 	<?php foreach ($projets as $theProjet) : ?>
 		
-		<tr>
-			<th><?= $theProjet['titre'] ?></th>
-			<th><?= $theProjet['sousTitre'] ?></th>
-			<th><?= substr( $theProjet['texte'],0,100) ?> ... </th>
-			<th>
+		<article>
+			<div>
+				<h2><?= $theProjet['titre'] ?>
+				<?php 
+				if ($theProjet['published']) {
+					?>
+
+					<span class='italic'>(Publié)</span>
+
+					
+				<?php } else { ?>
+					
+					<span class='italic'>(Non publié)</span>
+
+				<?php } ?>
+
+				</h2>
+
+			</div>
+			<div><h3><span class="italic">Texte galerie : </span><?= $theProjet['texteGalerie'] ?></h3></div>
+			<div><h3><?= $theProjet['sousTitre'] ?></h3></div>
+			<div><p><?= substr( $theProjet['texte'],0,100) ?> ... </p></div>
+			<div class="galleryMiniatures">
 				<?php
 				$listeImages = explode(",",$theProjet['imagesArticle']);
 				foreach ($listeImages as $image) {
 					echo '<img class="imgMiniature" src="img/imagesArticles/' . $image . '.jpg" alt="Image Article">';
 				}
 				?>
-			</th>
-			<th><a href= <?= $theProjet['id'] ?>><i class="fas fa-marker"></i></a></th>
-		</tr>
+			</div>
+			<div class="articleTools">
+				<a href= <?= $theProjet['id'] ?>>Modifier 
+					<i class="fas fa-marker"></i>
+				</a>
+
+			</div>
+
+		</article>
 		
 	<?php endforeach ?>
 
-	</table>
+
+	</section>
+
+	<section id="nouveauProjet">
+
+		<h2>- Nouveau projet -</h2>
+
+		<form action="projectNewController.php" method="POST">
+
+			<label for="title">Titre du projet :</label>
+			<input type="text" placeholder="Titre" id="title">
+
+			<label for="galleryText">Texte de présentation (galerie) :</label>
+			<textarea name="galleryText" id="galleryText" cols="30" rows="5"> ... </textarea>
+
+			<label for="subtitle">Sous-titre :</label>
+			<textarea name="subtitle" id="subtitle" cols="30" rows="5"></textarea>
+
+			<label for="text">Texte :</label>
+			<textarea name="text" id="text" cols="30" rows="10"></textarea>
+
+			<label class="publishLabel" for="published">Cocher pour publier :</label>
+			<input id="published" name="published" type="checkbox">
+
+			<input id="submitNewProject" type="submit" value="Enregistrer">
+
+
+
+
+		</form>
+
+	</section>
+
+	<hr>
+
+	<section id="introEdit">
+
+		<h2>- Modifier le texte de présentation -</h2>
+
+		<form class="introForm" action="model/introEdit.php" method="post">
+
+			<label for="newIntro">Texte actuel :</label>
+			<textarea name="newIntro" id="intro" cols="30" rows="10"><?= $intro['texte'] ?></textarea>
+			<input type="submit" value="Modifier">
+		</form>
+
 
 
 	</section>
@@ -70,4 +148,22 @@
 
 	
 </body>
+
+<script>
+
+if (document.getElementById('successMessage') != null) {
+	$message = document.getElementById('successMessage');
+	$message.style.transition = "all 0.5s ease";
+	setTimeout(function () {
+		$message.style.opacity = "0";
+	} , 3000)
+	setTimeout(function () {
+		$message = document.getElementById('successMessage');
+		$message.style.transform = "scale(0)";
+		$message.style.margin = "0";
+	} , 3500)
+        }
+
+</script>
+
 </html>

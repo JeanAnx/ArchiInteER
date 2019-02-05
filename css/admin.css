@@ -8,6 +8,11 @@ a {
     color: grey;
 }
 
+.italic {
+    font-style: italic;
+    color: grey;
+}
+
 h1 , h2 , h3 {
     font-weight: lighter;
 }
@@ -17,31 +22,39 @@ h1 {
 }
 
 h2 {
+    font-size: 3em;
+}
+
+h3 {
     font-size: 2.5em;
+}
+
+p {
+    font-size: 2em;
+}
+
+hr {
+    width: 30%;
+    margin-top: 5em;
+    margin-bottom: 5em;
+    opacity: .3;
+}
+
+.messages h2 {
+    color: grey;
+    text-align: center;
 }
 
 /*************************************** PAGE ADMIN ************/
 
-#blocAdmin table {
+#blocAdmin {
     width: 90%;
     margin: 0 auto;
     text-align: left;
 }
 
-#blocAdmin thead {
-    font-size: 1.3em;
-}
-
-#blocAdmin h2 , #blocAdmin h1 {
+#blocAdmin > h2 , #blocAdmin > h1 , #nouveauProjet > h2 {
     text-align: center;
-}
-
-tr th:last-child {
-    text-align: center;
-}
-
-.tableauProjets tr {
-    border-bottom: 2px solid grey;
 }
 
 .blocLiensAdmin {
@@ -59,6 +72,191 @@ tr th:last-child {
 }
 
 .imgMiniature {
-    margin: 0 2px;
-    height: 50px;
+    margin: 2px 2px;
+    height: 100px;
 }
+
+#listeProjets > h2 , #introEdit > h2 {
+    width: 100%;    
+    text-align: center;
+}
+
+#listeProjets {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#listeProjets > article {
+    width: 45%;
+    padding: 2em;
+    margin: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px gainsboro;
+}
+
+#listeProjets > article > h2 {
+    text-align: center;
+}
+
+#listeProjets article .articleTools {
+    font-size: 2em;
+    text-align: center;
+    margin: 3em;
+}
+
+#listeProjets article .articleTools a {
+    padding: 1em;
+    background-color: beige;
+    border-radius: 10px;
+}
+
+#listeProjets article .articleTools a:hover , .blocLiensAdmin a:hover {
+    color: black;
+}
+
+
+/***************************************************/
+
+/*
+		FORMULAIRES
+*/
+
+form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    border: 1px solid rgba(189, 195, 199, 1);
+    border-radius: 8px;
+    padding: 1em;
+}
+
+        /*
+        LOGIN
+        */
+
+.customForm {
+	width: 300px;
+	margin: 3em auto;
+	border: .5px solid rgba(189, 195, 199, 1);
+	border-radius: 8px;
+	text-align: center;
+}
+
+.customForm input {
+    width: 60%;
+    height: 2em;
+    text-align: center;
+	margin: 1em auto;
+
+}
+
+.customForm input , .introForm textarea {
+	display: block;
+	border: 1px solid rgba(189, 195, 199, 1);
+	border-radius: 6px;
+}
+
+.customForm > .customFormButton {
+	width: 30%;
+}
+
+        /*
+        INTRO EDIT
+        */
+
+.introForm {
+    width: 900px;
+    margin: 2em auto;
+    border-style: none;
+}
+
+.introForm label {
+    font-size: 2.5em;
+    margin: 1em;
+}
+
+.introForm textarea {
+    padding: 1em;
+    font-size: 2em;
+    background-color: ghostwhite;
+}
+
+.introForm input {
+    width: 100px;
+    margin: 1em auto;
+    font-size: 2em;
+    border-radius: 5px;
+    border: 1px solid rgba(189, 195, 199, 1);
+    padding: .5em;
+}
+
+.introForm input:hover , .customForm input:hover {
+    background-color: white;
+}
+
+/*
+PASSWORD CHANGE 
+*/
+
+.passwordChange > h2 {
+    text-align: center;
+}
+
+#passwordChange > label {
+    font-size: 1.7em;
+    margin-top: 1em;
+
+}
+
+#submitChangePassword {
+    width: 45%;
+    font-size: 1.5em;
+}
+
+
+        /*
+NOUVEAU PROJET
+        */
+
+
+#nouveauProjet > form {
+    width: 1000px;
+    margin: auto;
+    padding: 2em;
+}
+
+#nouveauProjet > form > label {
+    font-size: 2em;
+    padding: 1em 0;
+}
+
+#nouveauProjet > form > input , #nouveauProjet > form > textarea {
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    padding-left: 1em;
+    font-size: 2em;
+}
+
+#nouveauProjet > form > input {
+    height: 2.5em;
+}
+
+#nouveauProjet > form > textarea {
+    padding: 1em;
+}
+
+#submitNewProject {
+    width: 25%;
+    margin: 1em auto;
+}
+
+#nouveauProjet > form > .publishLabel {
+    text-align: center;
+    padding-bottom: 0;
+}
+
+
+
+

@@ -3,8 +3,6 @@ session_start();
 
 include 'db.php';
 
-
-
 if (!empty($_POST)) {
 
 	var_dump($_POST);
@@ -18,7 +16,6 @@ if (!empty($_POST)) {
 
 				$_SESSION['admin'] = "error";
 				header('Location: ../login.php');
-
 
 				} else if (password_verify(htmlentities($_POST['password']),$admin['password'])) {
 

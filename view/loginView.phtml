@@ -5,18 +5,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Connexion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+	<link rel="stylesheet" href="css/admin.css" />
 </head>
 
 <body>
 	
 	<main>
 		
-			<form class="customForm" action="model/connection.php">
+			<form class="customForm" action="model/connection.php" method="POST">
 
 				<h2>Se connecter</h2>
 
-				<input required type="txt" name="login" placeholder="login">
+				<input required type="text" name="login" placeholder="Login">
 				<input required type="password" name="password" placeholder="Mot de passe">
 				<input class="customFormButton" type="submit" value="Connexion"></button>
 
