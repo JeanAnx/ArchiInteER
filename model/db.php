@@ -12,6 +12,100 @@ function openDatabase() {
 }
 
 
+function createProject(array $newProject) {
+
+	$db = openDatabase(); 
+
+	$newProjectData = [
+
+		'title' => $newProject['title'],
+		'galleryText' => $newProject['galleryText'],
+		'subtitle' => $newProject['subtitle'],
+		'mainText' => $newProject['mainText'],
+		'published' => $newProject['published']
+	];
+
+	$sql = "INSERT INTO `projets` (titre,sousTitre,texteGalerie,texte,dateCreation,published)
+	VALUES (:title,:subtitle,:galleryText,:mainText,NOW(),:published)";
+
+	$statement = $db->prepare($sql);
+	return $statement->execute($newProjectData);
+
+}
+
+function sendImageGalerie($pid , $fileName) {
+
+	$db = openDatabase(); 
+
+	$data = [
+		'name' => $fileName,
+		'id' => $pid,
+	];
+
+	$sql = 'UPDATE `projets` SET `imageTitre`=:name WHERE `id` = :id';
+
+	$statement = $db->prepare($sql);
+
+	return $statement->execute($data);
+
+}
+
+function uploadImageGalerie($file) {
+
+	
+	$dossier = "../img/imagesArticles/";
+	
+    if ( isset($file['error']) && $file['error'] == "4" ) {
+
+		header("Location: images.php?images=error");
+		
+        } else {
+
+		$fichier = $file['name'];
+		
+		if (file_exists($file['tmp_name'])) {
+		
+			$resultUpload = move_uploaded_file($file['tmp_name'], $dossier.$fichier);
+
+			if ($resultUpload) {
+
+				header("Location: images.php?upload=ok&name=".$file['name']);
+			
+			}
+
+		}
+        
+    }
+
+}
+
+function uploadImages($pid , $file) {
+
+	$dossier = "img/imagesArticles/";
+	
+    if ($file['file']['error'] == "4" ) {
+
+		header("Location: images.php?images=error");
+		
+        } else {
+
+        $fichier = basename($file['file']['name']);
+		
+            if (file_exists($file['file']['tmp_name'])) {
+
+                $resultUpload = move_uploaded_file($file['file']['tmp_name'] , $dossier.$fichier);
+                
+                if ($resultUpload) {
+
+                    header("Location: images.php?upload=ok&name=".$file['file']['name']);
+				
+				}
+            }
+        
+    }
+        
+}
+
 function getIntro() {
 
 	$db = openDatabase(); 
@@ -128,7 +222,7 @@ function getLatestProject() {
 
 	$db = openDatabase(); 
 
-	$sql = "SELECT * FROM projets ORDER BY `created_at` DESC limit 1";
+	$sql = "SELECT * FROM projets ORDER BY `dateCreation` DESC limit 1";
 
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 
@@ -142,22 +236,4 @@ function getLatestProject() {
 
 }
 
-function createProject(array $newProject) {
-
-	$db = openDatabase(); 
-
-	$newProjectData = [
-
-		'title' => $newProject['title'],
-		'subtitle' => $newProject['subtitle'],
-		'content' => $newProject['content']
-	];
-
-	$sql = "INSERT INTO `projets` (title,subtitle,content,created_at)
-	VALUES (:title,:subtitle,:content,NOW())";
-
-	$statement = $db->prepare($sql);
-	$statement->execute($newProjectData);
-
-}
 

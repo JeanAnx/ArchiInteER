@@ -43,9 +43,17 @@
 		
 			}
 
-		?>
+			if (isset($_SESSION['error']) && $_SESSION['error'] == 'projet') { ?>
+
+				<h2 id="errorMessage"> <i class="fas fa-times"></i> Une erreur s'est produite </h2>
+
+			<?php } ?>
+
 
 	</section>
+
+<!-- LISTE PROJETS --> 
+
 
 	<section id="listeProjets">
 
@@ -77,6 +85,7 @@
 			<div><p><?= substr( $theProjet['texte'],0,100) ?> ... </p></div>
 			<div class="galleryMiniatures">
 				<?php
+				
 				$listeImages = explode(",",$theProjet['imagesArticle']);
 				foreach ($listeImages as $image) {
 					echo '<img class="imgMiniature" src="img/imagesArticles/' . $image . '.jpg" alt="Image Article">';
@@ -94,6 +103,7 @@
 		
 	<?php endforeach ?>
 
+<!-- NOUVEAU PROJET --> 
 
 	</section>
 
@@ -101,10 +111,10 @@
 
 		<h2>- Nouveau projet -</h2>
 
-		<form action="projectNewController.php" method="POST">
+		<form action="controller/projectNewController.php" method="POST">
 
 			<label for="title">Titre du projet :</label>
-			<input type="text" placeholder="Titre" id="title">
+			<input type="text" placeholder="Titre" id="title" name="title">
 
 			<label for="galleryText">Texte de présentation (galerie) :</label>
 			<textarea name="galleryText" id="galleryText" cols="30" rows="5"> ... </textarea>
@@ -114,11 +124,11 @@
 
 			<label for="text">Texte :</label>
 			<textarea name="text" id="text" cols="30" rows="10"></textarea>
+			
+			<label class="publishLabel" for="published">Cocher pour publier</label>
+			<input id="publicationCheckbox" name="published" type="checkbox" value="1">
 
-			<label class="publishLabel" for="published">Cocher pour publier :</label>
-			<input id="published" name="published" type="checkbox">
-
-			<input id="submitNewProject" type="submit" value="Enregistrer">
+			<input id="submitNewProject" type="submit" value="Enregistrer et ajouter des images">
 
 
 

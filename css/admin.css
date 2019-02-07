@@ -248,8 +248,12 @@ NOUVEAU PROJET
 }
 
 #submitNewProject {
-    width: 25%;
+    width: 40%;
     margin: 1em auto;
+}
+
+#submitNewProject:hover {
+    background-color: white;
 }
 
 #nouveauProjet > form > .publishLabel {
@@ -258,5 +262,19 @@ NOUVEAU PROJET
 }
 
 
+/*
+    IMAGES FORM
+*/
 
+.imagesForm {
+    margin-top: 2em;
+}
 
+.imagesForm #imageGallerySubmit , .imagesForm #imagesProjectSubmit {
+    width: 15%;
+    margin: 1em auto;
+}
+
+.displayTitleImage > img {
+    width: 100%;
+}
