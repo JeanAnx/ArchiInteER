@@ -15,23 +15,23 @@ if (!empty($_POST)) {
 			if (empty($admin)) {
 
 				$_SESSION['admin'] = "error";
-				header('Location: ../login.php');
+				header('Location: ../login');
 
 				} else if (password_verify(htmlentities($_POST['password']),$admin['password'])) {
 
 						$_SESSION['admin'] = "yes";
-						header('Location: ../admin.php');
+						header('Location: ../admin');
 
 						} else {
 
 							$_SESSION['admin'] = "error";
-							header('Location: ../login.php');
+							header('Location: ../login');
 
 							}
 
 	} else {
 
-		header('Location: ../login.php');
+		header('Location: ../login');
 	
 }
 

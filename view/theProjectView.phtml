@@ -5,19 +5,20 @@
 		
 		<div class="blocImages">
 
-			<img src="img/imagesArticles/A1.jpg" alt="Projet Émilie Robert">
-			<img src="img/imagesArticles/A2.jpg" alt="Projet Émilie Robert">
-			<img src="img/imagesArticles/A3.jpg" alt="Projet Émilie Robert">
-			<img src="img/imagesArticles/A4.jpg" alt="Projet Émilie Robert">
+			<?php foreach ($theProject['imagesArticle'] as $image) { ?>
+
+				<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+		
+			<?php } ?>
+			
 
 		</div>
 
 		<aside class="asideProjet">
 
-			<h1 class="titreArticle">Titre de l'article</h1>
-			<h2 class="sousTitreArticle">Sous-Titre</h2>
-			<p class="texteArticle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo modi velit incidunt accusantium architecto dicta impedit iste fugit quis illum amet voluptas nostrum, dolorem, deleniti sit magnam inventore beatae nemo! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam voluptatibus ea, reiciendis aut nisi voluptates deleniti, pariatur quas qui tempore perspiciatis odio, assumenda possimus a maiores magnam, necessitatibus ipsa praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat recusandae provident sunt in, quidem explicabo veniam quibusdam amet rerum fugiat ad obcaecati similique ducimus nemo atque sit nobis, architecto iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem doloremque quo vitae quod enim alias optio sequi quae, nihil sunt dolores in laborum id corporis est, magnam incidunt excepturi ipsam.
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis soluta dolorum nisi, fugit dignissimos possimus! Laborum impedit, molestias, ex qui ipsa consequuntur necessitatibus velit beatae possimus veritatis alias mollitia saepe.</p>
+			<h1 class="titreArticle"><?= $theProject['titre'] ?></h1>
+			<h2 class="sousTitreArticle"><?= $theProject['sousTitre'] ?></h2>
+			<p class="texteArticle"><?= $theProject['texte'] ?></p>
 
 		</aside>
 

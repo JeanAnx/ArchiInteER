@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="../css/admin.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Gestion des images</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
     
     <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
 
-        <label for="imageGallery">Ajouter une image pour la galerie :</label>
+        <label for="imageGallery">Ajouter une image pour la galerie (format 16/9) :</label>
         <input type="file" name="imageGallery">
 
         <input id="imageGallerySubmit" type="submit" value="Ajouter">
@@ -25,9 +25,21 @@
 
         <div class="displayTitleImage">
 
+        <?php if (isset($imgTitle) && !empty($imgTitle)) { ?>
+
             <img src="../img/imagesArticles/<?=$imgTitle?>" alt="Image Titre">
 
+        <?php } else { ?>
+
+            <h3 class="noPicture">Pas d'image</h3>
+
+        <?php } ?>
+
         </div>
+
+</form>
+
+<form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
 
         <label for="images">Ajouter des images au projet :</label>
         <input type="file" name="images[]" multiple>
@@ -39,33 +51,28 @@
 
        <?php 
        
-				foreach ($listeImages as $image) {
-					echo '<img class="imgMiniature" src="img/imagesArticles/' . $image . '.jpg" alt="Image Article">';
-                }
+       if (isset($listeImages) && !empty($listeImages)) {
+
+                foreach ($listeImages as $image) { ?>
+
+                    <img class="imgMiniature" src="../img/imagesArticles/<?=$image?>" alt="Image Article">
+                    <a class="deleteButton" href="delete.php?id=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                
+                <?php } 
+                
+            } else { ?>
+
+                <h3 class="noPicture">Pas d'image</h3>
+
+              <?php  } 
                 
                 ?>
-
-        <?php 
-
-        /***
-         * CODE ATELIER PHP
-         */
-        if (isset($imgList)) {
-
-            foreach ($imgList as $img) { ?>
-                <div class="imgList">
-                    <img src="img/imagesArticles<?= $img ?>" alt="img">
-                    <a class="deleteButton" href="delete.php?id=<?=$img?>"><i class="fas fa-trash-alt"></i></a>
-                </div>
-                
-        <?php } }?>
         
-
-        
-
         </div>
 
     </form>
+
+    <a class="link" href="../admin.php">Retour à la gestion des projets</a>
 
 </section>
 

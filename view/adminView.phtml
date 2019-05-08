@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-	<title>Document</title>
+	<title>Administration</title>
 </head>
 <body>
 
@@ -23,8 +23,8 @@
 		<a href="/SiteEmilie/">Page d'accueil</a>
 		<a href="#nouveauProjet">Nouveau projet</a>	
 		<a href="#introEdit">Modifier le texte d'intro</a>
-		<a href="change.php">Changer le mot de passe</a>
-		<a href="signout.php">Se déconnecter</a>
+		<a href="change">Changer le mot de passe</a>
+		<a href="signout">Se déconnecter</a>
 
 	</div>
 
@@ -80,17 +80,40 @@
 				</h2>
 
 			</div>
-			<div><h3><span class="italic">Texte galerie : </span><?= $theProjet['texteGalerie'] ?></h3></div>
-			<div><h3><?= $theProjet['sousTitre'] ?></h3></div>
-			<div><p><?= substr( $theProjet['texte'],0,100) ?> ... </p></div>
-			<div class="galleryMiniatures">
-				<?php
-				
+			<div><h3><span class="italic">Texte galerie : <br></span><?= $theProjet['texteGalerie'] ?></h3></div>
+			<div><h3><span class="italic">Sous-titre : </span><br><?= $theProjet['sousTitre'] ?></h3></div>
+			<div><h3><span class="italic">Texte (extrait) : </span><br><?= substr( $theProjet['texte'],0,100) ?> ... </h3></div>
+			<div class="displayTitleImage">
+				<h3>Image Galerie :</h3>
+
+<?php if (!empty($theProjet['imageTitre'])) { ?>
+
+	<img src="img/imagesArticles/<?=$theProjet['imageTitre']?>" alt="<?=$theProjet['imageTitre']?>">
+
+
+<?php } else { ?>
+
+	<p class="noPicture">Pas d'image chargée</p>
+
+<?php } ?>
+
+ 
+			</div>
+			
+			<div class="galleryMiniatures"><h3>Images de l'article :</h3>
+				<?php if (!empty($theProjet['imagesArticle'])) {
+
 				$listeImages = explode(",",$theProjet['imagesArticle']);
 				foreach ($listeImages as $image) {
-					echo '<img class="imgMiniature" src="img/imagesArticles/' . $image . '.jpg" alt="Image Article">';
+					echo '<img class="imgMiniature" src="img/imagesArticles/' . $image . '" alt="'.$image.'">';
 				}
-				?>
+
+			} else { ?>
+
+				<p class="noPicture">Pas d'image</p>
+
+			<?php } ?>
+
 			</div>
 			<div class="articleTools">
 				<a href= <?= $theProjet['id'] ?>>Modifier 

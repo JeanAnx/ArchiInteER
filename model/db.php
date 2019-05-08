@@ -33,6 +33,8 @@ function createProject(array $newProject) {
 
 }
 
+/* Enregistrement en BDD de l'image Titre */
+
 function sendImageGalerie($pid , $fileName) {
 
 	$db = openDatabase(); 
@@ -50,9 +52,10 @@ function sendImageGalerie($pid , $fileName) {
 
 }
 
+/* Enregistrement de l'image dans le dossier */
+
 function uploadImageGalerie($file) {
 
-	
 	$dossier = "../img/imagesArticles/";
 	
     if ( isset($file['error']) && $file['error'] == "4" ) {
@@ -79,32 +82,70 @@ function uploadImageGalerie($file) {
 
 }
 
-function uploadImages($pid , $file) {
+/* Enregistrement des images de l'article dans le dossier */
 
-	$dossier = "img/imagesArticles/";
+function uploadImages(array $images) {
+
+	foreach ($images as $theImage) {
+
+		$dossier = "../img/imagesArticles/";
 	
-    if ($file['file']['error'] == "4" ) {
-
-		header("Location: images.php?images=error");
-		
-        } else {
-
-        $fichier = basename($file['file']['name']);
-		
-            if (file_exists($file['file']['tmp_name'])) {
-
-                $resultUpload = move_uploaded_file($file['file']['tmp_name'] , $dossier.$fichier);
-                
-                if ($resultUpload) {
-
-                    header("Location: images.php?upload=ok&name=".$file['file']['name']);
-				
+		if ($theImage['error'] == "4" ) {
+	
+			header("Localtion: images.php?images=error");
+			
+			} else {
+	
+			$fichier = basename($theImage['name']);
+			
+				if (file_exists($theImage['tmp_name'])) {
+	
+					$resultUpload = move_uploaded_file($theImage['tmp_name'] , $dossier.$fichier);
+					
+					if ($resultUpload == false) {
+	
+						header("Location: images.php?upload=oups");
+					
+					}
 				}
-            }
-        
-    }
-        
+		}
+	}
 }
+
+/* Envoi des images de l'article en BDD */
+
+// On récupére les images déjà existantes pour leur ajouter celles qu'on envoie, 
+// si pas d'images on crée un tableau de zéro
+
+function sendImages($pid , $imagesNames) {
+
+	$thisProject = getProjectById($pid);
+
+	if ($thisProject['imagesArticle'] != "") {
+		$imagesToSend = explode("," , $thisProject['imagesArticle']);
+	} else {
+		$imagesToSend = [];
+	}
+	array_push($imagesToSend,$imagesNames);
+	$db = openDatabase();
+	$imagesToSend = implode("," , $imagesToSend);
+	var_dump($imagesToSend);
+
+	$data = [
+		'id' => $pid,
+		'names' => $imagesToSend,
+	];
+
+	$sql = 'UPDATE `projets` SET `imagesArticle`=:names WHERE `id` = :id';
+
+	$statement = $db->prepare($sql);
+
+	return $statement->execute($data);
+}
+
+// TO DO Suppression d'une image
+// Changer l'ordre des images
+
 
 function getIntro() {
 
