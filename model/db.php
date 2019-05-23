@@ -92,7 +92,7 @@ function uploadImages(array $images) {
 	
 		if ($theImage['error'] == "4" ) {
 	
-			header("Localtion: images.php?images=error");
+			header("Location: images.php?images=error");
 			
 			} else {
 	
@@ -145,6 +145,138 @@ function sendImages($pid , $imagesNames) {
 
 // TO DO Suppression d'une image
 // Changer l'ordre des images
+
+function deleteImage($pid , $imageName) {
+
+	$db = openDatabase();
+
+	$thisProject = getProjectById($pid);
+
+	$imagesList = explode("," , $thisProject['imagesArticle']);
+
+	$i = 0;
+	foreach ($imagesList as $image) {
+		
+		if ($image == $imageName) {
+			unset($imagesList[$i]);
+		}
+
+	}
+		$imagesToSend = implode("," , $imagesList);
+
+		$data = [
+			'id' => $pid,
+			'names' => $imagesToSend,
+		];
+
+		$sql = 'UPDATE `projets` SET `imagesArticle`=:names WHERE `id` = :id';
+
+		$statement = $db->prepare($sql);
+
+		return $statement->execute($data);
+
+}
+
+
+/****
+ * GESTION DES IMAGES DU SLIDER EN BDD
+ */
+
+ function getImagesSlider() {
+
+	$db = openDatabase(); 
+
+	$sql = "SELECT * FROM `imagesslider` ORDER BY `id` DESC LIMIT 1";
+
+	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
+
+	foreach ($statement as $row) {
+		$imagesSlider = $row;
+	}
+
+	return $imagesSlider;
+ }
+
+function uploadImagesSlider(array $images) {
+
+	foreach ($images as $theImage) {
+
+		$dossier = "../img/flexslider/";
+	
+		if ($theImage['error'] == "4" ) {
+	
+			header("Location: images.php?images=error");
+			
+			} else {
+	
+			$fichier = basename($theImage['name']);
+			
+				if (file_exists($theImage['tmp_name'])) {
+	
+					$resultUpload = move_uploaded_file($theImage['tmp_name'] , $dossier.$fichier);
+					
+					if ($resultUpload == false) {
+	
+						header("Location: images.php?upload=oups");
+					
+					}
+				}
+		}
+	}
+}
+
+// WIP WIP WIP WIP WIP WIP
+
+function sendImagesSlider($imagesNames) {
+
+	$imagesToSend = [];
+
+	array_push($imagesToSend,$imagesNames);
+	$db = openDatabase();
+	$imagesToSend = implode("," , $imagesToSend);
+
+	$data = [
+		'names' => $imagesToSend,
+	];
+
+	$sql = 'INSERT INTO `imagesslider`(`list`) VALUES (:names)';
+
+	$statement = $db->prepare($sql);
+
+	return $statement->execute($data);
+}
+
+function deleteImageSlider($imageName) {
+
+	$db = openDatabase();
+
+	$imagesSlider = 
+
+	$imagesList = explode("," , $thisProject['imagesArticle']);
+
+	$i = 0;
+	foreach ($imagesList as $image) {
+		
+		if ($image == $imageName) {
+			unset($imagesList[$i]);
+		}
+
+	}
+		$imagesToSend = implode("," , $imagesList);
+
+		$data = [
+			'id' => $pid,
+			'names' => $imagesToSend,
+		];
+
+		$sql = 'UPDATE `projets` SET `imagesArticle`=:names WHERE `id` = :id';
+
+		$statement = $db->prepare($sql);
+
+		return $statement->execute($data);
+
+}
+
 
 
 function getIntro() {

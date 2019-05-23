@@ -75,7 +75,7 @@ hr {
     text-align: left;
 }
 
-#blocAdmin > h2 , #blocAdmin > h1 , #nouveauProjet > h2 {
+#blocAdmin > h2 , #blocAdmin > h1 , #nouveauProjet > h2 , #imagesSlider h2 {
     text-align: center;
 }
 
@@ -205,7 +205,7 @@ form {
     background-color: ghostwhite;
 }
 
-.introForm input {
+.introForm input , #imagesSliderSubmit {
     width: 100px;
     margin: 1em auto;
     font-size: 2em;
@@ -250,19 +250,19 @@ NOUVEAU PROJET
     padding: 2em;
 }
 
-#nouveauProjet > form > label {
+#nouveauProjet > form > label , #imagesSlider form label {
     font-size: 2em;
     padding: 1em 0;
 }
 
-#nouveauProjet > form > input , #nouveauProjet > form > textarea {
+#nouveauProjet > form > input , #nouveauProjet > form > textarea , #imagesSlider form input {
     border-radius: 5px;
     border: 1px solid gainsboro;
     padding-left: 1em;
     font-size: 2em;
 }
 
-#nouveauProjet > form > input {
+#nouveauProjet > form > input , #imagesSlider form input {
     height: 2.5em;
 }
 
@@ -293,11 +293,20 @@ NOUVEAU PROJET
     margin-top: 2em;
 }
 
-.imagesForm #imageGallerySubmit , .imagesForm #imagesProjectSubmit {
+.imagesForm #imageGallerySubmit , .imagesForm #imagesProjectSubmit , .imagesForm #imagesSliderSubmit {
     width: 15%;
     margin: 1em auto;
 }
 
 .displayTitleImage > img {
     width: 100%;
+}
+
+#imagesSliderSubmit {
+    width: 10%;
+}
+
+#imagesSlider form {
+    width: 70%;
+    margin: 5px auto;
 }

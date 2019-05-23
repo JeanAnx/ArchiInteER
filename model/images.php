@@ -5,7 +5,57 @@ if ($_SESSION['admin'] == 'yes') {
 
 require_once 'db.php';
 
-var_dump($_FILES);
+    // Si les images qu'on envoie concernent le slider :
+    if (isset($_GET['i']) && $_GET['i'] == "s") {
+        
+    // Traitement > Image du slider à supprimer !! dsid pour delete slider id
+
+        if (isset($_GET['did']) && $_GET['did'] != "") {
+            deleteImageSlider(($_GET['dsid']));
+        }
+
+        // Ajout des images Slider
+        if (isset($_FILES['imagesSlider']) && !empty($_FILES['imagesSlider'])) {
+
+            $imagesSlider = [];
+
+            for ($i=0; $i < count($_FILES['imagesSlider']['name']); $i++) { 
+            
+                $imagesSlider[$i] = [
+                    'name' => $_FILES['imagesSlider']['name'][$i],
+                    'type' => $_FILES['imagesSlider']['type'][$i],
+                    'tmp_name' => $_FILES['imagesSlider']['tmp_name'][$i],
+                    'error' => $_FILES['imagesSlider']['error'][$i],
+                    'size' => $_FILES['imagesSlider']['size'][$i],
+                ];
+            
+            }
+
+        }
+
+        var_dump($_FILES);
+        var_dump($_GET);
+
+    // Enregistrement des fichiers images ...
+    uploadImagesSlider($imagesSlider);
+
+    // Et envoi en BDD 
+    $imagesSlider = implode("," , $_FILES['imagesSlider']['name']);
+    sendImagesSlider($imagesSlider);
+
+    header('Location: admin.php?slider=ok');
+
+    }
+
+
+if (isset($_GET['sliderdelete']) && $_GET['sliderdelete'] != "") {
+    // TODO Si l'image à supprimer est une image du slider
+}
+
+// Traitement d'une image à supprimer
+if (isset($_GET['did']) && $_GET['did'] != "") {
+    deleteImage($currentProject['id'] , ($_GET['did']));
+}
 
 
 /*
@@ -13,8 +63,8 @@ Je récupère le nouveau projet et son id
 */
 $currentProject = getLatestProject();
 
-/***
- * Si j'envoie un File pour l'image titre :
+/**************************************************************
+ * IMAGES PROJETS : Si j'envoie un File pour l'image titre :
  */
 if (isset($_FILES['imageGallery']) && !empty($_FILES['imageGallery'])) {
     $nouvelleImage = $_FILES['imageGallery'];
@@ -69,4 +119,3 @@ $listeImages = explode("," , $imgList); // Conversion en tableau
 } else {
     header('Location: ../index.php');
 }
-

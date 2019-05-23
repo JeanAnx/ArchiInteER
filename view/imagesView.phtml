@@ -14,7 +14,6 @@
 
 <section id="nouveauProjet" >
 
-    
     <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
 
         <label for="imageGallery">Ajouter une image pour la galerie (format 16/9) :</label>
@@ -37,7 +36,7 @@
 
         </div>
 
-</form>
+    </form>
 
 <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
 
@@ -46,18 +45,20 @@
 
         <input  id="imagesProjectSubmit" type="submit" value="Ajouter">
 
-
         <div class="displayImagesForm">
 
        <?php 
+
+       var_dump($listeImages);
        
-       if (isset($listeImages) && !empty($listeImages)) {
+       if (isset($listeImages) && $listeImages[0] != "") {
 
-                foreach ($listeImages as $image) { ?>
+                foreach ($listeImages as $image) { 
 
+                    if ($image != "") { ?>
                     <img class="imgMiniature" src="../img/imagesArticles/<?=$image?>" alt="Image Article">
-                    <a class="deleteButton" href="delete.php?id=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
-                
+                    <a class="deleteButton" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                    <?php } ?>
                 <?php } 
                 
             } else { ?>
@@ -73,6 +74,7 @@
     </form>
 
     <a class="link" href="../admin.php">Retour à la gestion des projets</a>
+    <a class="link" href="/SiteEmilie?p=theProject&n=<?=$currentProject['id']?> ">Voir la page projet</a>
 
 </section>
 

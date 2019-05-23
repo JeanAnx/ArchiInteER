@@ -23,6 +23,7 @@
 		<a href="/SiteEmilie/">Page d'accueil</a>
 		<a href="#nouveauProjet">Nouveau projet</a>	
 		<a href="#introEdit">Modifier le texte d'intro</a>
+		<a href="#imagesSlider">Modifier les images du slider</a>
 		<a href="change">Changer le mot de passe</a>
 		<a href="signout">Se déconnecter</a>
 
@@ -162,6 +163,8 @@
 
 	<hr>
 
+	<!-- TEXTE INTRO --> 
+
 	<section id="introEdit">
 
 		<h2>- Modifier le texte de présentation -</h2>
@@ -173,8 +176,47 @@
 			<input type="submit" value="Modifier">
 		</form>
 
+	</section>
 
+	<!-- IMAGES SLIDER -->
 
+	<section id="imagesSlider">
+
+	<h2>- Modifier les images du slider -</h2>
+
+	<form class="imagesForm" action="model/images.php?i=s" method="POST" enctype="multipart/form-data">
+	
+	<label for="imagesSlider">Ajouter des images au slider :</label>
+	<input type="file" name="imagesSlider[]" multiple>
+
+	<input  id="imagesSliderSubmit" type="submit" value="Ajouter">
+
+	<div class="displayImagesForm">
+
+	<?php 
+       
+       if (isset($listeImagesSlider) && $listeImagesSlider[0] != "") {
+
+                foreach ($listeImagesSlider as $image) { 
+
+                    if ($image != "") { ?>
+                    <img class="imgMiniature" src="../img/imagesSlider/<?=$image?>" alt="Image Slider">
+                    <a class="deleteButton" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                    <?php } ?>
+                <?php } 
+                
+            } else { ?>
+
+                <h3 class="noPicture">Pas d'image</h3>
+
+              <?php  } var_dump($imagesSlider);
+                
+                ?>
+        
+        </div>
+
+	</form>
+	
 	</section>
 
 </main>
