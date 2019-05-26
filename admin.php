@@ -5,6 +5,8 @@ require_once 'model/db.php';
 $intro = getIntro();
 $projets = getAllProjects();
 $imagesSliderData = getImagesSlider();
+echo 'Images Slider en BDD';
+var_dump($imagesSliderData);
 if (isset($imagesSliderData['list']) && !empty($imagesSliderData['list'])) {
 $imagesSlider = explode("," , getImagesSlider()['list']);
 $imagesSlider = cleanArray($imagesSlider);

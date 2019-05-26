@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require 'db.php';
+
 var_dump($_GET);
 
 if ($_SESSION['admin'] == 'yes') {
@@ -9,7 +11,6 @@ if ($_SESSION['admin'] == 'yes') {
     if (isset($_GET['did']) && $_GET['did'] != "") {
         deleteImage($currentProject['id'] , ($_GET['did']));
     }
-
 
     /*
     Je récupère le nouveau projet et son id
