@@ -184,7 +184,7 @@
 
 	<h2>- Modifier les images du slider -</h2>
 
-	<form class="imagesForm" action="model/images.php?i=s" method="POST" enctype="multipart/form-data">
+	<form class="imagesForm" action="model/imagesslider.php?images=slider" method="POST" enctype="multipart/form-data">
 	
 	<label for="imagesSlider">Ajouter des images au slider :</label>
 	<input type="file" name="imagesSlider[]" multiple>
@@ -195,13 +195,13 @@
 
 	<?php 
        
-       if (isset($listeImagesSlider) && $listeImagesSlider[0] != "") {
+       if (isset($imagesSlider) && isset($imagesSlider[0]) && $imagesSlider[0] != "") {
 
-                foreach ($listeImagesSlider as $image) { 
+                foreach ($imagesSlider as $image) { 
 
                     if ($image != "") { ?>
-                    <img class="imgMiniature" src="../img/imagesSlider/<?=$image?>" alt="Image Slider">
-                    <a class="deleteButton" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                    <img class="imgMiniature" src="img/flexslider/<?=$image?>" alt="Image Slider">
+                    <a class="deleteButton" href="model/imagesslider.php?images=slider&dsid=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
                     <?php } ?>
                 <?php } 
                 

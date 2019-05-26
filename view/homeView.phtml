@@ -5,25 +5,18 @@
 		<section id="blocImageAccueil">
 
 			<div class="flexslider">
-			  <ul class="slides">
-			    <li>
-			      <img src="img/flexslider/1.jpg" />
-			    </li>
-			    <li>
-			      <img src="img/flexslider/2.jpg" />
-			    </li>
-			    <li>
-			      <img src="img/flexslider/3.jpg" />
-			    </li>
-			    <li>
-			      <img src="img/flexslider/4.jpg" />
-			    </li>
-			    <li>
-			      <img src="img/flexslider/5.jpg" />
-			    </li>
-			    <li>
-			      <img src="img/flexslider/6.jpg" />
-			    </li>
+					<ul class="slides">
+
+<?php 
+
+foreach ($imagesSlider as $image) { ?>
+
+						<li>
+							<img src="img/flexslider/<?=$image?>" alt="Emilie Robert" />
+						</li>
+
+<?php } ?>
+
 			  </ul>
 			</div>
 		

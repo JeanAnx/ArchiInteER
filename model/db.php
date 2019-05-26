@@ -1,5 +1,23 @@
 <?php
 
+function cleanArray($array) {
+	$i = 0;
+	foreach ($array as $row) {
+
+		if ($row == " " || $row == "") {
+			unset($array[$i]);
+		}
+
+		$i++;
+
+	}
+
+	$string = implode(',' , $array);
+	$string = ltrim($string , ",");
+	$cleanArray = explode(',' , $string);
+
+	return $cleanArray ;
+}
 
 function openDatabase() {
 
@@ -137,14 +155,11 @@ function sendImages($pid , $imagesNames) {
 	];
 
 	$sql = 'UPDATE `projets` SET `imagesArticle`=:names WHERE `id` = :id';
-
 	$statement = $db->prepare($sql);
-
 	return $statement->execute($data);
 }
 
-// TO DO Suppression d'une image
-// Changer l'ordre des images
+//TODO Changer l'ordre des images
 
 function deleteImage($pid , $imageName) {
 
@@ -160,6 +175,8 @@ function deleteImage($pid , $imageName) {
 		if ($image == $imageName) {
 			unset($imagesList[$i]);
 		}
+
+		$i++;
 
 	}
 		$imagesToSend = implode("," , $imagesList);
@@ -190,12 +207,15 @@ function deleteImage($pid , $imageName) {
 
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 
+	$imagesSlider = [];
+
 	foreach ($statement as $row) {
 		$imagesSlider = $row;
 	}
 
 	return $imagesSlider;
  }
+
 
 function uploadImagesSlider(array $images) {
 
@@ -229,9 +249,19 @@ function uploadImagesSlider(array $images) {
 
 function sendImagesSlider($imagesNames) {
 
-	$imagesToSend = [];
+	if (isset(getImagesSlider()['list'])) {
+	$currentImages = getImagesSlider()['list'];
+		} else {
+			$currentImages = "";
+		}
 
+	if ($currentImages != " ") {
+	$imagesToSend = explode(',' , trim(getImagesSlider()['list']));
+		} else {
+			$imagesToSend = [];
+	}
 	array_push($imagesToSend,$imagesNames);
+
 	$db = openDatabase();
 	$imagesToSend = implode("," , $imagesToSend);
 
@@ -250,9 +280,9 @@ function deleteImageSlider($imageName) {
 
 	$db = openDatabase();
 
-	$imagesSlider = 
+	$imagesSlider = getImagesSlider()['list'];
 
-	$imagesList = explode("," , $thisProject['imagesArticle']);
+	$imagesList = explode("," , $imagesSlider);
 
 	$i = 0;
 	foreach ($imagesList as $image) {
@@ -260,19 +290,18 @@ function deleteImageSlider($imageName) {
 		if ($image == $imageName) {
 			unset($imagesList[$i]);
 		}
-
+		$i++;
 	}
 		$imagesToSend = implode("," , $imagesList);
 
 		$data = [
-			'id' => $pid,
 			'names' => $imagesToSend,
 		];
-
-		$sql = 'UPDATE `projets` SET `imagesArticle`=:names WHERE `id` = :id';
-
+	
+		$sql = 'INSERT INTO `imagesslider`(`list`) VALUES (:names)';
+	
 		$statement = $db->prepare($sql);
-
+	
 		return $statement->execute($data);
 
 }
