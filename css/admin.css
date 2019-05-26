@@ -44,6 +44,14 @@ hr {
     text-align: center;
 }
 
+.messages .errorMessage {
+    color: red;
+}
+
+.messages .successMessage {
+    color: green;
+}
+
 .noPicture {
     color: grey;
     text-align: center;
@@ -64,6 +72,14 @@ hr {
 .link:hover {
     background-color: white;
     color: grey;
+}
+
+#backToTheTop {
+    font-size: 7em;
+    width: 60px;
+    text-align: center;
+    position: fixed;
+    right: 60px;
 }
 
 /*************************************** PAGE ADMIN ************/
@@ -131,10 +147,15 @@ hr {
     padding: 1em;
     background-color: beige;
     border-radius: 10px;
+    margin: 0 5px;
 }
 
 #listeProjets article .articleTools a:hover , .blocLiensAdmin a:hover {
     color: black;
+}
+
+#listeProjets article .articleTools > a.buttonDeleteProject:hover {
+    color: red;
 }
 
 
@@ -308,4 +329,25 @@ NOUVEAU PROJET
 #imagesSlider form {
     width: 70%;
     margin: 5px auto;
+}
+
+
+
+/*
+BOUTON DE SUPPRESSION D'IMAGE
+*/
+
+.deleteButton {
+    position: relative;
+    left: -40px;
+    bottom: 20px;
+    color: grey;
+    font-size: 2em;
+}
+
+.deleteButton:hover {
+    color: red;
+    transition: all 0.2s ease;
+    transform: scale(1.5);
+    
 }

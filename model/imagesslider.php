@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['admin'] == 'yes') {
+if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 
 require_once 'db.php';
 
@@ -12,7 +12,8 @@ require_once 'db.php';
 
         if (isset($_GET['dsid']) && $_GET['dsid'] != "") {
             deleteImageSlider(($_GET['dsid']));
-            header('Location: ../admin.php#imagesSlider');
+            $_SESSION['slider'] = 'delete';
+            header('Location: ../admin.php?slider=delete#imagesSlider');
         }
         
         // Ajout des images Slider
@@ -42,14 +43,11 @@ require_once 'db.php';
     $imagesSlider = implode("," , $_FILES['imagesSlider']['name']);
     sendImagesSlider($imagesSlider);
 
-    header('Location: ../admin.php?slider=ok#imagesSlider');
+    $_SESSION['slider'] = 'ok';
+    header('Location: ../admin.php?#imagesSlider');
 
     }
 
-
-if (isset($_GET['sliderdelete']) && $_GET['sliderdelete'] != "") {
-    // TODO Si l'image à supprimer est une image du slider
-}
 
 } else {
     header('Location: ../index.php');

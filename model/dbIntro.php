@@ -30,3 +30,7 @@ function setIntro($string) {
 	$statement = $db->exec($sql);
 	
 }
+
+function getIntroImage() {
+
+}

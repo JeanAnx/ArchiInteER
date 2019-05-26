@@ -10,10 +10,10 @@ function openDatabase() {
 	return $db;
 }
 
+require 'tools.php';
 require 'dbImages.php';
 require 'dbIntro.php';
 require 'dbProjects.php';
-require 'tools.php';
 require 'dbAdmin.php';
 
 

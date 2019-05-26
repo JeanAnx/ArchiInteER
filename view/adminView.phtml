@@ -29,32 +29,23 @@
 
 	</div>
 
+	<div id="backToTheTop">
+		<a href="#blocAdmin"><i class="fas fa-caret-up"></i></a>
+	</div>
+
+	<?php if (isset($_SESSION['messages']) && !empty($_SESSION['messages'])) { ?>
+
 	<section class="messages">
 		
-		<?php 
-		
-			if (isset($_SESSION['intro']) && $_SESSION['intro'] == 'ok') { 
-
-				$_SESSION['intro'] = '';
-		
-		?>
-				<h2 id="successMessage"> <i class="fas fa-check"></i> L'introduction a bien été modifiée </h2>
-
-		<?php 
-		
-			}
-
-			if (isset($_SESSION['error']) && $_SESSION['error'] == 'projet') { ?>
-
-				<h2 id="errorMessage"> <i class="fas fa-times"></i> Une erreur s'est produite </h2>
-
-			<?php } ?>
-
+		<?php foreach ($_SESSION['messages'] as $message) {
+			echo $message;
+		 } ?>
 
 	</section>
 
-<!-- LISTE PROJETS --> 
+<?php } ?>
 
+<!-- LISTE PROJETS --> 
 
 	<section id="listeProjets">
 
@@ -120,6 +111,9 @@
 				<a href= <?= $theProjet['id'] ?>>Modifier 
 					<i class="fas fa-marker"></i>
 				</a>
+				<a class="buttonDeleteProject" href="model/deletion.php?pdid=<?= $theProjet['id']?>">Supprimer 
+					<i class="fas fa-times"></i>	
+				</a>
 
 			</div>
 
@@ -154,9 +148,6 @@
 
 			<input id="submitNewProject" type="submit" value="Enregistrer et ajouter des images">
 
-
-
-
 		</form>
 
 	</section>
@@ -184,6 +175,26 @@
 
 	<h2>- Modifier les images du slider -</h2>
 
+	<section class="messages">
+
+		<?php 
+		if (isset($_SESSION['slider']) && $_SESSION['slider'] == 'ok') { 
+				$_SESSION['slider'] = '';
+		?>
+				<h2 id="successMessage"> <i class="fas fa-check"></i> Le slider a bien été modifié </h2>
+		<?php 
+			}
+
+			if (isset($_SESSION['slider']) && $_SESSION['slider'] == 'delete') { 
+				$_SESSION['slider'] = '';
+		?>
+				<h2 id="successMessage"> <i class="fas fa-check"></i> L'image a bien été supprimée </h2>
+		<?php 
+			}
+		?>
+
+	</section>
+
 	<form class="imagesForm" action="model/imagesslider.php?images=slider" method="POST" enctype="multipart/form-data">
 	
 	<label for="imagesSlider">Ajouter des images au slider :</label>
@@ -199,7 +210,7 @@
 
                 foreach ($imagesSlider as $image) { 
 
-                    if ($image != "") { ?>
+										if ($image != "") { ?>
                     <img class="imgMiniature" src="img/flexslider/<?=$image?>" alt="Image Slider">
                     <a class="deleteButton" href="model/imagesslider.php?images=slider&dsid=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
                     <?php } ?>

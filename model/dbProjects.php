@@ -1,47 +1,5 @@
 <?php 
 
-
-function createProject(array $newProject) {
-
-	$db = openDatabase(); 
-
-	$newProjectData = [
-
-		'title' => $newProject['title'],
-		'galleryText' => $newProject['galleryText'],
-		'subtitle' => $newProject['subtitle'],
-		'mainText' => $newProject['mainText'],
-		'published' => $newProject['published']
-	];
-
-	$sql = "INSERT INTO `projets` (titre,sousTitre,texteGalerie,texte,dateCreation,published)
-	VALUES (:title,:subtitle,:galleryText,:mainText,NOW(),:published)";
-
-	$statement = $db->prepare($sql);
-	return $statement->execute($newProjectData);
-
-}
-
-/**
- * WIP WIP WIP WIP WIP WIP WIP SUPPRESSION/MODIFICATION/ET PUBLICATION 
- * D'UN PROJET
- */
-
-function togglePublishProject($id) {
-
-	$db = openDatabase(); 
-
-
-}
-
-function deleteProject($id) {
-
-	$db = openDatabase(); 
-
-
-}
-
-
 function getAllProjects() {
 
 	$db = openDatabase(); 
@@ -78,6 +36,51 @@ function getPublishedProjects() {
 
 }
 
+function createProject(array $newProject) {
+
+	$db = openDatabase(); 
+
+	$newProjectData = [
+
+		'title' => $newProject['title'],
+		'galleryText' => $newProject['galleryText'],
+		'subtitle' => $newProject['subtitle'],
+		'mainText' => $newProject['mainText'],
+		'published' => $newProject['published']
+	];
+
+	$sql = "INSERT INTO `projets` (titre,sousTitre,texteGalerie,texte,dateCreation,published)
+	VALUES (:title,:subtitle,:galleryText,:mainText,NOW(),:published)";
+
+	$statement = $db->prepare($sql);
+	return $statement->execute($newProjectData);
+
+}
+
+/**
+ * WIP WIP WIP WIP WIP WIP WIP SUPPRESSION/MODIFICATION/ET PUBLICATION 
+ * D'UN PROJET
+ */
+
+function togglePublishProject($id) {
+
+	$db = openDatabase(); 
+
+
+}
+
+function deleteProject($id) {
+
+    $db = openDatabase();
+    
+    $sql = "DELETE FROM `projets` WHERE `projets`.`id` = '$id'";
+
+    $statement = $db->prepare($sql);
+
+	return $statement->execute();
+
+}
+
 
 function getProjectById($projectId) {
 
@@ -86,6 +89,8 @@ function getProjectById($projectId) {
 	$sql = "SELECT * FROM projets WHERE `id` = '$projectId'";
 
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
+
+    $theProject = false;
 
 	foreach ($statement as $row) {
 		$theProject = $row;
