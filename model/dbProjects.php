@@ -119,3 +119,25 @@ function getLatestProject() {
 
 }
 
+function editProject(array $editProject) {
+
+	$db = openDatabase(); 
+
+	$pid = $editProject['pid'];
+
+	$editProjectData = [
+
+		'title' => $editProject['title'],
+		'galleryText' => $editProject['galleryText'],
+		'subtitle' => $editProject['subtitle'],
+		'mainText' => $editProject['mainText'],
+	];
+
+	$sql = "INSERT INTO `projets` (titre,sousTitre,texteGalerie,texte,dateCreation)
+	VALUES (:title,:subtitle,:galleryText,:mainText,NOW())
+	WHERE `id` = 'pid'";
+
+	$statement = $db->prepare($sql);
+	return $statement->execute($editProjectData);
+
+}

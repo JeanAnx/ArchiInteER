@@ -108,9 +108,18 @@
 
 			</div>
 			<div class="articleTools">
-				<a href= <?= $theProjet['id'] ?>>Modifier 
+				<a href="projectEdit?pid=<?= $theProjet['id'] ?>">Modifier 
 					<i class="fas fa-marker"></i>
 				</a>
+				<?php if ($theProjet['published'] == TRUE) { ?>
+				<a href="model/publish.php?unpid=<?=$theProjet['id']?>">Dépublier 
+				<i class="fas fa-toggle-on"></i>
+				</a>
+				<?php } else if ($theProjet['published'] == FALSE) { ?>
+					<a href="model/publish.php?unpid=<?=$theProjet['id']?>">Publier 
+				<i class="fas fa-toggle-off"></i>
+				</a>
+				<?php } ?>
 				<a class="buttonDeleteProject" href="model/deletion.php?pdid=<?= $theProjet['id']?>">Supprimer 
 					<i class="fas fa-times"></i>	
 				</a>

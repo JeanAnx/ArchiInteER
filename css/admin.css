@@ -8,6 +8,10 @@ a {
     color: grey;
 }
 
+.hidden {
+    display: none;
+}
+
 .italic {
     font-style: italic;
 }

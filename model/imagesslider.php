@@ -44,6 +44,7 @@ require_once 'db.php';
     sendImagesSlider($imagesSlider);
 
     $_SESSION['slider'] = 'ok';
+    header_remove();
     header('Location: ../admin.php?#imagesSlider');
 
     }
