@@ -2,8 +2,6 @@
 session_start();
 require_once 'model/db.php';
 
-    $_SESSION['messages'] = [];
-
     // Message de confirmation de modif du texte d'intro
     if (isset($_SESSION['intro']) && $_SESSION['intro'] == 'ok') { 
         $_SESSION['intro'] = '';
@@ -24,6 +22,7 @@ require_once 'model/db.php';
         $_SESSION['projet'] = '';
         $_SESSION['messages'][] = '<h2 class="successMessage"> <i class="fas fa-check"></i> Le projet a bien été supprimé </h2>'; 
     }
+    // Message de confirmation pour publication/dépublication d'un projet
 
 $intro = getIntro();
 $projets = getAllProjects();
@@ -40,4 +39,7 @@ if ($_SESSION['admin'] != "yes") {
 } else {
     $_SESSION['name'] = 'Admin';
     include_once 'view/adminView.phtml';
+    
+    $_SESSION['messages'] = [];
+
 }

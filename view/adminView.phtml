@@ -72,9 +72,18 @@
 				</h2>
 
 			</div>
-			<div><h3><span class="italic">Texte galerie : <br></span><?= $theProjet['texteGalerie'] ?></h3></div>
-			<div><h3><span class="italic">Sous-titre : </span><br><?= $theProjet['sousTitre'] ?></h3></div>
-			<div><h3><span class="italic">Texte (extrait) : </span><br><?= substr( $theProjet['texte'],0,100) ?> ... </h3></div>
+			<div>
+				<h3 class="">Texte galerie : </h3>
+				<p><?= $theProjet['texteGalerie'] ?></p>
+			</div>
+			<div>
+				<h3 class="">Sous-titre : </h3>
+				<p><?= $theProjet['sousTitre'] ?></p>
+			</div>
+			<div>
+				<h3 class="">Texte (extrait) : </h3>
+				<p><?= substr( $theProjet['texte'],0,100) ?> ... </p>
+			</div>
 			<div class="displayTitleImage">
 				<h3>Image Galerie :</h3>
 
@@ -112,11 +121,11 @@
 					<i class="fas fa-marker"></i>
 				</a>
 				<?php if ($theProjet['published'] == TRUE) { ?>
-				<a href="model/publish.php?unpid=<?=$theProjet['id']?>">Dépublier 
+				<a href="model/togglePublished.php?pid=<?=$theProjet['id']?>">Dépublier 
 				<i class="fas fa-toggle-on"></i>
 				</a>
 				<?php } else if ($theProjet['published'] == FALSE) { ?>
-					<a href="model/publish.php?unpid=<?=$theProjet['id']?>">Publier 
+					<a href="model/togglePublished.php?pid=<?=$theProjet['id']?>">Publier 
 				<i class="fas fa-toggle-off"></i>
 				</a>
 				<?php } ?>
@@ -245,6 +254,8 @@
 </body>
 
 <script>
+
+// TODO CREER UN EVENEMENT POUR CHAQUE MESSAGE ENVOYé
 
 if (document.getElementById('successMessage') != null) {
 	$message = document.getElementById('successMessage');

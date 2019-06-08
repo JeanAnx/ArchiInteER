@@ -62,12 +62,7 @@ function createProject(array $newProject) {
  * D'UN PROJET
  */
 
-function togglePublishProject($id) {
 
-	$db = openDatabase(); 
-
-
-}
 
 function deleteProject($id) {
 
@@ -132,12 +127,42 @@ function editProject(array $editProject) {
 		'subtitle' => $editProject['subtitle'],
 		'mainText' => $editProject['mainText'],
 	];
-
-	$sql = "INSERT INTO `projets` (titre,sousTitre,texteGalerie,texte,dateCreation)
-	VALUES (:title,:subtitle,:galleryText,:mainText,NOW())
-	WHERE `id` = 'pid'";
+// TODO Modifier syntaxe
+	$sql = "UPDATE `projets` (titre,sousTitre,texteGalerie,texte,dateCreation)
+	SET (:title,:subtitle,:galleryText,:mainText,NOW())
+	WHERE `id` = {pid}";
 
 	$statement = $db->prepare($sql);
 	return $statement->execute($editProjectData);
+
+}
+
+function togglePublishProject($pid) {
+
+	$thisProject = getProjectById($pid);
+
+	if ($thisProject['published'] == 1) {
+
+		$newStatus = 0;
+
+	} else if ($thisProject['published'] == 0) {
+
+		$newStatus = 1;
+
+	}
+
+	$db = openDatabase();
+
+	$editProjectData = [
+		'newStatus' => $newStatus,
+	];
+
+	$sql = "UPDATE `projets`
+	SET `published` = (:newStatus)
+	WHERE `id` = '$pid'";
+
+	$statement = $db->prepare($sql);
+	return $statement->execute($editProjectData);
+
 
 }
