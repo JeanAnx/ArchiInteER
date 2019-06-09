@@ -45,7 +45,7 @@ if ($_SESSION['admin'] == 'yes') {
         }
 
     // Envoi des images dans le dossier ...
-        uploadImages($images);
+        uploadImages($images,FALSE);
 
     // ... et en base de données après avoir transformé les noms en string
         $imagesNames = implode("," , $_FILES['images']['name']);

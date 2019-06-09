@@ -42,7 +42,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
                 }
 
             // Envoi des images dans le dossier ...
-                uploadImages($images);
+                uploadImages($images,$theProject['id']);
 
             // ... et en base de données après avoir transformé les noms en string
                 $imagesNames = implode("," , $_FILES['images']['name']);

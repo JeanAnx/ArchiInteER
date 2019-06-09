@@ -59,11 +59,15 @@ function uploadImageGalerie($file , $edit) {
 
 /* Enregistrement des images de l'article dans le dossier */
 
-function uploadImages(array $images) {
+function uploadImages(array $images , $edit) {
+
+	if (is_dir("../img/imagesArticles/")) {
+		$dossier = "../img/imagesArticles/";
+		} else {
+			$dossier = "img/imagesArticles/";
+	}
 
 	foreach ($images as $theImage) {
-
-		$dossier = "../img/imagesArticles/";
 	
 		if ($theImage['error'] == "4" ) {
 	
@@ -85,6 +89,11 @@ function uploadImages(array $images) {
 				}
 		}
 	}
+
+	if ($edit != FALSE){
+	header('Location: projectEdit.php?pid='.$edit);
+	}
+
 }
 
 /* Envoi des images de l'article en BDD */
