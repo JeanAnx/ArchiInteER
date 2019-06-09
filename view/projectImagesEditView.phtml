@@ -1,36 +1,36 @@
 
-		<form class="imagesForm" action="imagesEdit.php?pid=<?=$theProject['id'] ?>" method="POST" enctype="multipart/form-data">
+    <form class="imagesForm" action="model/projectEdit.php?pid=<?=$theProject['id'] ?>" method="POST" enctype="multipart/form-data">
 
-<label for="images">Ajouter des images au projet :</label>
-<input type="file" name="images[]" multiple>
+    <label for="images">Ajouter des images au projet :</label>
+    <input type="file" name="images[]" multiple>
 
-<input  id="imagesProjectSubmit" type="submit" value="Ajouter des images">
+    <input  id="imagesProjectSubmit" type="submit" value="Ajouter des images">
 
-<div class="displayImagesForm">
+    <div class="displayImagesForm">
 
-   <?php 
+    <?php 
 
-if (isset($theProjectImages) && $theProjectImages[0] != "") {
+    if (isset($theProjectImages) && $theProjectImages[0] != "") {
 
-            foreach ($theProjectImages as $image) { 
+                foreach ($theProjectImages as $image) { 
 
-                if ($image != "") { ?>
-                <img class="imgMiniature" src="img/imagesArticles/<?=$image?>" alt="Image Article">
-                <a class="deleteButton" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
-                <?php } ?>
-            <?php } 
-            
-        } else { ?>
+                    if ($image != "") { ?>
+                    <img class="imgMiniature" src="img/imagesArticles/<?=$image?>" alt="Image Article">
+                    <a class="deleteButton" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                    <?php } ?>
+                <?php } 
+                
+            } else { ?>
 
-            <h3 class="noPicture">Pas d'image</h3>
+                <h3 class="noPicture">Pas d'image</h3>
 
-        <?php  } 
-            
-            ?>
-    
-    </div>
+            <?php  } 
+                
+                ?>
+        
+        </div>
 
-</form>
+    </form>
 
 </section>
 

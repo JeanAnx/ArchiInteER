@@ -24,7 +24,7 @@ if ($_SESSION['admin'] == 'yes') {
         $nouvelleImage = $_FILES['imageGallery'];
         $nouvelleImageNom = basename($_FILES['imageGallery']['name']);
         var_dump($nouvelleImageNom);
-        uploadImageGalerie($nouvelleImage);
+        uploadImageGalerie($nouvelleImage , FALSE);
         sendImageGalerie($currentProject['id'] , $nouvelleImageNom);
     }
 

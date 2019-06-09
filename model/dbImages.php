@@ -21,9 +21,13 @@ function sendImageGalerie($pid , $fileName) {
 
 /* Enregistrement de l'image dans le dossier */
 
-function uploadImageGalerie($file) {
+function uploadImageGalerie($file , $edit) {
 
-	$dossier = "../img/imagesArticles/";
+	if (is_dir("../img/imagesArticles/")) {
+		$dossier = "../img/imagesArticles/";
+		} else {
+			$dossier = "img/imagesArticles/";
+	}
 	
     if ( isset($file['error']) && $file['error'] == "4" ) {
 
@@ -39,7 +43,11 @@ function uploadImageGalerie($file) {
 
 			if ($resultUpload) {
 
-				header("Location: images.php?upload=ok&name=".$file['name']);
+				if ($edit == FALSE) {
+					header("Location: images.php?upload=ok&name=".$file['name']);
+				} else if ($edit) {
+					header("Location: projectEdit.php?pid=" . $edit . "&upload=ok&name=".$file['name']);
+				}
 			
 			}
 

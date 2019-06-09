@@ -20,7 +20,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
                 $nouvelleImage = $_FILES['imageGallery'];
                 $nouvelleImageNom = basename($_FILES['imageGallery']['name']);
                 var_dump($nouvelleImageNom);
-                uploadImageGalerie($nouvelleImage);
+                uploadImageGalerie($nouvelleImage,$_GET['pid']);
                 sendImageGalerie($theProject['id'] , $nouvelleImageNom);
             }
 
