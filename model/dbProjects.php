@@ -114,23 +114,23 @@ function getLatestProject() {
 
 }
 
-function editProject(array $editProject) {
+function editProject($pid , array $editProject) {
 
 	$db = openDatabase(); 
 
-	$pid = $editProject['pid'];
-
 	$editProjectData = [
-
-		'title' => $editProject['title'],
+		'titre' => $editProject['title'],
 		'galleryText' => $editProject['galleryText'],
 		'subtitle' => $editProject['subtitle'],
 		'mainText' => $editProject['mainText'],
 	];
-// TODO Modifier syntaxe
-	$sql = "UPDATE `projets` (titre,sousTitre,texteGalerie,texte,dateCreation)
-	SET (:title,:subtitle,:galleryText,:mainText,NOW())
-	WHERE `id` = {pid}";
+
+	$sql = "UPDATE `projets` 
+	SET `titre` = (:titre),
+	`sousTitre` = (:subtitle),
+	`texteGalerie` = (:galleryText),
+	`texte` = (:mainText)
+	WHERE `id` = $pid";
 
 	$statement = $db->prepare($sql);
 	return $statement->execute($editProjectData);

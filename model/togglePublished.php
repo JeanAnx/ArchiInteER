@@ -10,7 +10,7 @@ if ($_SESSION['admin'] == 'yes') {
 
     togglePublishProject($_GET['pid']);
 
-    $_SESSION['messages'][] = '<h2 class="success">Modification effectuée</h2>';
+    $_SESSION['messages'][] = '<h2 class="successMessage">Modification effectuée</h2>';
     header('Location: ../admin.php');
 
     } else {

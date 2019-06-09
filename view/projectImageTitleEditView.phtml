@@ -1,0 +1,22 @@
+<form class="imagesForm" action="imagesEdit.php?pid=<?=$theProject['id'] ?>" method="POST" enctype="multipart/form-data">
+
+<label for="imageGallery">Ajouter une image pour la galerie (format 16/9) :</label>
+<input type="file" name="imageGallery">
+
+<input id="imageGallerySubmit" type="submit" value="Ajouter">
+
+<div class="displayTitleImage">
+
+<?php if (isset($theProjectImageTitle) && !empty($theProjectImageTitle)) { ?>
+
+    <img src="img/imagesArticles/<?=$theProjectImageTitle?>" alt="Image Titre">
+
+<?php } else { ?>
+
+    <h3 class="noPicture">Pas d'image</h3>
+
+<?php } ?>
+
+</div>
+
+</form>
