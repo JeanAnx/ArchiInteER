@@ -6,16 +6,19 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<script
 			  src="https://code.jquery.com/jquery-3.4.1.min.js"
 			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 			  crossorigin="anonymous"></script>
+	<link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-rc.2/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-rc.2/js/froala_editor.pkgd.min.js'></script>
+	<script type='text/javascript' src='js/admin.js'></script>
+			  
 	<title>Administration</title>
 </head>
 <body>
-
 
 <main id="blocAdmin">
 
@@ -23,8 +26,9 @@
 
 	<div class="blocLiensAdmin">
 
-		<a href="/SiteEmilie/">Page d'accueil</a>
+		<a href="../index">Page d'accueil</a>
 		<a href="#nouveauProjet">Nouveau projet</a>	
+		<a href="#introImageEdit">Modifier l'image d'intro</a>
 		<a href="#introEdit">Modifier le texte d'intro</a>
 		<a href="#imagesSlider">Modifier les images du slider</a>
 		<a href="change">Changer le mot de passe</a>
@@ -42,6 +46,7 @@
 		
 		<?php foreach ($_SESSION['messages'] as $message) {
 			echo $message;
+			$_SESSION['messages'] = [];
 		 } ?>
 
 	</section>
@@ -58,22 +63,20 @@
 		
 		<article>
 			<div>
-				<h2><?= $theProjet['titre'] ?>
-				<?php 
+			<?php 
 				if ($theProjet['published']) {
 					?>
 
-					<span class='italic'>(Publié)</span>
+					<span class='published'>Publié</span>
 
 					
 				<?php } else { ?>
 					
-					<span class='italic'>(Non publié)</span>
+					<span class='unpublished'>Non publié</span>
 
 				<?php } ?>
-
-				</h2>
-
+				<h2><?= $theProjet['titre'] ?></h2>
+				
 			</div>
 			<div>
 				<h3 class="">Texte galerie : </h3>
@@ -120,6 +123,9 @@
 
 			</div>
 			<div class="articleTools">
+				<a href="index?p=theProject&n=<?= $theProjet['id'] ?>">Voir 
+					<i class="fas fa-eye"></i>
+				</a>
 				<a href="projectEdit?pid=<?= $theProjet['id'] ?>">Modifier 
 					<i class="fas fa-marker"></i>
 				</a>
@@ -142,9 +148,14 @@
 		
 	<?php endforeach ?>
 
+
+
 <!-- NOUVEAU PROJET --> 
 
 	</section>
+
+	<hr>
+
 
 	<section id="nouveauProjet">
 
@@ -153,10 +164,10 @@
 		<form action="controller/projectNewController.php" method="POST">
 
 			<label for="title">Titre du projet :</label>
-			<input type="text" placeholder="Titre" id="title" name="title">
+			<input type="text" placeholder="" id="title" name="title">
 
 			<label for="galleryText">Texte de présentation (galerie) :</label>
-			<textarea name="galleryText" id="galleryText" cols="30" rows="5"> ... </textarea>
+			<textarea name="galleryText" id="galleryText" cols="30" rows="5"></textarea>
 
 			<label for="subtitle">Sous-titre :</label>
 			<textarea name="subtitle" id="subtitle" cols="30" rows="5"></textarea>
@@ -175,20 +186,57 @@
 
 	<hr>
 
+	<!-- IMAGE INTRO --> 
+
+	<section id="introImageEdit">
+
+		<h2 class="alignCenter">- Modifier l'image de présentation -</h2>
+
+		<form class="imagesForm" action="model/introImageEdit.php" method="POST" enctype="multipart/form-data">
+
+			<label for="imageIntro">Changer l'image d'intro (format carré):</label>
+			<input type="file" name="imageIntro">
+
+			<input id="imageIntroSubmit" type="submit" value="Modifier">
+
+			<div class="displayIntroImage">
+
+				<label for="">Image actuelle : </label>
+
+				<?php if (isset($imageIntro) && !empty($imageIntro)) { ?>
+
+					<img src="img/imageIntro/<?=$imageIntro['name']?>" alt="Image Intro">
+
+				<?php } else { ?>
+
+					<h3 class="noPicture">Pas d'image</h3>
+
+				<?php } ?>
+
+			</div>
+
+		</form>
+
+	</section>
+
+	<hr>
+
 	<!-- TEXTE INTRO --> 
 
 	<section id="introEdit">
 
-		<h2>- Modifier le texte de présentation -</h2>
+		<h2 class="alignCenter">- Modifier le texte de présentation -</h2>
 
 		<form class="introForm" action="model/introEdit.php" method="post">
 
 			<label for="newIntro">Texte actuel :</label>
-			<textarea name="newIntro" id="intro" cols="30" rows="10"><?= $intro['texte'] ?></textarea>
+			<textarea name="newIntro" id="newIntro" cols="30" rows="10"><?= $intro['texte'] ?></textarea>
 			<input type="submit" value="Modifier">
 		</form>
 
 	</section>
+
+	<hr>
 
 	<!-- IMAGES SLIDER -->
 
@@ -255,25 +303,5 @@
 
 	
 </body>
-
-<script>
-
-// TODO CREER UN EVENEMENT POUR CHAQUE MESSAGE ENVOYé
-
-
-if (document.getElementById('successMessage') != null) {
-	$message = document.getElementById('successMessage');
-	$message.style.transition = "all 0.5s ease";
-	setTimeout(function () {
-		$message.style.opacity = "0";
-	} , 3000)
-	setTimeout(function () {
-		$message = document.getElementById('successMessage');
-		$message.style.transform = "scale(0)";
-		$message.style.margin = "0";
-	} , 3500)
-        }
-
-</script>
 
 </html>

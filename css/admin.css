@@ -43,6 +43,18 @@ hr {
     opacity: .3;
 }
 
+.published {
+    padding: 5px;
+    background-color: rgba(200, 247, 197, 1);
+    font-size: 2em;
+}
+
+.unpublished {
+    padding: 5px;
+    background-color: rgba(253, 227, 167, 1);
+    font-size: 2em;
+}
+
 .messages h2 {
     color: grey;
     text-align: center;
@@ -94,6 +106,10 @@ hr {
     text-align: left;
 }
 
+#listeProjets article h3 {
+    padding-left: 20px;
+}
+
 #blocAdmin > h2 , #blocAdmin > h1 , #nouveauProjet > h2 , #imagesSlider h2 {
     text-align: center;
 }
@@ -117,7 +133,8 @@ hr {
     height: 100px;
 }
 
-#listeProjets > h2 , #introEdit > h2 {
+
+#listeProjets > h2 , #introEdit > h2 , #introImageEdit > h2 {
     width: 100%;    
     text-align: center;
 }
@@ -133,7 +150,7 @@ hr {
     padding: 2em;
     margin: 10px;
     border: 1px solid gainsboro;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 2px 2px 2px gainsboro;
 }
 
@@ -267,27 +284,49 @@ NOUVEAU PROJET
         */
 
 
-#nouveauProjet > form {
+#nouveauProjet > form , #introImageEdit > form {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
     padding: 2em;
 }
 
-#nouveauProjet > form > label , #imagesSlider form label {
+#nouveauProjet > form > label , #imagesSlider form label , #introImageEdit > form label {
     font-size: 2em;
     padding: 1em 0;
 }
 
-#nouveauProjet > form > input , #nouveauProjet > form > textarea , #imagesSlider form input {
+#nouveauProjet > form > input , 
+#nouveauProjet > form > textarea , 
+#imagesSlider form input , 
+#introImageEdit > form input {
     border-radius: 5px;
     border: 1px solid gainsboro;
     padding-left: 1em;
     font-size: 2em;
 }
 
-#nouveauProjet > form > input , #imagesSlider form input {
+#nouveauProjet > form > input , 
+#imagesSlider form input ,
+#introImageEdit > form input {
     height: 2.5em;
+}
+
+#introImageEdit > form #imageIntroSubmit {
+    width: 20%;
+    margin: 10px auto;
+}
+
+.displayIntroImage img {
+    display: block;
+    width: 250px;
+    margin: 1em auto;
+    border-radius: 250px;
+}
+
+.displayIntroImage > label {
+    display: block;
+    text-align: center;
 }
 
 #nouveauProjet > form > textarea {
@@ -354,4 +393,11 @@ BOUTON DE SUPPRESSION D'IMAGE
     transition: all 0.2s ease;
     transform: scale(1.5);
     
+}
+
+
+/* SURCHARGE de FROALA */
+
+a#logo {
+    display: none;
 }

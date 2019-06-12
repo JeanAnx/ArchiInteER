@@ -20,7 +20,7 @@ function getIntro() {
 
 function setIntro($string) {
 
-	$string = htmlentities($string);
+	$string = $string;
 
 	$db = openDatabase(); 
 

@@ -378,7 +378,7 @@ p#sousTitre {
 
 
 	#blocImageAccueil {
-		padding-top: 30px;
+		padding-top: 120px;
 		display: block;
 	}
 
@@ -482,10 +482,14 @@ p#sousTitre {
 		padding-bottom: 20px;
 	}
 
-	p.texteArticle {
+	
+	div.sousTitreArticle > p {
+		font-size: 2.5rem;
+		margin-bottom: 1em;
+	}
+	.texteArticle > p {
 		font-size: 2rem;
 	}
-
 
 	}
 

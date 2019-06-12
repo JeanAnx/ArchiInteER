@@ -2,7 +2,6 @@
 session_start();
 require_once 'db.php';
 $newIntro = $_POST['newIntro'];
-var_dump($newIntro);
 
 if (isset($_SESSION) && !empty($_SESSION) && $_SESSION['admin'] == 'yes') {
 

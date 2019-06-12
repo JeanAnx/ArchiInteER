@@ -269,3 +269,63 @@ function deleteImageSlider($imageName) {
 		return $statement->execute($data);
 
 }
+
+// Image Intro
+
+function getImageIntro() {
+
+	$db = openDatabase(); 
+
+	$sql = "SELECT * FROM `imageintro` ORDER BY `id` DESC LIMIT 1";
+
+	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
+
+	$imageIntro = [];
+
+	foreach ($statement as $row) {
+		$imageIntro = $row;
+	}
+
+	return $imageIntro;
+
+}
+
+function uploadImageIntro($file) {
+
+	$dossier = "../img/imageIntro/";
+	
+    if ( isset($file['error']) && $file['error'] == "4" ) {
+
+		header("Location: admin.php?images=error");
+		
+        } else {
+
+		$fichier = $file['name'];
+		
+		if (file_exists($file['tmp_name'])) {
+		
+			$resultUpload = move_uploaded_file($file['tmp_name'], $dossier.$fichier);
+
+			if ($resultUpload) {
+				$_SESSION['messages'][] = '<h2 class="successMessage">Image d\'intro modifiée</h2>';
+				header("Location: admin.php?uploadIntro=ok&name=".$file['name']);			
+			}
+		}     
+    }
+}
+
+function sendImageIntro($fileName) {
+
+	$db = openDatabase(); 
+
+	$data = [
+		'filename' => $fileName
+	];
+
+	$sql = 'INSERT INTO `imageintro`(`name`) VALUES (:filename)';
+
+	$statement = $db->prepare($sql);
+
+	return $statement->execute($data);
+
+}

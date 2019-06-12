@@ -25,6 +25,7 @@ require_once 'model/db.php';
     // Message de confirmation pour publication/dépublication d'un projet
 
 $intro = getIntro();
+$imageIntro = getImageIntro();
 $projets = getAllProjects();
 $imagesSliderData = getImagesSlider();
 if (isset($imagesSliderData['list']) && !empty($imagesSliderData['list'])) {
