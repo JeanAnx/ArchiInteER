@@ -5,7 +5,6 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 
     require 'model/db.php';
 
-        var_dump($_GET);
         $theProject = getProjectById($_GET['pid']);
 
         if ($_SESSION['admin'] == 'yes') {
@@ -71,9 +70,6 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
     $theProject = getProjectById($_GET['pid']);
     $theProjectImageTitle = $theProject['imageTitre'];
     $theProjectImages = explode("," , $theProject['imagesArticle']);
-
-    var_dump($theProject);
-    var_dump($_POST);
     
     }
 

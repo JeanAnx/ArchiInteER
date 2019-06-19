@@ -8,6 +8,10 @@ a {
     color: grey;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .hidden {
     display: none;
 }
@@ -43,6 +47,14 @@ hr {
     opacity: .3;
 }
 
+.footerAdmin {
+    margin-top: 75px;
+    height: 100px;
+    width: 100%;
+    display: block;
+    background-color: beige;
+}
+
 #backToTheTop {
     opacity: .3;
 }
@@ -60,7 +72,7 @@ hr {
 .unpublished {
     padding: 5px;
     background-color: rgba(253, 227, 167, 1);
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .messages h2 {
@@ -128,8 +140,8 @@ hr {
     height: 50px;
     background-color: beige;
     display: flex;
-    font-size: 1.5em;
-    justify-content: center;
+    font-size: 1vw;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -171,17 +183,20 @@ hr {
     font-size: 1.4em;
     text-align: center;
     margin: 3em;
+    display: flex;
+    justify-content: center;
 }
 
 .articleTools a {
     padding: 1em;
     background-color: beige;
     border-radius: 10px;
-    margin: 0 5px;
+    margin: 5px;
 }
 
 .articleTools a:hover , .blocLiensAdmin a:hover {
     color: black;
+    text-decoration: none;
 }
 
 .articleTools > a.buttonDeleteProject:hover {
@@ -245,7 +260,8 @@ form {
 }
 
 .introForm label {
-    font-size: 2.5em;
+    font-size: 2em;
+    font-weight: normal;
     margin: 1em;
 }
 
@@ -257,7 +273,7 @@ form {
 
 .introForm input , #imagesSliderSubmit {
     margin: 1em auto;
-    font-size: 2em;
+    font-size: 1.5em;
     border-radius: 5px;
     border: 1px solid rgba(189, 195, 199, 1);
     padding: .5em;
@@ -395,12 +411,18 @@ BOUTON DE SUPPRESSION D'IMAGE
     bottom: -30px;
     color: grey;
     font-size: 1.2em;
+    opacity: .5;
+}
+
+.deleteButton .newProject {
+    bottom: 20px;
 }
 
 .deleteButton:hover {
     color: red;
     transition: all 0.2s ease;
     transform: scale(1.5);
+    opacity: 1;
     
 }
 

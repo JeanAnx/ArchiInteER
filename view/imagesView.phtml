@@ -47,8 +47,6 @@
         <div class="displayImagesForm">
 
        <?php 
-
-       var_dump($listeImages);
        
        if (isset($listeImages) && $listeImages[0] != "") {
 
@@ -56,7 +54,7 @@
 
                     if ($image != "") { ?>
                     <img class="imgMiniature" src="../img/imagesArticles/<?=$image?>" alt="Image Article">
-                    <a class="deleteButton" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                    <a class="deleteButton newProject" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
                     <?php } ?>
                 <?php } 
                 
