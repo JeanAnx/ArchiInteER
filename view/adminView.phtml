@@ -11,9 +11,16 @@
 			  src="https://code.jquery.com/jquery-3.4.1.min.js"
 			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 			  crossorigin="anonymous"></script>
-	<link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-rc.2/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+	<!-- include libraries(jQuery, bootstrap) -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+	<!-- include summernote css/js -->
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
-	<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-rc.2/js/froala_editor.pkgd.min.js'></script>
 	<script type='text/javascript' src='js/admin.js'></script>
 			  
 	<title>Administration</title>
@@ -26,7 +33,7 @@
 
 	<div class="blocLiensAdmin">
 
-		<a href="../index">Page d'accueil</a>
+		<a href="index">Page d'accueil</a>
 		<a href="#nouveauProjet">Nouveau projet</a>	
 		<a href="#introImageEdit">Modifier l'image d'intro</a>
 		<a href="#introEdit">Modifier le texte d'intro</a>
@@ -59,7 +66,13 @@
 
 	<h2>- Projets -</h2>
 
-	<?php foreach ($projets as $theProjet) : ?>
+	<?php if (empty($projets)) {
+
+		echo '<h3 class="italic">Pas de projets</h3>';
+
+	} else {
+
+	 foreach ($projets as $theProjet) : ?>
 		
 		<article>
 			<div>
@@ -111,9 +124,11 @@
 				<?php if (!empty($theProjet['imagesArticle'])) {
 
 				$listeImages = explode(",",$theProjet['imagesArticle']);
-				foreach ($listeImages as $image) {
+				foreach ($listeImages as $image) { 
+					if ($image != "" && $image != " ") {
 					echo '<img class="imgMiniature" src="img/imagesArticles/' . $image . '" alt="'.$image.'">';
 				}
+			}
 
 			} else { ?>
 
@@ -138,7 +153,7 @@
 				<i class="fas fa-toggle-off"></i>
 				</a>
 				<?php } ?>
-				<a class="buttonDeleteProject" href="model/deletion.php?pdid=<?= $theProjet['id']?>">Supprimer 
+				<a id="buttonDeleteProject" class="buttonDeleteProject" href="model/deletion.php?pdid=<?= $theProjet['id']?>">Supprimer 
 					<i class="fas fa-times"></i>	
 				</a>
 
@@ -146,7 +161,11 @@
 
 		</article>
 		
-	<?php endforeach ?>
+				<?php endforeach;
+	
+					}	?>
+
+
 
 
 
@@ -194,7 +213,7 @@
 
 		<form class="imagesForm" action="model/introImageEdit.php" method="POST" enctype="multipart/form-data">
 
-			<label for="imageIntro">Changer l'image d'intro (format carré):</label>
+			<label for="imageIntro">Changer l'image d'intro (format carré - 2 Mo maximum):</label>
 			<input type="file" name="imageIntro">
 
 			<input id="imageIntroSubmit" type="submit" value="Modifier">
@@ -266,7 +285,7 @@
 
 	<form class="imagesForm" action="model/imagesslider.php?images=slider" method="POST" enctype="multipart/form-data">
 	
-	<label for="imagesSlider">Ajouter des images au slider :</label>
+	<label for="imagesSlider">Ajouter des images au slider (2 Mo maximum) :</label>
 	<input type="file" name="imagesSlider[]" multiple>
 
 	<input  id="imagesSliderSubmit" type="submit" value="Ajouter">

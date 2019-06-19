@@ -11,10 +11,10 @@ function getAllProjects() {
 	$projets = [];
 
 	foreach ($statement as $row) {
-		$projects[] = $row;
+		$projets[] = $row;
 	}
 
-	return $projects;
+	return $projets;
 
 }
 

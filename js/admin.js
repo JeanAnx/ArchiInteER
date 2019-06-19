@@ -3,11 +3,19 @@
 $('document').ready(function() {
 
     // Installation du WYSIWYG sur chaque champ textarea
-    console.log($('textarea'));
-    $('textarea').each(function() {
-        new FroalaEditor('#' + $(this).attr('id'), {toolbarInline: false , placeholderText: ''});
-        console.log($(this).attr('id'));
+    $("textarea").each(function(){
+        console.log($(this));
+        $(this).summernote();
     });
+
+    // Message de confirmation sur le bouton de suppression de projet
+    $('#buttonDeleteProject').click(function(e) {
+        if (confirm('Attention, la suppression du projet est définitive. Continuer ?')){
+            return true;
+        } else {
+            return false;
+        };
+    })
 
 
 if (document.getElementById('successMessage') != null) {
