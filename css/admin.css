@@ -111,7 +111,7 @@ hr {
 }
 
 #backToTheTop {
-    font-size: 7em;
+    font-size: 4.5vw;
     width: 60px;
     text-align: center;
     position: fixed;
@@ -140,7 +140,7 @@ hr {
     height: 50px;
     background-color: beige;
     display: flex;
-    font-size: 1vw;
+    font-size: 1.1vw;
     justify-content: space-between;
     align-items: center;
 }
@@ -180,7 +180,7 @@ hr {
 }
 
 .articleTools {
-    font-size: 1.4em;
+    font-size: 0.9vw;
     text-align: center;
     margin: 3em;
     display: flex;
