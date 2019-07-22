@@ -92,19 +92,19 @@
 				
 			</div>
 			<div>
-				<h3 class="">Texte galerie : </h3>
+				<h3 class="">Texte galerie</h3>
 				<p><?= $theProjet['texteGalerie'] ?></p>
 			</div>
 			<div>
-				<h3 class="">Sous-titre : </h3>
+				<h3 class="">Sous-titre</h3>
 				<p><?= $theProjet['sousTitre'] ?></p>
 			</div>
 			<div>
-				<h3 class="">Texte (extrait) : </h3>
+				<h3 class="">Texte (extrait)</h3>
 				<p><?= substr( $theProjet['texte'],0,100) ?> ... </p>
 			</div>
 			<div class="displayTitleImage">
-				<h3>Image Galerie :</h3>
+				<h3>Image Galerie</h3>
 
 <?php if (!empty($theProjet['imageTitre'])) { ?>
 
@@ -120,7 +120,7 @@
  
 			</div>
 			
-			<div class="galleryMiniatures"><h3>Images de l'article :</h3>
+			<div class="galleryMiniatures"><h3>Images de l'article</h3>
 				<?php if (!empty($theProjet['imagesArticle'])) {
 
 				$listeImages = explode(",",$theProjet['imagesArticle']);

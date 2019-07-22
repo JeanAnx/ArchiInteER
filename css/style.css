@@ -287,7 +287,7 @@ p#sousTitre {
 		width: 500px;
 		display: flex;
 		flex-direction: row;
-		justify-content: right;
+		justify-content: flex-end;
 		padding-left: 0px;
 		margin: 45px 0 0 0;
 		list-style: none;
@@ -483,11 +483,15 @@ p#sousTitre {
 	}
 
 	
-	div.sousTitreArticle > p {
+	div.sousTitreArticle, 
+	div.sousTitreArticle p, 
+	div.sousTitreArticle span {
 		font-size: 2.5rem;
 		margin-bottom: 1em;
 	}
-	.texteArticle > p {
+	div.texteArticle, 
+	div.texteArticle p , 
+	div.texteArticle span  {
 		font-size: 2rem;
 	}
 
@@ -548,7 +552,7 @@ p#sousTitre {
 	}
 
 	#ImageTitre {
-		height: 22px;
+		height: 23px;
 	}
 
 	/** FOOTER PETIT DESKTOP **/
@@ -647,7 +651,7 @@ p#sousTitre {
 
 
 			footer {
-				height: 490px;
+				height: 450px;
 			}
 
 			#sectionFooter {
@@ -656,7 +660,7 @@ p#sousTitre {
 			}
 
 			footer #logoFooter {
-				top: -50px;
+				top: -60px;
 				width: 12%;
 			}
 		
