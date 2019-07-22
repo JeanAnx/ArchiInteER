@@ -436,14 +436,14 @@ p#sousTitre {
 	}
 
 	#mosaique .imageMosaique:hover img {
-		opacity: 0.5;
-		transition: all 1.2s ease;
+		opacity: 0.3;
+		transition: all 1s ease;
 	}
 
 	#mosaique .imageMosaique:hover .texteVignette {
 		opacity: 1;
 		transform: translateX(40px);
-		transition: all 1.5s ease;
+		transition: all 1s ease;
 
 	}
 

@@ -18,17 +18,21 @@ $('document').ready(function() {
     })
 
 
-if (document.getElementById('successMessage') != null) {
-	$message = document.getElementById('successMessage');
-	$message.style.transition = "all 0.5s ease";
-	setTimeout(function () {
-		$message.style.opacity = "0";
-	} , 3000)
-	setTimeout(function () {
-		$message = document.getElementById('successMessage');
-		$message.style.transform = "scale(0)";
-		$message.style.margin = "0";
-	} , 3500)
+if ($('messages') != null) {
+    const messagesList = document.getElementsByClassName('messages');
+    for (let index = 0; index < messagesList.length; index++) {
+        let element = messagesList[index];
+        element.style.transition = "all 0.5s ease";
+        setTimeout(function () {
+            element.style.opacity = "0";
+        } , 3000)
+        setTimeout(function () {
+            $message = document.getElementById('successMessage');
+            $message.style.transform = "scale(0)";
+            $message.style.margin = "0";
+        } , 3500)
+    }
+
         }
 
 
