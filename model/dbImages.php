@@ -96,6 +96,43 @@ function uploadImages(array $images , $edit) {
 
 }
 
+function uploadImagesText(array $images , $edit) {
+
+	if (is_dir("../img/imagesArticles/")) {
+		$dossier = "../img/imagesArticles/";
+		} else {
+			$dossier = "img/imagesArticles/";
+	}
+
+	foreach ($images as $theImage) {
+	
+		if ($theImage['error'] == "4" ) {
+	
+			header("Location: images.php?images=error");
+			
+			} else {
+	
+			$fichier = basename($theImage['name']);
+			
+				if (file_exists($theImage['tmp_name'])) {
+	
+					$resultUpload = move_uploaded_file($theImage['tmp_name'] , $dossier.$fichier);
+					
+					if ($resultUpload == false) {
+	
+						header("Location: images.php?upload=oups");
+					
+					}
+				}
+		}
+	}
+
+	if ($edit != FALSE){
+	header('Location: projectEdit.php?pid='.$edit);
+	}
+
+}
+
 /* Envoi des images de l'article en BDD */
 
 // On récupére les images déjà existantes pour leur ajouter celles qu'on envoie, 
@@ -125,6 +162,29 @@ function sendImages($pid , $imagesNames) {
 	return $statement->execute($data);
 }
 
+function sendImagesText($pid , $imagesNames) {
+
+	$thisProject = getProjectById($pid);
+
+	if ($thisProject['imagesTextArticle'] != "") {
+		$imagesToSend = explode("," , $thisProject['imagesTextArticle']);
+	} else {
+		$imagesToSend = [];
+	}
+	array_push($imagesToSend,$imagesNames);
+	$db = openDatabase();
+	$imagesToSend = implode("," , $imagesToSend);
+	var_dump($imagesToSend);
+
+	$data = [
+		'id' => $pid,
+		'names' => $imagesToSend,
+	];
+
+	$sql = 'UPDATE `projets` SET `imagesTextArticle`=:names WHERE `id` = :id';
+	$statement = $db->prepare($sql);
+	return $statement->execute($data);
+}
 //TODO Changer l'ordre des images
 
 function deleteImage($pid , $imageName) {
@@ -159,6 +219,40 @@ function deleteImage($pid , $imageName) {
 		return $statement->execute($data);
 
 }
+
+function deleteImageText($pid , $imageName) {
+
+	$db = openDatabase();
+
+	$thisProject = getProjectById($pid);
+
+	$imagesList = explode("," , $thisProject['imagesTextArticle']);
+
+	$i = 0;
+	foreach ($imagesList as $image) {
+		
+		if ($image == $imageName) {
+			unset($imagesList[$i]);
+		}
+
+		$i++;
+
+	}
+		$imagesToSend = implode("," , $imagesList);
+
+		$data = [
+			'id' => $pid,
+			'names' => $imagesToSend,
+		];
+
+		$sql = 'UPDATE `projets` SET `imagesTextArticle`=:names WHERE `id` = :id';
+
+		$statement = $db->prepare($sql);
+
+		return $statement->execute($data);
+
+}
+
 
 
 /****

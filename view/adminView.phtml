@@ -137,6 +137,26 @@
 			<?php } ?>
 
 			</div>
+								<!-- WIP WIP WIP -->
+			<div class="galleryMiniatures"><h3>Images plans</h3>
+				<?php if (!empty($theProjet['imagesTextArticle'])) {
+
+				$listeImagesText = explode(",",$theProjet['imagesTextArticle']);
+				foreach ($listeImagesText as $image) { 
+					if ($image != "" && $image != " ") {
+					echo '<img class="imgMiniature" src="img/imagesArticles/' . $image . '" alt="'.$image.'">';
+				}
+			}
+
+			} else { ?>
+
+				<p class="noPicture">Pas d'image</p>
+
+			<?php } ?>
+
+			</div>
+
+
 			<div class="articleTools">
 				<a href="index?p=theProject&n=<?= $theProjet['id'] ?>">Voir 
 					<i class="fas fa-eye"></i>

@@ -37,7 +37,7 @@
 
     </form>
 
-<form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
+    <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
 
         <label for="images">Ajouter des images au projet (2 Mo maximum):</label>
         <input type="file" name="images[]" multiple>
@@ -55,6 +55,41 @@
                     if ($image != "") { ?>
                     <img class="imgMiniature" src="../img/imagesArticles/<?=$image?>" alt="Image Article">
                     <a class="deleteButton newProject" href="images.php?did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                    <?php } ?>
+                <?php } 
+                
+            } else { ?>
+
+                <h3 class="noPicture">Pas d'image</h3>
+
+              <?php  } 
+                
+                ?>
+        
+        </div>
+
+    </form>
+
+                <h2>WIP Images sous texte</h2>
+
+    <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
+
+        <label for="imagesText">Ajouter des images sous le texte (2 Mo maximum):</label>
+        <input type="file" name="imagesText[]" multiple>
+
+        <input  id="imagesProjectSubmit" type="submit" value="Ajouter">
+
+        <div class="displayImagesForm">
+
+       <?php 
+       
+       if (isset($listeImagesTexte) && $listeImagesTexte[0] != "") {
+
+                foreach ($listeImagesTexte as $image) { 
+
+                    if ($image != "") { ?>
+                    <img class="imgMiniature" src="../img/imagesArticles/<?=$image?>" alt="Image Article">
+                    <a class="deleteButton newProject" href="images.php?didt=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
                     <?php } ?>
                 <?php } 
                 
