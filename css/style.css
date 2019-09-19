@@ -493,6 +493,7 @@ p#sousTitre {
 	div.texteArticle p , 
 	div.texteArticle span  {
 		font-size: 2rem;
+		margin-bottom: 2em;
 	}
 
 	}

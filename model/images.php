@@ -58,9 +58,9 @@ if ($_SESSION['admin'] == 'yes') {
         sendImages($currentProject['id'] , $imagesNames);
     }
 
-        /**
-     * TODO IMAGES TEXTE PROJET : Si j'envoie des images pour le texte du projet
-     */
+    
+     // IMAGES TEXTE PROJET : Si j'envoie des images pour le texte du projet
+     
     if (isset($_FILES['imagesText']) && !empty($_FILES['imagesText'])) {
         $imagesText = [];
         for ($i=0; $i < count($_FILES['imagesText']['name']); $i++) { 

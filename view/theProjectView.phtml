@@ -24,6 +24,22 @@
 			<h1 class="titreArticle"><?= $theProject['titre'] ?></h1>
 			<div class="sousTitreArticle"><?= $theProject['sousTitre'] ?></div>
 			<div class="texteArticle"><?= $theProject['texte'] ?></div>
+			<div class="imagesCorpsArticle">
+			
+			<?php foreach ($theProject['imagesTextArticle'] as $image) {
+				
+				if ($image != "" && $image != " "){
+
+					?>
+	
+					<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+			
+				<?php } 
+	
+
+			} ?>
+
+			</div>
 
 		</aside>
 

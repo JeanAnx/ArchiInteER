@@ -408,8 +408,8 @@ BOUTON DE SUPPRESSION D'IMAGE
 
 .deleteButton {
     position: relative;
-    left: -40px;
-    bottom: -30px;
+    left: -30px;
+    bottom: 10px;
     color: grey;
     font-size: 1.2em;
     opacity: .5;

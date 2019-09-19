@@ -11,5 +11,7 @@ if (!$theProject) {
 }
 
 $theProject['imagesArticle'] = explode(',' , $theProject['imagesArticle']);
+$theProject['imagesTextArticle'] = explode(',' , $theProject['imagesTextArticle']);
+
 
 include 'view/theProjectView.phtml';

@@ -14,6 +14,11 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
                 deleteImage($theProject['id'] , ($_GET['did']));
             }
 
+            // Images sous le texte
+            if (isset($_GET['didt']) && $_GET['didt'] != "") {
+                deleteImageText($theProject['id'] , ($_GET['didt']));
+            }
+
             // IMAGES PROJETS : Si j'envoie un File pour l'image titre :
             if (isset($_FILES['imageGallery']) && !empty($_FILES['imageGallery'])) {
                 $nouvelleImage = $_FILES['imageGallery'];
@@ -50,7 +55,36 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 
             }
 
+            // Même chose pour les images sous l'article
+            if (isset($_FILES['imagesText']) && !empty($_FILES['imagesText'])) {
+
+                $imagesText = [];
+
+                for ($i=0; $i < count($_FILES['imagesText']['name']); $i++) { 
+                
+                    $images[$i] = [
+                        'name' => $_FILES['imagesText']['name'][$i],
+                        'type' => $_FILES['imagesText']['type'][$i],
+                        'tmp_name' => $_FILES['imagesText']['tmp_name'][$i],
+                        'error' => $_FILES['imagesText']['error'][$i],
+                        'size' => $_FILES['imagesText']['size'][$i],
+                    ];
+                
+                }
+
+            // Envoi des images dans le dossier ...
+            uploadImagesText($imagesText,FALSE);
+
+            // ... et en base de données après avoir transformé les noms en string
+            $imagesTextNames = implode("," , $_FILES['imagesText']['name']);
+            var_dump($imagesTextNames);
+            sendImagesText($theProject['id'] , $imagesTextNames);
+    
+            }
+
         }
+
+        
 
         if (isset($_POST) && !empty($_POST)) {
 
@@ -70,11 +104,14 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
     $theProject = getProjectById($_GET['pid']);
     $theProjectImageTitle = $theProject['imageTitre'];
     $theProjectImages = explode("," , $theProject['imagesArticle']);
+    $theProjectTextImages = explode("," , $theProject['imagesTextArticle']);
+
     
     }
 
     include 'view/projectEditView.phtml';
     include 'view/projectImageTitleEditView.phtml';
     include 'view/projectImagesEditView.phtml';
+    include 'view/projectImagesTextEditView.phtml';
 
 }
