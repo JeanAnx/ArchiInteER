@@ -14,6 +14,8 @@
 
 <section id="nouveauProjet" >
 
+<h2>Projet : <?= $currentProject['titre'] ?></h2>
+
     <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
 
         <label for="imageGallery">Ajouter une image pour la galerie (format 16/9 - 2 Mo maximum) :</label>
@@ -69,8 +71,6 @@
         </div>
 
     </form>
-
-                <h2>WIP Images sous texte</h2>
 
     <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
 

@@ -8,22 +8,18 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
         $theProject = getProjectById($_GET['pid']);
 
         if ($_SESSION['admin'] == 'yes') {
-
             // Traitement d'une image à supprimer
             if (isset($_GET['did']) && $_GET['did'] != "") {
                 deleteImage($theProject['id'] , ($_GET['did']));
             }
-
             // Images sous le texte
             if (isset($_GET['didt']) && $_GET['didt'] != "") {
                 deleteImageText($theProject['id'] , ($_GET['didt']));
             }
-
             // IMAGES PROJETS : Si j'envoie un File pour l'image titre :
             if (isset($_FILES['imageGallery']) && !empty($_FILES['imageGallery'])) {
                 $nouvelleImage = $_FILES['imageGallery'];
                 $nouvelleImageNom = basename($_FILES['imageGallery']['name']);
-                var_dump($nouvelleImageNom);
                 uploadImageGalerie($nouvelleImage,$_GET['pid']);
                 sendImageGalerie($theProject['id'] , $nouvelleImageNom);
             }
@@ -50,19 +46,15 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 
             // ... et en base de données après avoir transformé les noms en string
                 $imagesNames = implode("," , $_FILES['images']['name']);
-                var_dump($imagesNames);
                 sendImages($theProject['id'] , $imagesNames);
-
             }
 
             // Même chose pour les images sous l'article
             if (isset($_FILES['imagesText']) && !empty($_FILES['imagesText'])) {
-
                 $imagesText = [];
-
                 for ($i=0; $i < count($_FILES['imagesText']['name']); $i++) { 
                 
-                    $images[$i] = [
+                    $imagesText[$i] = [
                         'name' => $_FILES['imagesText']['name'][$i],
                         'type' => $_FILES['imagesText']['type'][$i],
                         'tmp_name' => $_FILES['imagesText']['tmp_name'][$i],
@@ -73,11 +65,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
                 }
 
             // Envoi des images dans le dossier ...
-            uploadImagesText($imagesText,FALSE);
+            uploadImages($imagesText,FALSE);
 
             // ... et en base de données après avoir transformé les noms en string
             $imagesTextNames = implode("," , $_FILES['imagesText']['name']);
-            var_dump($imagesTextNames);
             sendImagesText($theProject['id'] , $imagesTextNames);
     
             }

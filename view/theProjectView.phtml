@@ -3,16 +3,18 @@
 	
 	<article class="articleProjet container">
 		
-		<div class="blocImages">
+		<div class="blocImages tz-gallery">
 
 			<?php foreach ($theProject['imagesArticle'] as $image) { 
 
 				if ($image != "" && $image != " "){
 
 				?>
-
-				<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
-		
+				<div>
+					<a class="lightbox" href="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+						<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+					</a>
+				</div>		
 			<?php } 
 		
 			} ?>
@@ -24,14 +26,18 @@
 			<h1 class="titreArticle"><?= $theProject['titre'] ?></h1>
 			<div class="sousTitreArticle"><?= $theProject['sousTitre'] ?></div>
 			<div class="texteArticle"><?= $theProject['texte'] ?></div>
-			<div class="imagesCorpsArticle">
+			<div class="imagesCorpsArticle tz-gallery">
 			
 			<?php foreach ($theProject['imagesTextArticle'] as $image) {
 				
 				if ($image != "" && $image != " "){
 
 					?>
-	
+				<div>
+					<a class="lightbox" href="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+						<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+					</a>
+				</div>	
 					<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
 			
 				<?php } 
@@ -48,3 +54,9 @@
 	</article>
 
 </main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>

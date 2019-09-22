@@ -1,36 +1,27 @@
 <form class="imagesForm" action="projectEdit.php?pid=<?=$theProject['id'] ?>" method="POST" enctype="multipart/form-data">
 
-        <label for="imagesText">Ajouter des images sous le texte (2 Mo maximum):</label>
-        <input type="file" name="imagesText[]" multiple>
+    <label for="imagesText">Ajouter des images sous le texte (2 Mo maximum):</label>
+    <input type="file" name="imagesText[]" multiple>
 
-        <input  id="imagesProjectSubmit" type="submit" value="Ajouter">
+    <input  id="imagesProjectSubmit" type="submit" value="Ajouter">
 
-        <div class="displayImagesForm">
+    <div class="displayImagesForm">
 
-       <?php 
-       
-       if (isset($theProjectTextImages) && $theProjectTextImages[0] != "") {
-
-                foreach ($theProjectTextImages as $image) { 
-
-                    if ($image != "") { ?>
-                    <img class="imgMiniature" src="img/imagesArticles/<?=$image?>" alt="Image Article">
-                    <a class="deleteButton newProject" href="?pid=<?=$theProject['id'] ?>&didt=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
-                    <?php } ?>
-                <?php } 
-                
+    <?php 
+        if (isset($theProjectTextImages) && $theProjectTextImages[0] != "") {
+            foreach ($theProjectTextImages as $image) { 
+                if ($image != "") { ?>
+                <img class="imgMiniature" src="img/imagesArticles/<?=$image?>" alt="Image Article">
+                <a class="deleteButton newProject" href="?pid=<?=$theProject['id'] ?>&didt=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+                <?php } ?>
+            <?php } 
             } else { ?>
-
                 <h3 class="noPicture">Pas d'image</h3>
-
-              <?php  } 
-                
-                ?>
-        
+                <?php  }                
+                ?>       
         </div>
+</form>
 
-    </form>
+</section>
 
-    </section>
-
-    <footer class="footerAdmin"></footer>
+<footer class="footerAdmin"></footer>

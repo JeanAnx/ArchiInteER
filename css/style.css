@@ -482,6 +482,10 @@ p#sousTitre {
 		padding-bottom: 20px;
 	}
 
+	.imagesCorpsArticle img {
+		padding-top: 1em;
+	}
+
 	
 	div.sousTitreArticle, 
 	div.sousTitreArticle p, 

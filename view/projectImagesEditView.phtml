@@ -11,19 +11,15 @@
     <?php 
 
     if (isset($theProjectImages) && $theProjectImages[0] != "") {
+        foreach ($theProjectImages as $image) { 
 
-                foreach ($theProjectImages as $image) { 
-
-                    if ($image != "") { ?>
-                    <img class="imgMiniature" src="img/imagesArticles/<?=$image?>" alt="Image Article">
-                    <a class="deleteButton" href="?pid=<?=$theProject['id'] ?>&did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
-                    <?php } ?>
-                <?php } 
-                
+            if ($image != "") { ?>
+            <img class="imgMiniature" src="img/imagesArticles/<?=$image?>" alt="Image Article">
+            <a class="deleteButton" href="?pid=<?=$theProject['id'] ?>&did=<?=$image?>"><i class="fas fa-trash-alt"></i></a>
+            <?php } ?>
+        <?php } 
             } else { ?>
-
                 <h3 class="noPicture">Pas d'image</h3>
-
             <?php  } 
                 
                 ?>

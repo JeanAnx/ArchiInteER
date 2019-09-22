@@ -67,61 +67,15 @@ function uploadImages(array $images , $edit) {
 			$dossier = "img/imagesArticles/";
 	}
 
-	foreach ($images as $theImage) {
-	
-		if ($theImage['error'] == "4" ) {
-	
+	foreach ($images as $theImage) {	
+		if ($theImage['error'] == "4" ) {	
 			header("Location: images.php?images=error");
-			
-			} else {
-	
+			} else {	
 			$fichier = basename($theImage['name']);
-			
 				if (file_exists($theImage['tmp_name'])) {
-	
-					$resultUpload = move_uploaded_file($theImage['tmp_name'] , $dossier.$fichier);
-					
-					if ($resultUpload == false) {
-	
-						header("Location: images.php?upload=oups");
-					
-					}
-				}
-		}
-	}
-
-	if ($edit != FALSE){
-	header('Location: projectEdit.php?pid='.$edit);
-	}
-
-}
-
-function uploadImagesText(array $images , $edit) {
-
-	if (is_dir("../img/imagesArticles/")) {
-		$dossier = "../img/imagesArticles/";
-		} else {
-			$dossier = "img/imagesArticles/";
-	}
-
-	foreach ($images as $theImage) {
-	
-		if ($theImage['error'] == "4" ) {
-	
-			header("Location: images.php?images=error");
-			
-			} else {
-	
-			$fichier = basename($theImage['name']);
-			
-				if (file_exists($theImage['tmp_name'])) {
-	
-					$resultUpload = move_uploaded_file($theImage['tmp_name'] , $dossier.$fichier);
-					
-					if ($resultUpload == false) {
-	
-						header("Location: images.php?upload=oups");
-					
+					$resultUpload = move_uploaded_file($theImage['tmp_name'] , $dossier.$fichier);					
+					if ($resultUpload == false) {	
+						header("Location: images.php?upload=oups");					
 					}
 				}
 		}
@@ -150,8 +104,6 @@ function sendImages($pid , $imagesNames) {
 	array_push($imagesToSend,$imagesNames);
 	$db = openDatabase();
 	$imagesToSend = implode("," , $imagesToSend);
-	var_dump($imagesToSend);
-
 	$data = [
 		'id' => $pid,
 		'names' => $imagesToSend,
@@ -174,7 +126,6 @@ function sendImagesText($pid , $imagesNames) {
 	array_push($imagesToSend,$imagesNames);
 	$db = openDatabase();
 	$imagesToSend = implode("," , $imagesToSend);
-	var_dump($imagesToSend);
 
 	$data = [
 		'id' => $pid,

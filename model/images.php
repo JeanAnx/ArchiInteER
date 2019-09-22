@@ -3,8 +3,6 @@ session_start();
 
 require 'db.php';
 
-var_dump($_FILES);
-
 if ($_SESSION['admin'] == 'yes') {
 
     /*
@@ -30,7 +28,6 @@ if ($_SESSION['admin'] == 'yes') {
     if (isset($_FILES['imageGallery']) && !empty($_FILES['imageGallery'])) {
         $nouvelleImage = $_FILES['imageGallery'];
         $nouvelleImageNom = basename($_FILES['imageGallery']['name']);
-        var_dump($nouvelleImageNom);
         uploadImageGalerie($nouvelleImage , FALSE);
         sendImageGalerie($currentProject['id'] , $nouvelleImageNom);
     }
@@ -54,7 +51,6 @@ if ($_SESSION['admin'] == 'yes') {
         uploadImages($images,FALSE);
     // ... et en base de données après avoir transformé les noms en string
         $imagesNames = implode("," , $_FILES['images']['name']);
-        var_dump($imagesNames);
         sendImages($currentProject['id'] , $imagesNames);
     }
 
@@ -74,11 +70,10 @@ if ($_SESSION['admin'] == 'yes') {
         }
 
     // Envoi des images dans le dossier ...
-        uploadImagesText($imagesText,FALSE);
+        uploadImages($imagesText,FALSE);
 
     // ... et en base de données après avoir transformé les noms en string
         $imagesTextNames = implode("," , $_FILES['imagesText']['name']);
-        var_dump($imagesTextNames);
         sendImagesText($currentProject['id'] , $imagesTextNames);
 
     }
@@ -103,8 +98,7 @@ if ($_SESSION['admin'] == 'yes') {
 
     $imgTextList = $currentProject['imagesTextArticle'];
     $listeImagesTexte = explode("," , $imgTextList); // Conversion en tableau
-    var_dump($listeImagesTexte);
-        include_once '../view/imagesView.phtml';
+    include_once '../view/imagesView.phtml';
 
     } else {
     header('Location: ../index.php');
