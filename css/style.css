@@ -503,9 +503,50 @@ p#sousTitre {
 	}
 
 
+/** Page Formulaire de contact ***********
+*/
 
+.contactForm {
+	padding-top: 150px;
+	font-size: 2.3em;
+	width: 800px;
+	margin: 0 auto;
+}
+.contactForm legend {
+	font-size: 1.5em;
+	padding: 10px;
+	display: block;
+	margin: auto;
+	text-align: center;
+}
+.contactForm fieldset {
+	border: none;
+}
 
-
+.contactForm input , textarea {
+	width: 50%;
+	display: block;
+	margin: auto;
+}
+.contactForm ul {
+	padding: 0;
+	margin: 0;
+}
+.contactForm ul li {
+	list-style: none;
+}
+.contactForm label {
+	display: block;
+	padding: 8px;
+	margin-top: 10px;
+	text-align: center;
+}
+.contactForm .buttons {
+	width: 110px;
+	height: 40px;
+	font-size: .9em;
+	margin-top: 15px;
+}
 
 
 

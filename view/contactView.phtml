@@ -1,44 +1,22 @@
-<form action="submit.php" method="post" onsubmit="return checkForm()">
+
+
+<form class="contactForm" action="../contact.php" method="post" onsubmit="return checkForm()">
 
 			<fieldset>
 
-				<legend>Infos personnelles</legend>
+				<legend>Informations personnelles</legend>
 
 				<ul>
-				
 					<li>
-
-						<label for="civilite">Civilité : </label>
-						<select id="civilite">
-							<option>Mme</option>
-							<option>M.</option>
-						</select>
-
-					</li>
-
-					<li>
-
 						<label for="prenom">Prénom : </label>
 						<input type="text" name="prenom" id="prenom" onblur="checkPrenom(this)">
 						<span class="champErreur" id="erreurPrenom"></span>
-
 					</li>
-
 					<li>
-
 						<label for="nom">Nom : </label>
 						<input type="text" name="nom" id="nom" onblur="checkNom(this)">
 						<span class="champErreur" id="erreurNom"></span>
 					
-					</li>
-
-					<li>
-						
-						<label for="date">Date de naissance : </label>
-						<input type="date" name="date" id="date" onblur="checkDate(this)">
-						<span class="champErreur" id="erreurDate"></span>
-
-
 					</li>
 
 					<li>
@@ -85,27 +63,19 @@
 
 			<fieldset>
 
-				<legend>Infos de connexion</legend>
+				<legend>Votre message :</legend>
 
 					<ul>
-
 						<li>
-							<label for="pseudo">Pseudo : </label>
-							<input type="text" name="pseudo" id="pseudo">
+							<label for="objet">Objet : </label>
+							<input type="text" name="objet" id="objet">
 						</li>
-
 						<li>
-							<label for="password">Mot de passe : </label>
-							<input type="text" name="password" id="password">
+							<label for="objet">Message : </label>
+							<textarea name="objet" id="objet" cols="40" rows="10"></textarea>
 						</li>
-
 						<li>
-							
-							<input class="buttons" type="button" value="Envoyer" onclick="checkForm()"></input>
-
-							<input class="buttons" type="reset"></input>
-
-
+							<input class="buttons" type="button" value="Envoyer" onclick="checkForm()">
 						</li>
 
 					</ul>
@@ -116,3 +86,5 @@
 
 
 		</form>
+
+		<script type="text/javascript" src="../js/form.js"></script>
