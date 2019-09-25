@@ -1,6 +1,6 @@
 
 
-<form class="contactForm" action="../contact.php" method="post" onsubmit="return checkForm()">
+<form class="contactForm" action="../contact.php" method="post">
 
 			<fieldset>
 
@@ -9,20 +9,26 @@
 				<ul>
 					<li>
 						<label for="prenom">Prénom : </label>
-						<input type="text" name="prenom" id="prenom" onblur="checkPrenom(this)">
+						<input type="text" name="prenom" id="prenom" required>
 						<span class="champErreur" id="erreurPrenom"></span>
 					</li>
 					<li>
 						<label for="nom">Nom : </label>
-						<input type="text" name="nom" id="nom" onblur="checkNom(this)">
+						<input type="text" name="nom" id="nom" required>
 						<span class="champErreur" id="erreurNom"></span>
+					
+					</li>
+					<li>
+						<label for="email">Email : </label>
+						<input type="email" name="email" id="email" required>
+						<span class="champErreur" id="erreurEmail"></span>
 					
 					</li>
 
 					<li>
 
 						<label for="adresse">Adresse : </label>
-						<input type="text" name="adresse" id="adresse" onblur="checkAddress(this)">
+						<input type="text" name="adresse" id="adresse" >
 						<span class="champErreur" id="erreurAdresse"></span>
 
 
@@ -30,7 +36,7 @@
 
 					<li>
 						<label for="codePostal">Code postal : </label>
-						<input type="text" name="codePostal" id="codePostal" onblur="checkPostalCode(this)">
+						<input type="text" name="codePostal" id="codePostal">
 						<span class="champErreur" id="erreurCodePostal"></span>
 
 					</li>
@@ -68,14 +74,14 @@
 					<ul>
 						<li>
 							<label for="objet">Objet : </label>
-							<input type="text" name="objet" id="objet">
+							<input type="text" name="objet" id="objet" required>
 						</li>
 						<li>
 							<label for="objet">Message : </label>
-							<textarea name="objet" id="objet" cols="40" rows="10"></textarea>
+							<textarea name="objet" id="objet" cols="40" rows="10" required></textarea>
 						</li>
 						<li>
-							<input class="buttons" type="button" value="Envoyer" onclick="checkForm()">
+							<input class="buttons" type="submit" value="Envoyer">
 						</li>
 
 					</ul>
@@ -86,5 +92,3 @@
 
 
 		</form>
-
-		<script type="text/javascript" src="../js/form.js"></script>
