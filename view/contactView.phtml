@@ -1,94 +1,98 @@
 
 
-<form class="contactForm" action="../contact.php" method="post">
+<form class="contactForm" action="contact.php" method="post">
 
-			<fieldset>
+	<?php if (isset($_SESSION['messages']) && !empty($_SESSION['messages'])) { ?>
 
-				<legend>Informations personnelles</legend>
+	<section class="messages">
+		<?php foreach ($_SESSION['messages'] as $message) {
+			echo $message;
+		} 		
+		$_SESSION['messages'] = [];
+		?>
 
-				<ul>
-					<li>
-						<label for="prenom">Prénom : </label>
-						<input type="text" name="prenom" id="prenom" required>
-						<span class="champErreur" id="erreurPrenom"></span>
-					</li>
-					<li>
-						<label for="nom">Nom : </label>
-						<input type="text" name="nom" id="nom" required>
-						<span class="champErreur" id="erreurNom"></span>
-					
-					</li>
-					<li>
-						<label for="email">Email : </label>
-						<input type="email" name="email" id="email" required>
-						<span class="champErreur" id="erreurEmail"></span>
-					
-					</li>
+	</section>
 
-					<li>
+	<?php } ?>
 
-						<label for="adresse">Adresse : </label>
-						<input type="text" name="adresse" id="adresse" >
-						<span class="champErreur" id="erreurAdresse"></span>
+	<fieldset>
 
+		<legend>Informations personnelles</legend>
 
-					</li>
+		<ul>
+			<li>
+				<label for="prenom">Prénom : *</label>
+				<input type="text" name="prenom" id="prenom" required>
+			</li>
+			<li>
+				<label for="nom">Nom : *</label>
+				<input type="text" name="nom" id="nom" required>
+			
+			</li>
+			<li>
+				<label for="email">Email : *</label>
+				<input type="email" name="email" id="email" required>
+			
+			</li>
 
-					<li>
-						<label for="codePostal">Code postal : </label>
-						<input type="text" name="codePostal" id="codePostal">
-						<span class="champErreur" id="erreurCodePostal"></span>
+			<li>
 
-					</li>
-
-					<li>
-
-						<label for="ville">Ville : </label>
-						<input type="text" name="ville" id="ville">
-						<span class="champErreur" id="erreurVille"></span>
+				<label for="adresse">Adresse : </label>
+				<input type="text" name="adresse" id="adresse" >
 
 
-					</li>
+			</li>
+
+			<li>
+				<label for="codePostal">Code postal : </label>
+				<input type="number" name="code_postal" id="code_postal">
+
+			</li>
+
+			<li>
+
+				<label for="ville">Ville : </label>
+				<input type="text" name="ville" id="ville">
 
 
-					<li>
-
-						<label for="phone">Téléphone (sans espaces) : </label>
-						<input type="text" name="phone" id="phone">
-						<span class="champErreur" id="erreurVille"></span>
+			</li>
 
 
-					</li>
+			<li>
+
+				<label for="telephone">Téléphone (sans espaces) : </label>
+				<input type="tel" name="telephone" id="telephone" pattern="[0-9]{10}">
 
 
-				</ul>
+			</li>
 
 
-
-			</fieldset>
-
-			<fieldset>
-
-				<legend>Votre message :</legend>
-
-					<ul>
-						<li>
-							<label for="objet">Objet : </label>
-							<input type="text" name="objet" id="objet" required>
-						</li>
-						<li>
-							<label for="objet">Message : </label>
-							<textarea name="objet" id="objet" cols="40" rows="10" required></textarea>
-						</li>
-						<li>
-							<input class="buttons" type="submit" value="Envoyer">
-						</li>
-
-					</ul>
+		</ul>
 
 
 
-			</fieldset>
+	</fieldset>
 
+	<fieldset>
 
-		</form>
+		<legend>Votre message :</legend>
+
+			<ul>
+				<li>
+					<label for="objet">Objet : *</label>
+					<input type="text" name="objet" id="objet" required>
+				</li>
+				<li>
+					<label for="message">Message : *</label>
+					<textarea name="message" id="message" cols="40" rows="10" required></textarea>
+				</li>
+				<small style="display:block;text-align:center;padding:5px">*Champs obligatoires</small>
+				<li>
+					<input class="buttons" type="submit" value="Envoyer">
+				</li>
+
+			</ul>
+
+	</fieldset>
+
+</form>
