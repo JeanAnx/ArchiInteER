@@ -3,58 +3,39 @@
 /* Enregistrement en BDD de l'image Titre */
 
 function sendImageGalerie($pid , $fileName) {
-
 	$db = openDatabase(); 
-
 	$data = [
 		'name' => $fileName,
 		'id' => $pid,
 	];
-
 	$sql = 'UPDATE `projets` SET `imageTitre`=:name WHERE `id` = :id';
-
 	$statement = $db->prepare($sql);
-
 	return $statement->execute($data);
-
 }
 
 /* Enregistrement de l'image dans le dossier */
 
 function uploadImageGalerie($file , $edit) {
-
 	if (is_dir("../img/imagesArticles/")) {
 		$dossier = "../img/imagesArticles/";
 		} else {
 			$dossier = "img/imagesArticles/";
 	}
-	
     if ( isset($file['error']) && $file['error'] == "4" ) {
-
 		header("Location: images.php?images=error");
-		
         } else {
-
 		$fichier = $file['name'];
-		
 		if (file_exists($file['tmp_name'])) {
-		
 			$resultUpload = move_uploaded_file($file['tmp_name'], $dossier.$fichier);
-
 			if ($resultUpload) {
-
 				if ($edit == FALSE) {
 					header("Location: images.php?upload=ok&name=".$file['name']);
 				} else if ($edit) {
 					header("Location: projectEdit.php?pid=" . $edit . "&upload=ok&name=".$file['name']);
-				}
-			
+				}		
 			}
-
-		}
-        
+		}        
     }
-
 }
 
 /* Enregistrement des images de l'article dans le dossier */
@@ -80,11 +61,9 @@ function uploadImages(array $images , $edit) {
 				}
 		}
 	}
-
 	if ($edit != FALSE){
 	header('Location: projectEdit.php?pid='.$edit);
 	}
-
 }
 
 /* Envoi des images de l'article en BDD */
@@ -360,17 +339,26 @@ function uploadImageIntro($file) {
 }
 
 function sendImageIntro($fileName) {
-
 	$db = openDatabase(); 
-
 	$data = [
 		'filename' => $fileName
 	];
-
 	$sql = 'INSERT INTO `imageintro`(`name`) VALUES (:filename)';
-
 	$statement = $db->prepare($sql);
-
 	return $statement->execute($data);
+}
 
+/**
+ * IMAGES DE LA PAGE INSPIRATIONS
+ */
+
+function getImagesInspirations() {
+	$db = openDatabase(); 
+	$sql = "SELECT * FROM `imagesinspirations` ORDER BY `id` DESC LIMIT 1";
+	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
+	$imagesInspirations = [];
+	foreach ($statement as $row) {
+		$imagesInspirations = $row;
+	}
+	return $imagesInspirations;
 }

@@ -4,7 +4,6 @@ $('document').ready(function() {
 
     // Installation du WYSIWYG sur chaque champ textarea
     $("textarea").each(function(){
-        console.log($(this));
         $(this).summernote();
     });
 
