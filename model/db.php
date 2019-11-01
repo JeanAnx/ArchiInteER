@@ -21,5 +21,4 @@ require 'dbImages.php';
 require 'dbIntro.php';
 require 'dbProjects.php';
 require 'dbAdmin.php';
-
-
+require 'dbInspirations.php';

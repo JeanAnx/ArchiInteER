@@ -1,5 +1,17 @@
+<?php 
+require_once 'model/db.php';
 
+var_dump($_POST);
 
+if (isset($_POST['title']) && isset($_POST['title']) != "") {
+    setTitleInspirations($_POST['title']);
+}
+
+// $images_inspirations = getImagesInspirations();
+$texte_inspirations = getTextInspirations()['text'];
+$titre_inspirations = getTitleInspirations()['titre'];
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,9 +35,9 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 
 
-	<link rel="stylesheet" type="text/css" href="../css/admin.css">
-	<script type='text/javascript' src='../js/admin.js'></script>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<script type='text/javascript' src='js/admin.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <title>Modifier la page "Inspirations"</title>
 </head>
@@ -40,11 +52,18 @@
     <section id="inspirations-text-edit">
 
 		<h2 class="align-center">- Modifier le texte de la page "Inspirations" -</h2>
+        <form class="introForm" action="" method="post">
 
-		<form class="introForm align-center" action="" method="post">
+			<label for="text">Titre actuel :</label>
+			<textarea name="title" id="title" cols="30" rows="60"><?= $titre_inspirations ?></textarea>
+			<input type="submit" value="Modifier">
+		</form>
+
+
+		<form class="introForm" action="" method="post">
 
 			<label for="text align-center">Texte actuel :</label>
-			<textarea name="text" id="text" cols="30" rows="60"></textarea>
+			<textarea name="text" id="text" cols="30" rows="60"><?= $texte_inspirations ?></textarea>
 			<input type="submit" value="Modifier">
 		</form>
 

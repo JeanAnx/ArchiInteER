@@ -347,18 +347,3 @@ function sendImageIntro($fileName) {
 	$statement = $db->prepare($sql);
 	return $statement->execute($data);
 }
-
-/**
- * IMAGES DE LA PAGE INSPIRATIONS
- */
-
-function getImagesInspirations() {
-	$db = openDatabase(); 
-	$sql = "SELECT * FROM `imagesinspirations` ORDER BY `id` DESC LIMIT 1";
-	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
-	$imagesInspirations = [];
-	foreach ($statement as $row) {
-		$imagesInspirations = $row;
-	}
-	return $imagesInspirations;
-}
