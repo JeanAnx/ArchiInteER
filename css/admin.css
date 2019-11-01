@@ -311,14 +311,14 @@ NOUVEAU PROJET
         */
 
 
-#nouveauProjet > form , #introImageEdit > form {
+#nouveauProjet > form , #introImageEdit > form  , #inspirations-text-edit > form {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
     padding: 2em;
 }
 
-#nouveauProjet > form > label , #imagesSlider form label , #introImageEdit > form label {
+#nouveauProjet > form > label , #inspirations-text-edit > form label , #imagesSlider form label , #introImageEdit > form label {
     font-size: 1.7em;
     padding: 1em 0;
     font-weight: normal;
@@ -327,7 +327,8 @@ NOUVEAU PROJET
 #nouveauProjet > form > input , 
 #nouveauProjet > form > textarea , 
 #imagesSlider form input , 
-#introImageEdit > form input {
+#introImageEdit > form input,
+#inspirations-text-edit > form input {
     border-radius: 5px;
     border: 1px solid gainsboro;
     padding-left: 1em;

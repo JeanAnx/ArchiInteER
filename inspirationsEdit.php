@@ -1,10 +1,28 @@
 <?php 
 require_once 'model/db.php';
 
-var_dump($_POST);
-
+var_dump($_FILES);
+// Envoi du tite en bdd.
 if (isset($_POST['title']) && isset($_POST['title']) != "") {
     setTitleInspirations($_POST['title']);
+}
+// Envoi du texte en bdd.
+if (isset($_POST['text']) && isset($_POST['text']) != "") {
+    setTextInspirations($_POST['text']);
+}
+// Envoi des images sur le serveur.
+if (isset($_FILES['images']) && !empty($_FILES['images'])) {
+    $images = [];
+    for ($i=0; $i < count($_FILES['images']['name']); $i++) { 
+        $images[$i] = [
+            'name' => $_FILES['images']['name'][$i],
+            'type' => $_FILES['images']['type'][$i],
+            'tmp_name' => $_FILES['images']['tmp_name'][$i],
+            'error' => $_FILES['images']['error'][$i],
+            'size' => $_FILES['images']['size'][$i],
+        ];
+    }
+    uploadImagesInspirations($images);
 }
 
 // $images_inspirations = getImagesInspirations();
@@ -46,16 +64,20 @@ $titre_inspirations = getTitleInspirations()['titre'];
 
 <main id="blocAdmin">
 
+    <div class="articleTools">
+        <a href="admin.php">Retour à l'accueil</a>
+    </div>
+
 
 <!-- MODIF TEXTE INSPIRATIONS -->
 
     <section id="inspirations-text-edit">
 
-		<h2 class="align-center">- Modifier le texte de la page "Inspirations" -</h2>
+		<h1 class="align-center">- Modifier le texte de la page "Inspirations" -</h1>
         <form class="introForm" action="" method="post">
 
 			<label for="text">Titre actuel :</label>
-			<textarea name="title" id="title" cols="30" rows="60"><?= $titre_inspirations ?></textarea>
+			<input name="title" id="title">
 			<input type="submit" value="Modifier">
 		</form>
 
@@ -71,10 +93,10 @@ $titre_inspirations = getTitleInspirations()['titre'];
 
     <!-- MODIF IMAGES INSPIRATIONS -->
 
-    <form class="imagesForm" action="../model/images.php" method="POST" enctype="multipart/form-data">
+    <form class="imagesForm" action="" method="POST" enctype="multipart/form-data">
 
         <label for="imagesText">Modifier les images de la galerie (2 Mo maximum):</label>
-        <input type="file" name="imagesText[]" multiple>
+        <input type="file" name="images[]" multiple>
 
         <input  id="imagesProjectSubmit" type="submit" value="Ajouter">
 
@@ -85,24 +107,24 @@ $titre_inspirations = getTitleInspirations()['titre'];
             <div class="fluid-gallery">
 
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="lightbox" href="visuels/archi-1.jpg">
+                            <img src="visuels/archi-1.jpg" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="lightbox" href="visuels/archi-1.jpg">
+                            <img src="visuels/archi-1.jpg" alt="">
                         </a>
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                        <a class="lightbox" href="visuels/archi-6.jpg">
+                            <img src="visuels/archi-6.jpg" alt="">
                         </a>
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="lightbox" href="visuels/archi-1.jpg">
+                            <img src="visuels/archi-1.jpg" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="lightbox" href="visuels/archi-1.jpg">
+                            <img src="visuels/archi-1.jpg" alt="">
                         </a>
                     </div>
                     <div class="single">

@@ -38,7 +38,7 @@ function uploadImagesInspirations(array $images) {
 				}
 		}
 	}
-	header('Location: inspirationsEdit.phtml');
+	header('Location: inspirationsEdit.php');
 }
 
 function getTitleInspirations() {
@@ -73,8 +73,9 @@ function getTextInspirations() {
 
 function setTextInspirations($string) {
 	$db = openDatabase();     
-    $statement = $db->prepare("INSERT INTO `texteinspirations` VALUES (:string)");
-    $statement = $db->bindParam(':string', $string);
-	$statement = $db->exec($sql);
+    $sql = "INSERT INTO `texteinspirations` (`text`) VALUES (:texte)"; 
+    $statement = $db->prepare($sql);
+    $statement->bindParam(":texte", $string);
+	$statement->execute();
 }
 
