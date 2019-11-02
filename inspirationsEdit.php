@@ -1,13 +1,16 @@
 <?php 
 require_once 'model/db.php';
 
-var_dump($_FILES);
+// Traitement d'une image à supprimer.
+if (isset($_GET['did']) && $_GET['did'] != "") {
+    deleteImageInspirations(($_GET['did']));
+}
 // Envoi du tite en bdd.
-if (isset($_POST['title']) && isset($_POST['title']) != "") {
+if (isset($_POST['title']) && $_POST['title'] != "") {
     setTitleInspirations($_POST['title']);
 }
 // Envoi du texte en bdd.
-if (isset($_POST['text']) && isset($_POST['text']) != "") {
+if (isset($_POST['text']) && $_POST['text'] != "") {
     setTextInspirations($_POST['text']);
 }
 // Envoi des images sur le serveur.
@@ -23,12 +26,14 @@ if (isset($_FILES['images']) && !empty($_FILES['images'])) {
         ];
     }
     uploadImagesInspirations($images);
+    // Et en bdd.
+    $imagesNames = implode("," , $_FILES['images']['name']);
+    sendImagesInspirations(trim($imagesNames,','));
 }
 
-// $images_inspirations = getImagesInspirations();
+$images_inspirations = explode("," , getImagesInspirations()['list']);
 $texte_inspirations = getTextInspirations()['text'];
 $titre_inspirations = getTitleInspirations()['titre'];
-
 ?>
 
 <!DOCTYPE html>
@@ -98,8 +103,9 @@ $titre_inspirations = getTitleInspirations()['titre'];
         <label for="imagesText">Modifier les images de la galerie (2 Mo maximum):</label>
         <input type="file" name="images[]" multiple>
 
+        <?php if (count($images_inspirations) < 24) { ?>
         <input  id="imagesProjectSubmit" type="submit" value="Ajouter">
-
+        <?php } ?>
     <div class="galerie-inspirations container gallery-container">
             
         <div class="tz-gallery">
@@ -107,109 +113,199 @@ $titre_inspirations = getTitleInspirations()['titre'];
             <div class="fluid-gallery">
 
                     <div class="double">
-                        <a class="lightbox" href="visuels/archi-1.jpg">
-                            <img src="visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[0]) && $images_inspirations[0] != "") { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[0]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[0]?>" alt="<?= $images_inspirations[0]?>">
                         </a>
-                        <a class="lightbox" href="visuels/archi-1.jpg">
-                            <img src="visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[0]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+                        <?php if (isset($images_inspirations[1])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[1]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[1]?>" alt="<?= $images_inspirations[1]?>">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[1]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="visuels/archi-6.jpg">
-                            <img src="visuels/archi-6.jpg" alt="">
+                        <?php if (isset($images_inspirations[2])) { ?>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[2]?>"><i class="fas fa-trash-alt"></i></a>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[2]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[2]?>" alt="">
                         </a>
+                        <?php } ?>
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="visuels/archi-1.jpg">
-                            <img src="visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[3])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[3]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[3]?>" alt="">
                         </a>
-                        <a class="lightbox" href="visuels/archi-1.jpg">
-                            <img src="visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[3]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+                        <?php if (isset($images_inspirations[4])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[4]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[4]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[4]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                        <?php if (isset($images_inspirations[5])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[5]?>g">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[5]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[5]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                        <?php if (isset($images_inspirations[6])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[6]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[6]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[6]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[7])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[7]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[7]?>" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[7]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+                        <?php if (isset($images_inspirations[8])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[8]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[8]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[8]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                        <?php if (isset($images_inspirations[9])) { ?>
+
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[9]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[9]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[9]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[10])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[10]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[10]?>g" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[10]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
+                        <?php if (isset($images_inspirations[11])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[11]?>.jpg">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[11]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[11]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[12])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[12]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[12]?>" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[12]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+                        <?php if (isset($images_inspirations[13])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[13]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[13]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[13]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                        <?php if (isset($images_inspirations[14])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[14]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[14]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[14]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[15])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[15]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[15]?>" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[15]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+                        <?php if (isset($images_inspirations[16])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[16]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[16]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[16]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                        <?php if (isset($images_inspirations[17])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[17]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[17]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[17]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
 
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                        <?php if (isset($images_inspirations[18])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[18]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[18]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[18]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[19])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[19]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[19]?>" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[19]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+                        
+                        <?php if (isset($images_inspirations[20])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[20]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[20]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[20]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="single">
-                        <a class="lightbox" href="../visuels/archi-6.jpg">
-                            <img src="../visuels/archi-6.jpg" alt="">
+                    <?php if (isset($images_inspirations[21])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[21]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[21]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[21]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
                     <div class="double">
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <?php if (isset($images_inspirations[22])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[22]?>">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[22]?>" alt="">
                         </a>
-                        <a class="lightbox" href="../visuels/archi-1.jpg">
-                            <img src="../visuels/archi-1.jpg" alt="">
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[22]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+                        <?php if (isset($images_inspirations[23])) { ?>
+                        <a class="lightbox" href="img/imagesInspirations/<?= $images_inspirations[23]?>g">
+                            <img src="img/imagesInspirations/<?= $images_inspirations[23]?>" alt="">
                         </a>
+                        <a class="deleteButtonInspirations" href="?did=<?= $images_inspirations[23]?>"><i class="fas fa-trash-alt"></i></a>
+                        <?php } ?>
+
                     </div>
 
             </div>
@@ -219,11 +315,6 @@ $titre_inspirations = getTitleInspirations()['titre'];
     </div>
 
 </main>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>
-    baguetteBox.run('.tz-gallery');
-</script>
 
 </body>
 

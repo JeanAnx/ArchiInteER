@@ -1,8 +1,5 @@
 <?php 
 
-
-
-
 /**
  * IMAGES DE LA PAGE INSPIRATIONS.
  */
@@ -39,6 +36,28 @@ function uploadImagesInspirations(array $images) {
 		}
 	}
 	header('Location: inspirationsEdit.php');
+}
+
+function sendImagesInspirations($imagesNames) {
+	if (isset(getImagesInspirations()['list'])) {
+	$currentImages = getImagesInspirations()['list'];
+		} else {
+			$currentImages = "";
+		}
+	if ($currentImages != " ") {
+	$imagesToSend = explode(',' , trim(getImagesInspirations()['list']));
+		} else {
+			$imagesToSend = [];
+	}
+	array_push($imagesToSend,$imagesNames);
+	$db = openDatabase();
+	$imagesToSend = implode("," , $imagesToSend);
+	$data = [
+		'names' => trim($imagesToSend,','),
+	];
+	$sql = 'INSERT INTO `imagesinspirations`(`list`) VALUES (:names)';
+	$statement = $db->prepare($sql);
+	return $statement->execute($data);
 }
 
 function getTitleInspirations() {
@@ -79,3 +98,19 @@ function setTextInspirations($string) {
 	$statement->execute();
 }
 
+function deleteImageInspirations($imageName) {
+	$db = openDatabase();
+	$imagesList = explode(',',getImagesInspirations()['list']);
+	$i = 0;
+	foreach ($imagesList as $image) {
+		if ($image == $imageName) {
+			unset($imagesList[$i]);
+		}
+		$i++;
+	}
+	$imagesToSend = implode("," , $imagesList);
+	$sql = "INSERT INTO `imagesinspirations` (`list`) VALUES (:images)"; 
+	$statement = $db->prepare($sql);
+	$statement->bindParam(":images", $imagesToSend);
+	return $statement->execute();
+}

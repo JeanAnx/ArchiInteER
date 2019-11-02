@@ -417,11 +417,16 @@ BOUTON DE SUPPRESSION D'IMAGE
     font-size: 1.2em;
 }
 
+.deleteButtonInspirations {
+    color: grey;
+    font-size: 1.2em;
+}
+
 .deleteButton .newProject {
     bottom: 20px;
 }
 
-.deleteButton:hover {
+.deleteButton:hover , .deleteButtonInspirations:hover {
     color: red;
     transition: all 0.2s ease;
     transform: scale(1.5);
