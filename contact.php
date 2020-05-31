@@ -1,12 +1,18 @@
 <?php 
 session_start();
+
+require 'model/db.php';
+
 $infos = [];
 
 foreach ($_POST as $row) {
     if ($row == "" || $row == " ") {
         $row = "Non renseigné";
     }
-    $infos[] = $row;
+    // If attempting to send file, GTFO.
+    if (strpos($row, "#") === FALSE) {
+        $infos[] = clean($row);
+    }
 }
 
 $headers = "MIME-Version: 1.0\r\n";
@@ -21,8 +27,5 @@ $mail =
 . "<h3>Message : " . $infos[8] . "</h3>"
 ."</body></html>";
 $_SESSION['messages'][] = '<h2 class="message" style="text-align:center;color:green">Votre message a bien été envoyé </h2>';
-
 mail('jean.annaix@gmail.com',$_POST['objet'],$mail,$headers);
-
-
 header('Location: index.php?p=contact');

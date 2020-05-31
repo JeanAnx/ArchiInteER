@@ -22,37 +22,37 @@
 		<ul>
 			<li>
 				<label for="prenom">Prénom : *</label>
-				<input type="text" name="prenom" id="prenom" required>
+				<input type="text" name="prenom" id="prenom" maxlength="40" required>
 			</li>
 			<li>
 				<label for="nom">Nom : *</label>
-				<input type="text" name="nom" id="nom" required>
+				<input type="text" name="nom" id="nom" maxlength="40" required>
 			
 			</li>
 			<li>
 				<label for="email">Email : *</label>
-				<input type="email" name="email" id="email" required>
+				<input type="email" name="email" id="email" maxlength="64" required>
 			
 			</li>
 
 			<li>
 
 				<label for="adresse">Adresse : </label>
-				<input type="text" name="adresse" id="adresse" >
+				<input type="text" name="adresse" id="adresse" maxlength="64">
 
 
 			</li>
 
 			<li>
 				<label for="codePostal">Code postal : </label>
-				<input type="number" name="code_postal" id="code_postal">
+				<input type="number" name="code_postal" id="code_postal" max="99999">
 
 			</li>
 
 			<li>
 
 				<label for="ville">Ville : </label>
-				<input type="text" name="ville" id="ville">
+				<input type="text" name="ville" id="ville" maxlength="40">
 
 
 			</li>
@@ -76,11 +76,10 @@
 	<fieldset>
 
 		<legend>Votre message :</legend>
-
 			<ul>
 				<li>
 					<label for="objet">Objet : *</label>
-					<input type="text" name="objet" id="objet" required>
+					<input type="text" name="objet" id="objet" maxlength="70" required>
 				</li>
 				<li>
 					<label for="message">Message : *</label>
@@ -90,9 +89,7 @@
 				<li>
 					<input class="buttons" type="submit" value="Envoyer">
 				</li>
-
 			</ul>
-
 	</fieldset>
 
 </form>
