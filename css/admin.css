@@ -47,12 +47,25 @@ hr {
     opacity: .3;
 }
 
+.align-center {
+    text-align: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .footerAdmin {
     margin-top: 75px;
     height: 100px;
     width: 100%;
     display: block;
     background-color: rgba(238, 238, 238, .3);
+}
+
+.max-width-90 {
+    max-width: 90%;
 }
 
 #backToTheTop {

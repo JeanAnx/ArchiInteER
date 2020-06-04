@@ -315,21 +315,13 @@ function getImageIntro() {
 }
 
 function uploadImageIntro($file) {
-
 	$dossier = "../img/imageIntro/";
-	
     if ( isset($file['error']) && $file['error'] == "4" ) {
-
 		header("Location: admin.php?images=error");
-		
         } else {
-
 		$fichier = $file['name'];
-		
 		if (file_exists($file['tmp_name'])) {
-		
 			$resultUpload = move_uploaded_file($file['tmp_name'], $dossier.$fichier);
-
 			if ($resultUpload) {
 				$_SESSION['messages'][] = '<h2 class="successMessage">Image d\'intro modifiée</h2>';
 				header("Location: admin.php?uploadIntro=ok&name=".$file['name']);			
