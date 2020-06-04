@@ -9,6 +9,8 @@ session_start();
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {  
 	
 	require "model/db.php";
+	var_dump($_POST);
+	var_dump($_FILES);
 
 	// If image data sent, trigger functions.
 	if (isset($_FILES['image_header_mission']) && !empty($_FILES['image_header_mission'])) {
@@ -24,6 +26,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 	if (isset($_POST['intro-text-missions'])) {
 		setMissionIntroText($_POST['intro-text-missions']);
 	}
+
+	// TODO : traitement des données POST et FILES
+	// Extraire l'index du nom du champ
+
 	// Get page data.
 	$image_mission_header = 'img/imageMission/' . getImageIntroMission()['name'];
 	$text_image_mission_header = getTextImageMission();
@@ -126,74 +132,167 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 
 		<h3>Blocs</h3>
 
-		<form action="" method="POST">
-
-		<fieldset class="flex-column">
 			<h3>1</h3>
-			<label for="title-mission-1">Titre du bloc mission :</label>
-			<input type="text" placeholder="" id="title-mission-1" name="title-mission-1">
-			<label for="text-mission-1">Texte du bloc mission :</label>
-			<textarea name="text-mission-1" id="text-mission-1" cols="30" rows="5"></textarea>
-			<label for="order_mission_1">Ordre</label>
-			<input type="number" min="1" max="100" id="order-mission-1" name="order-mission-1" placeholder="">
-		</fieldset>
+			<form action="" method="POST" enctype="multipart/form-data">
+				<fieldset class="flex-column">
+					<div class="flex-column">
+						<label for="image-bloc-1">Modifier l'image :</label>
+						<input type="file" name="image-bloc-1[]" multiple>
+						<input  id="image_bloc_1" type="submit" value="Ajouter">
+						<div class="display-image-header-missions">
+						<?php 
+						if (isset($image_mission_header)) { ?>
+							<img class="imgMiniature" src="<?=$image_mission_header?>">
+							<?php } else { ?>
+									<h3 class="noPicture">Pas d'image</h3>
+							<?php } ?>
+					</div>
+				</fieldset>
+			</form>
+			<form action="" method="POST">
+				<fieldset>
+					<label for="title-mission-1">Titre du bloc mission :</label>
+					<input type="text" placeholder="" id="title-mission-1" name="title-mission-1">
+					<label for="text-mission-1">Texte du bloc mission :</label>
+					<textarea name="text-mission-1" id="text-mission-1" cols="30" rows="5"></textarea>
+					<input type="submit" value="Enregistrer">
+				</fieldset>
+			</form>
 
-		<fieldset class="flex-column">
-			<h3>2</h3>
-			<label for="title-mission-2">Titre du bloc mission :</label>
-			<input type="text" placeholder="" id="title-mission-2" name="title-mission-2">
-			<label for="text-mission-2">Texte du bloc mission :</label>
-			<textarea name="text-mission-2" id="text-mission-2" cols="30" rows="5"></textarea>
-			<label for="order_mission_2">Ordre</label>
-			<input type="number" min="1" max="100" id="order-mission-2" name="order-mission-2" placeholder="">
-		</fieldset>
+				<h3>2</h3>
+				<form action="" method="POST" enctype="multipart/form-data">
+				<fieldset class="flex-column">
+					<div class="flex-column">
+						<label for="image-bloc-2">Modifier l'image :</label>
+						<input type="file" name="image-bloc-2[]" multiple>
+						<input  id="image_bloc_2" type="submit" value="Ajouter">
+						<div class="display-image-header-missions">
+						<?php 
+						if (isset($image_mission_header)) { ?>
+							<img class="imgMiniature" src="<?=$image_mission_header?>">
+							<?php } else { ?>
+									<h3 class="noPicture">Pas d'image</h3>
+							<?php } ?>
+					</div>
+				</fieldset>
+			</form>
+			<form action="" method="POST">
+				<fieldset>
+					<label for="title-mission-2">Titre du bloc mission :</label>
+					<input type="text" placeholder="" id="title-mission-2" name="title-mission-2">
+					<label for="text-mission-2">Texte du bloc mission :</label>
+					<textarea name="text-mission-2" id="text-mission-2" cols="30" rows="5"></textarea>
+					<input type="submit" value="Enregistrer">
+				</fieldset>
+			</form>
 
-		<fieldset class="flex-column">
-			<h3>3</h3>
-			<label for="title-mission-3">Titre du bloc mission :</label>
-			<input type="text" placeholder="" id="title-mission-3" name="title-mission-3">
-			<label for="text-mission-3">Texte du bloc mission :</label>
-			<textarea name="text-mission-3" id="text-mission-3" cols="30" rows="5"></textarea>
-			<label for="order_mission_3">Ordre</label>
-			<input type="number" min="1" max="100" id="order-mission-3" name="order-mission-3" placeholder="">
-		</fieldset>
+				<h3>3</h3>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<fieldset class="flex-column">
+						<div class="flex-column">
+							<label for="image-bloc-3">Modifier l'image :</label>
+							<input type="file" name="image-bloc-3[]" multiple>
+							<input  id="image_bloc_3" type="submit" value="Ajouter">
+							<div class="display-image-header-missions">
+							<?php 
+							if (isset($image_mission_header)) { ?>
+								<img class="imgMiniature" src="<?=$image_mission_header?>">
+								<?php } else { ?>
+										<h3 class="noPicture">Pas d'image</h3>
+								<?php } ?>
+							</div>
+					</fieldset>
+			</form>
+			<form action="" method="POST">
+				<fieldset>
+					<label for="title-mission-3">Titre du bloc mission :</label>
+					<input type="text" placeholder="" id="title-mission-3" name="title-mission-3">
+					<label for="text-mission-3">Texte du bloc mission :</label>
+					<textarea name="text-mission-3" id="text-mission-3" cols="30" rows="5"></textarea>
+					<input type="submit" value="Enregistrer">
+				</fieldset>
+			</form>
 
-		<fieldset class="flex-column">
-			<h3>4</h3>
-			<label for="title-mission-4">Titre du bloc mission :</label>
-			<input type="text" placeholder="" id="title-mission-4" name="title-mission-4">
-			<label for="text-mission-4">Texte du bloc mission :</label>
-			<textarea name="text-mission-4" id="text-mission-4" cols="30" rows="5"></textarea>
-			<label for="order_mission_4">Ordre</label>
-			<input type="number" min="1" max="100" id="order-mission-4" name="order-mission-4" placeholder="">
-		</fieldset>
+				<h3>4</h3>
+				<form action="" method="POST" enctype="multipart/form-data">
+				<fieldset class="flex-column">
+					<div class="flex-column">
+						<label for="image-bloc-4">Modifier l'image :</label>
+						<input type="file" name="image-bloc-4[]" multiple>
+						<input  id="image_bloc_4" type="submit" value="Ajouter">
+						<div class="display-image-header-missions">
+						<?php 
+						if (isset($image_mission_header)) { ?>
+							<img class="imgMiniature" src="<?=$image_mission_header?>">
+							<?php } else { ?>
+									<h3 class="noPicture">Pas d'image</h3>
+							<?php } ?>
+					</div>
+				</fieldset>
+			</form>
+			<form action="" method="POST">
+				<fieldset>
+					<label for="title-mission-4">Titre du bloc mission :</label>
+					<input type="text" placeholder="" id="title-mission-4" name="title-mission-4">
+					<label for="text-mission-4">Texte du bloc mission :</label>
+					<textarea name="text-mission-4" id="text-mission-4" cols="30" rows="5"></textarea>
+					<input type="submit" value="Enregistrer">
+				</fieldset>
+			</form>
 
-		<fieldset class="flex-column">
-			<h3>5</h3>
-			<label for="title-mission-5">Titre du bloc mission :</label>
-			<input type="text" placeholder="" id="title-mission-5" name="title-mission-5">
-			<label for="text-mission-5">Texte du bloc mission :</label>
-			<textarea name="text-mission-5" id="text-mission-5" cols="30" rows="5"></textarea>
-			<label for="order_mission_5">Ordre</label>
-			<input type="number" min="1" max="100" id="order-mission-5" name="order-mission-5" placeholder="">
-		</fieldset>
+				<h3>5</h3>
+				<form action="" method="POST" enctype="multipart/form-data">
+				<fieldset class="flex-column">
+					<div class="flex-column">
+						<label for="image-bloc-5">Modifier l'image :</label>
+						<input type="file" name="image-bloc-5[]" multiple>
+						<input  id="image_bloc_5" type="submit" value="Ajouter">
+						<div class="display-image-header-missions">
+						<?php 
+						if (isset($image_mission_header)) { ?>
+							<img class="imgMiniature" src="<?=$image_mission_header?>">
+							<?php } else { ?>
+									<h3 class="noPicture">Pas d'image</h3>
+							<?php } ?>
+					</div>
+				</fieldset>
+			</form>
+			<form action="" method="POST">
+				<fieldset>
+					<label for="title-mission-5">Titre du bloc mission :</label>
+					<input type="text" placeholder="" id="title-mission-5" name="title-mission-5">
+					<label for="text-mission-5">Texte du bloc mission :</label>
+					<textarea name="text-mission-5" id="text-mission-5" cols="30" rows="5"></textarea>
+					<input type="submit" value="Enregistrer">
+				</fieldset>
+			</form>
 
-		<hr>
-
-		<fieldset class="flex-column">
-			<h3>6</h3>
-			<label for="title-mission-6">Titre du bloc mission :</label>
-			<input type="text" placeholder="" id="title-mission-6" name="title-mission-6">
-			<label for="text-mission-6">Texte du bloc mission :</label>
-			<textarea name="text-mission-6" id="text-mission-6" cols="30" rows="5"></textarea>
-			<label for="order_mission_6">Ordre</label>
-			<input type="number" min="1" max="100" id="order-mission-6" name="order-mission-4" placeholder="">
-		</fieldset>
-
-		<input id="submitMissions" type="submit" value="Enregistrer les blocs missions">
-
-
-		</form>
+				<h3>6</h3>
+				<form action="" method="POST" enctype="multipart/form-data">
+				<fieldset class="flex-column">
+					<div class="flex-column">
+						<label for="image-bloc-6">Modifier l'image :</label>
+						<input type="file" name="image-bloc-6[]" multiple>
+						<input  id="image_bloc_6" type="submit" value="Ajouter">
+						<div class="display-image-header-missions">
+						<?php 
+						if (isset($image_mission_header)) { ?>
+							<img class="imgMiniature" src="<?=$image_mission_header?>">
+							<?php } else { ?>
+									<h3 class="noPicture">Pas d'image</h3>
+							<?php } ?>
+					</div>
+				</fieldset>
+			</form>
+			<form action="" method="POST">
+				<fieldset>
+					<label for="title-mission-6">Titre du bloc mission :</label>
+					<input type="text" placeholder="" id="title-mission-6" name="title-mission-6">
+					<label for="text-mission-6">Texte du bloc mission :</label>
+					<textarea name="text-mission-6" id="text-mission-6" cols="30" rows="5"></textarea>
+					<input type="submit" value="Enregistrer">
+				</fieldset>
+			</form>
 
 		
 
