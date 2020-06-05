@@ -201,11 +201,11 @@ function uploadSingleImageBloc($file) {
 		$_SESSION['messages'][] = '<h2 class="">Oups. Une erreur s\'est produite</h2>';
 		header("Location: missionEdit.php");
 	} else {
-	$fichier = reset($file['name']);
-	if (file_exists(reset($file['tmp_name']))) {
-		$resultUpload = move_uploaded_file(reset($file['tmp_name']), $dossier.$fichier);
+	$fichier = $file['name'];
+	if (file_exists($file['tmp_name'])) {
+		$resultUpload = move_uploaded_file($file['tmp_name'], $dossier.$fichier);
 		if ($resultUpload) {
-			$_SESSION['messages'][] = '<h2 class="successMessage">Image d\'intro "Missions" modifiée</h2>';
+			$_SESSION['messages'][] = '<h2 class="successMessage">Image modifiée</h2>';
 			header("Location: missionsEdit");			
 		}
 	}

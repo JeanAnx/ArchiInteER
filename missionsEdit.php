@@ -4,13 +4,13 @@
  * Regroupe la page et les traitements.
  */
 session_start();
-
+var_dump($_POST);
+var_dump($_FILES);
+// die;
 
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {  
 	
 	require "model/db.php";
-	var_dump($_POST);
-	var_dump($_FILES);
 
 	// If image data sent, trigger functions.
 	if (isset($_FILES['image_header_mission']) && !empty($_FILES['image_header_mission'])) {
@@ -29,6 +29,21 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 
 	// TODO : traitement des données POST et FILES
 	// Extraire l'index du nom du champ
+	// Récupérer json des missions et modifier l'index concerné
+	// Resérialiser et renvoyer.
+	// Si Files, et si pas l'image du header, envoi simple de l'image dans le dossier.
+
+	if (isset($_FILES) && !empty($_FILES)) {
+		var_dump('$FILES');
+		$bloc_mission_image = [];
+		foreach ($_FILES as $key => $file) {
+			$bloc_mission_image[$key] = $file;
+			// Enregistrement du fichier.
+			uploadSingleImageBloc($file);
+			var_dump($bloc_mission_image);
+			die;
+		}
+ }
 
 	// Get page data.
 	$image_mission_header = 'img/imageMission/' . getImageIntroMission()['name'];
@@ -87,6 +102,8 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 		 
 		} ?>
 
+		</section>
+
 <div id="blocAdmin">
 
 	<h2>- Page "Missions" -</h2>
@@ -137,7 +154,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 				<fieldset class="flex-column">
 					<div class="flex-column">
 						<label for="image-bloc-1">Modifier l'image :</label>
-						<input type="file" name="image-bloc-1[]" multiple>
+						<input type="file" name="image-bloc-1" multiple>
 						<input  id="image_bloc_1" type="submit" value="Ajouter">
 						<div class="display-image-header-missions">
 						<?php 
@@ -164,7 +181,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 				<fieldset class="flex-column">
 					<div class="flex-column">
 						<label for="image-bloc-2">Modifier l'image :</label>
-						<input type="file" name="image-bloc-2[]" multiple>
+						<input type="file" name="image-bloc-2" multiple>
 						<input  id="image_bloc_2" type="submit" value="Ajouter">
 						<div class="display-image-header-missions">
 						<?php 
@@ -191,7 +208,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 					<fieldset class="flex-column">
 						<div class="flex-column">
 							<label for="image-bloc-3">Modifier l'image :</label>
-							<input type="file" name="image-bloc-3[]" multiple>
+							<input type="file" name="image-bloc-3" multiple>
 							<input  id="image_bloc_3" type="submit" value="Ajouter">
 							<div class="display-image-header-missions">
 							<?php 
@@ -218,7 +235,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 				<fieldset class="flex-column">
 					<div class="flex-column">
 						<label for="image-bloc-4">Modifier l'image :</label>
-						<input type="file" name="image-bloc-4[]" multiple>
+						<input type="file" name="image-bloc-4" multiple>
 						<input  id="image_bloc_4" type="submit" value="Ajouter">
 						<div class="display-image-header-missions">
 						<?php 
@@ -245,7 +262,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 				<fieldset class="flex-column">
 					<div class="flex-column">
 						<label for="image-bloc-5">Modifier l'image :</label>
-						<input type="file" name="image-bloc-5[]" multiple>
+						<input type="file" name="image-bloc-5" multiple>
 						<input  id="image_bloc_5" type="submit" value="Ajouter">
 						<div class="display-image-header-missions">
 						<?php 
@@ -272,7 +289,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 				<fieldset class="flex-column">
 					<div class="flex-column">
 						<label for="image-bloc-6">Modifier l'image :</label>
-						<input type="file" name="image-bloc-6[]" multiple>
+						<input type="file" name="image-bloc-6" multiple>
 						<input  id="image_bloc_6" type="submit" value="Ajouter">
 						<div class="display-image-header-missions">
 						<?php 
@@ -293,9 +310,5 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 					<input type="submit" value="Enregistrer">
 				</fieldset>
 			</form>
-
-		
-
-	</section>
 
 <?php }
