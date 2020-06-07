@@ -176,7 +176,7 @@ function getMissionIntroText() {
 
 function getMissions() {
 	$db = openDatabase(); 
-	$sql = "SELECT * FROM missions";
+	$sql = "SELECT * FROM missions ORDER BY `id` DESC LIMIT 1";
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
 	$projets = [];
 	foreach ($statement as $row) {
@@ -185,28 +185,31 @@ function getMissions() {
 	return $projets;
 }
 
-function setMissions(array $mission, $index) {
+function setMissions(array $new_mission, $index) {
 	$db = openDatabase(); 
-	$current_missions = json_decode(getMissions());
-	$missions_json = json_encode($missions);
+	// Récupérer le tableau actuel
+	$current_missions = getMissions();
+	$current_missions[$index] = $new_mission;
+	$missions_json = json_encode($current_missions);
+	$data = [
+		'missions' => $missions_json,
+	];
 	$sql = "INSERT INTO `missions` (data_json)
-	VALUES (missions_json)";
+	VALUES (:missions)";
 	$statement = $db->prepare($sql);
-	return $statement->execute($missions_json);
+	return $statement->execute($data);
 }
 
 function uploadSingleImageBloc($file) {
 	$dossier = "img/imagesBlocsMissions/";
 	if (isset($file['error']) && $file['error'] == "4" ) {
 		$_SESSION['messages'][] = '<h2 class="">Oups. Une erreur s\'est produite</h2>';
-		header("Location: missionEdit.php");
 	} else {
 	$fichier = $file['name'];
 	if (file_exists($file['tmp_name'])) {
 		$resultUpload = move_uploaded_file($file['tmp_name'], $dossier.$fichier);
 		if ($resultUpload) {
 			$_SESSION['messages'][] = '<h2 class="successMessage">Image modifiée</h2>';
-			header("Location: missionsEdit");			
 		}
 	}
 	}

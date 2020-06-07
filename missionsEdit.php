@@ -4,9 +4,9 @@
  * Regroupe la page et les traitements.
  */
 session_start();
+var_dump('$_POST :');
 var_dump($_POST);
 var_dump($_FILES);
-// die;
 
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {  
 	
@@ -33,16 +33,50 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'yes') {
 	// Resérialiser et renvoyer.
 	// Si Files, et si pas l'image du header, envoi simple de l'image dans le dossier.
 
-	if (isset($_FILES) && !empty($_FILES)) {
-		var_dump('$FILES');
+	if (isset($_FILES) && !empty($_FILES) && !isset($_FILES['image_header_mission'])) {
 		$bloc_mission_image = [];
 		foreach ($_FILES as $key => $file) {
 			$bloc_mission_image[$key] = $file;
 			// Enregistrement du fichier.
 			uploadSingleImageBloc($file);
-			var_dump($bloc_mission_image);
-			die;
+			$mission_json = getMissions();
+			if (empty($mission_json)) {
+			
+				for ($i=1; $i < 7; $i++) { 
+					$mission_json[$i] = [
+						'image' => '',
+						'titre' => '',
+						'texte' => ''
+					];
+				}
+
+				var_dump(json_encode($mission_json));
+				setMissions($mission_json);
+				die;
+			}
 		}
+ }
+
+ 	// Envoi du json de la mission en BDD.
+	if (isset($_POST)) {
+		 $new_mission = [];
+		foreach ($_POST as $key => $value) {
+			for ($i=1; $i < 7; $i++) {
+				if ($key === 'title-mission-'.$i) {
+				$new_mission = [
+					'title' => $value,
+				];
+				$index_mission = $i; 			
+			}
+			if ($key === 'text-mission-'.$i) {
+				$new_mission = array_merge($new_mission, [
+					'text' => $value,
+				]);
+			}
+		}
+		}
+		var_dump($new_mission);
+		setMissions($new_mission, $index_mission);
  }
 
 	// Get page data.
