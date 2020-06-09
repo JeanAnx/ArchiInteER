@@ -12,6 +12,13 @@
         <?= $text_mission_intro ?>
     </div>
     <div class="missions">
-        <div></div>
+    <?php foreach ($missions as $key => $mission) { ?>
+        <div><img src="img/imagesBlocsMissions/<?=$mission['image']?>" alt=""></div>    
+        <div>
+            <?= $mission['titre'] ?>
+            <?= $mission['texte'] ?>
+
+        </div>
+        <?php } ?>
     </div>
 </main>

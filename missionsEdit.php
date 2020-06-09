@@ -20,9 +20,26 @@ session_start();
 		setTextImageMission($_POST['image-text-header']);
 	}
 	// Intro text.
-	if (isset($_POST['intro-text-missions'])) {
+	elseif (isset($_POST['intro-text-missions'])) {
 		setMissionIntroText($_POST['intro-text-missions']);
 	}
+	 	// Envoi de la mission en BDD.
+		 elseif (isset($_POST) && !empty($_POST)) {
+			$mission_to_send = [];
+			foreach ($_POST as $key => $string) {
+				$key_array = explode('-',$key);
+				if (in_array('title', $key_array)) {
+					$mission_to_send['titre'] = $string;
+				}
+				if (in_array('text', $key_array)) {
+					$mission_to_send['texte'] = $string;
+				}
+				if ($key != 'files') {
+					$index = intval(explode('-',$key)[2]);
+				}
+			}
+			setMission($index, $mission_to_send, null);
+			}
 
 	// TODO : traitement des données POST et FILES
 	// Extraire l'index du nom du champ
@@ -42,24 +59,7 @@ session_start();
 			}
 		}
 
- 	// Envoi de la mission en BDD.
-	if (isset($_POST) && !empty($_POST)) {
-		$mission_to_send = [];
-		foreach ($_POST as $key => $string) {
-			$key_array = explode('-',$key);
-			if (in_array('title', $key_array)) {
-				$mission_to_send['titre'] = $string;
-			}
-			if (in_array('text', $key_array)) {
-				$mission_to_send['texte'] = $string;
-			}
-			if ($key != 'files') {
-				$index = intval(explode('-',$key)[2]);
-			}
-		}
-		setMission($index, $mission_to_send, null);
-		}
-		// setMission($new_mission, $index_mission);
+
 
 	// Get page data.
 	$image_mission_header = 'img/imageMission/' . getImageIntroMission()['name'];
