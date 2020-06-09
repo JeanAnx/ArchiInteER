@@ -16,6 +16,10 @@ function openDatabase() {
 	return $db;
 }
 
+function dump($variable) {
+	return '<pre>' . var_dump($variable) . '</pre>';
+}
+
 require 'tools.php';
 require 'dbImages.php';
 require 'dbIntro.php';

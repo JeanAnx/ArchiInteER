@@ -174,30 +174,34 @@ function getMissionIntroText() {
 
 // Missions.
 
-function getMissions() {
+function getMission($index) {
 	$db = openDatabase(); 
-	$sql = "SELECT * FROM missions ORDER BY `id` DESC LIMIT 1";
+	$sql = "SELECT * FROM mission$index ORDER BY `id` DESC LIMIT 1";
 	$statement = $db->query($sql, \PDO::FETCH_ASSOC);
-	$projets = [];
+	$mission = [];
 	foreach ($statement as $row) {
-		$projets[] = $row;
+		$mission = $row;
 	}
-	return $projets;
+	return $mission;
 }
 
-function setMissions(array $new_mission, $index) {
+function setMission($index, $new_mission, $image_name) {
 	$db = openDatabase(); 
-	// Récupérer le tableau actuel
-	$current_missions = getMissions();
-	$current_missions[$index] = $new_mission;
-	$missions_json = json_encode($current_missions);
-	$data = [
-		'missions' => $missions_json,
-	];
-	$sql = "INSERT INTO `missions` (data_json)
-	VALUES (:missions)";
+	$mission_to_send = getMission($index);
+	if ($image_name && $image_name != '') {
+		$mission_to_send['image'] = $image_name;
+	} else {
+			$mission_to_send['titre'] = $new_mission['titre'];
+			$mission_to_send['texte'] = $new_mission['texte'];
+	}
+	$sql = "INSERT INTO `mission$index` (titre,texte,image)
+	VALUES (:titre,:texte,:image)";
 	$statement = $db->prepare($sql);
-	return $statement->execute($data);
+	return $statement->execute([
+		'titre' => $mission_to_send['titre'],
+		'texte' => $mission_to_send['texte'],
+		'image' => $mission_to_send['image'],
+		]);
 }
 
 function uploadSingleImageBloc($file) {
