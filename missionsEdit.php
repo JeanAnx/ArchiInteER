@@ -94,6 +94,7 @@ session_start();
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<script type='text/javascript' src='js/admin.js'></script>
 			  
@@ -101,11 +102,11 @@ session_start();
 </head>
 <body>
 
-<main class="max-witdh-90">
+<main class="max-width-80 margin-auto">
 
 	<h1 class="align-center">Administration</h1>
 	<div class="articleTools">
-	<a href="admin.php">Retour à l'accueil</a>
+	<a href="admin">Retour à l'accueil</a>
 </div>
 
 	<div id="backToTheTop">
@@ -131,10 +132,10 @@ session_start();
 
 	<h3>Image du header</h3>
 
-	<form class="mission-header-form" action="" method="POST" enctype="multipart/form-data">
+	<form class="padding-2 mission-header-form" action="" method="POST" enctype="multipart/form-data">
 		<label for="image_header_mission">Modifier l'image de la page "Missions" :</label>
 		<input type="file" name="image_header_mission[]" multiple>
-		<input  id="image-header-missions" type="submit" value="Ajouter">
+		<input class="width-max-content" id="image-header-missions" type="submit" value="Ajouter">
 		<div class="display-image-header-missions">
 
 		<?php 
@@ -150,22 +151,22 @@ session_start();
 	</form>
 
 		<h3>Image texte header</h3>
-		<form action="" method="POST">
+		<form class="padding-2" action="" method="POST">
 			<label for="image-text-header">Texte de l'image :</label>
 			<textarea name="image-text-header" id="image-text-header" cols="30" rows="5">
 				<?= $text_image_mission_header['text'] ?>
 			</textarea>
-			<input type="submit" value="Enregistrer">
+			<input class="width-max-content" type="submit" value="Enregistrer">
 		</form>
 
 
 		<h3>Texte de présentation</h3>
-		<form action="" method="POST">
+		<form class="padding-2" action="" method="POST">
 			<label for="intro-text-missions">Texte de l'intro :</label>
 			<textarea name="intro-text-missions" id="intro-text-missions" cols="30" rows="5">
 				<?= $text_mission_intro['text'] ?>
 			</textarea>
-			<input type="submit" value="Enregistrer">
+			<input class="width-max-content" type="submit" value="Enregistrer">
 		</form>
 
 		<h3>Blocs</h3>
@@ -174,12 +175,12 @@ session_start();
 
 
 			<h3><?= $key ?></h3>
-			<form action="" method="POST" enctype="multipart/form-data">
+			<form class="margin-2" action="" method="POST" enctype="multipart/form-data">
 				<fieldset class="flex-column">
 					<div class="flex-column">
 						<label for="image-bloc-<?= $key ?>">Modifier l'image :</label>
 						<input type="file" name="image-bloc-<?= $key ?>">
-						<input  id="image_bloc_<?= $key ?>" type="submit" value="Ajouter">
+						<input class="width-max-content" id="image_bloc_<?= $key ?>" type="submit" value="Ajouter">
 						<div class="display-image-header-missions">
 						<?php 
 						if (isset($mission['image'])) { ?>
@@ -190,14 +191,14 @@ session_start();
 					</div>
 				</fieldset>
 			</form>
-			<form action="" method="POST">
+			<form class="margin-2" action="" method="POST">
 				<fieldset>
-					<label for="title-mission-<?= $key ?>">Titre du bloc mission :</label>
+					<label class="mt-2 block" for="title-mission-<?= $key ?>">Titre du bloc mission :</label>
 					<input type="text" value="<?=$mission['titre']?>" id="title-mission-<?= $key ?>" name="title-mission-<?= $key ?>">
-					<label for="text-mission-<?= $key ?>">Texte du bloc mission :</label>
+					<label class="mt-2 block" for="text-mission-<?= $key ?>">Texte du bloc mission :</label>
 					<textarea name="text-mission-<?= $key ?>" id="text-mission-<?= $key ?>" cols="30" rows="5">
 					<?php if ($mission['texte']) { echo $mission['texte']; }?></textarea>
-					<input type="submit" value="Enregistrer">
+					<input class="width-max-content" type="submit" value="Enregistrer">
 				</fieldset>
 			</form>
 

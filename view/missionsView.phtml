@@ -1,24 +1,29 @@
 
 <main>
-    <div class="missions-header">
-        <div class="image-slogan align-center">
-            <img src="<?=$image_mission_header?>" alt="">
-            <p class="slogan">
-            <?= $text_image_mission_header ?>
-            </p>
+    <section class="missions-header">
+        <div class="image-slogan align-center overflow-hidden width-100 height-500">
+            <img class="width-100" src="<?=$image_mission_header?>" alt="">
         </div>
-    </div>
-    <div class="intro-missions">
+        <p class="slogan block width-max-content align-center margin-auto padding-1 background-grey">
+            <?= $text_image_mission_header ?>
+        </p>
+    </section>
+    <div class="intro-missions max-width-60 margin-auto font-2-5 text-align-center">
         <?= $text_mission_intro ?>
     </div>
-    <div class="missions">
+    <div class="missions max-width-1200 margin-auto">
     <?php foreach ($missions as $key => $mission) { ?>
-        <div><img src="img/imagesBlocsMissions/<?=$mission['image']?>" alt=""></div>    
-        <div>
-            <?= $mission['titre'] ?>
-            <?= $mission['texte'] ?>
-
+    <div class="display-flex flex-row">
+        <div class="width-50pc overflow-hidden height-400"><img class="" src="img/imagesBlocsMissions/<?=$mission['image']?>" alt=""></div>    
+        <div class="ml-3">
+            <div class="font-3">
+                <?= $mission['titre'] ?>
+            </div>
+            <div class="font-2-5 pt-1">
+                <?= $mission['texte'] ?>
+            </div>
         </div>
+    </div>
         <?php } ?>
     </div>
 </main>

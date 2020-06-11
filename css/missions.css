@@ -1,0 +1,25 @@
+.missions-header {
+  padding-top: 120px;
+}
+
+.intro-missions {
+  padding-bottom: 9rem;
+}
+
+.intro-missions > p {
+  margin-top: 0;
+}
+
+.missions-header > p {
+  position: relative;
+  top: -180px;
+  font-size: 4rem;
+}
+
+.missions > div {
+  padding-bottom: 3rem;;
+}
+
+.missions img {
+  height: 100%;
+}
