@@ -14,9 +14,9 @@
     <div class="missions max-width-1200 margin-auto">
     <?php foreach ($missions as $key => $mission) { ?>
     <div class="display-flex flex-row">
-        <div class="width-50pc overflow-hidden height-400"><img class="" src="img/imagesBlocsMissions/<?=$mission['image']?>" alt=""></div>    
+        <div class="width-50pc overflow-hidden height-400"><img class="" src="<?=$to_root?>img/imagesBlocsMissions/<?=$mission['image']?>" alt=""></div>    
         <div class="ml-3">
-            <div class="font-3">
+            <div class="font-3">    
                 <?= $mission['titre'] ?>
             </div>
             <div class="font-2-5 pt-1">

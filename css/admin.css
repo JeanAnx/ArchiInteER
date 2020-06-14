@@ -488,3 +488,16 @@ BOUTON DE SUPPRESSION D'IMAGE
 a#logo {
     display: none;
 }
+
+
+/** Page inspirations */
+
+.deleteButtonInspirations {
+    position: relative;
+    bottom: 4rem;
+    left:5rem;
+}
+
+.tz-gallery > .fluid-gallery {
+    max-width: 1200px;
+}

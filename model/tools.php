@@ -1,5 +1,8 @@
 <?php 
 
+function dump($variable) {
+	return '<pre>' . var_dump($variable) . '</pre>';
+}
 
 function cleanArray($array) {
 	$i = 0;

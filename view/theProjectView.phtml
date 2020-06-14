@@ -11,8 +11,8 @@
 
 				?>
 				<div>
-					<a class="lightbox" href="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
-						<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+					<a class="lightbox" href="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+						<img src="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
 					</a>
 				</div>		
 			<?php } 
@@ -29,13 +29,11 @@
 			<div class="imagesCorpsArticle tz-gallery">
 			
 			<?php foreach ($theProject['imagesTextArticle'] as $image) {
-				
 				if ($image != "" && $image != " "){
-
 					?>
 				<div>
-					<a class="lightbox" href="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
-						<img src="img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+					<a class="lightbox" href="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+						<img src="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
 					</a>
 				</div>	
 			

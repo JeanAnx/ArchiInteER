@@ -2,16 +2,18 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="<?=$to_root?>css/normalize.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="FlexSlider/flexslider.css" type="text/css">
-	<script src="FlexSlider/jquery.flexslider.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/missions.css">
+	<link rel="stylesheet" href="<?=$to_root?>FlexSlider/flexslider.css" type="text/css">
+	<script src="<?=$to_root?>FlexSlider/jquery.flexslider.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="<?=$to_root?>css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?=$to_root?>css/missions.css">
 	<!-- Pour galerie d'image JS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-	<link rel="stylesheet" href=".../css/fluid-gallery.css">
+	<!-- <link rel="stylesheet" href="<?=$to_root?>css/fluid-gallery.css"> -->
+
 	
 	
 
@@ -25,21 +27,21 @@
 		<div id="blocCentreHeader" class="container">
 
 			<div id="blocLogoTitre">
-				<img id="ImageTitre" src="img/TitreEMILIESmall.jpg" alt="Émilie Robert">
-				<a href="index"><p id="sousTitre"> architecte d'intérieur</p></a>
+				<img id="ImageTitre" src="<?=$to_root?>img/TitreEMILIESmall.jpg" alt="Émilie Robert">
+				<a href="/"><p id="sousTitre"> architecte d'intérieur</p></a>
 
-			</div>
+			</div>	
 
-		<a id="parentLogo" href="index">
-			<img id="logo" src="img/logoE.png" alt="Émilie Robert">
+		<a id="parentLogo" href="/">
+			<img id="logo" src="<?=$to_root?>img/logoE.png" alt="Émilie Robert">
 		</a>
 
 			<nav id="navDesktop">
 				
-					<a href="?p=projects">projets</a>
-					<a href="?p=missions">missions</a>
-					<a href="?p=inspirations">inspirations</a>
-					<a href="?p=contact">contact</a>
+					<a href="/index/projets">projets</a>
+					<a href="/index/missions">missions</a>
+					<a href="/index/inspirations">inspirations</a>
+					<a href="/index/contact">contact</a>
 
 			</nav>
 

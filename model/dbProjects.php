@@ -109,5 +109,4 @@ function togglePublishProject($pid) {
 	$statement = $db->prepare($sql);
 	return $statement->execute($editProjectData);
 
-
 }

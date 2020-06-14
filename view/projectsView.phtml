@@ -6,8 +6,8 @@
 <?php foreach ($allPublishedProjects as $theProject) { ?>
 
 	<div class="imageMosaique">
-		<a href="?p=theProject&n=<?=$theProject['id']?> ">
-			<img src="img/imagesArticles/<?=$theProject['imageTitre']?>">
+		<a href="/index/projet?n=<?=$theProject['id']?> ">
+			<img src="<?=$to_root?>img/imagesArticles/<?=$theProject['imageTitre']?>">
 			<div class="texteVignette"><?=$theProject['texteGalerie']?></div>
 		</a>
 	</div>
