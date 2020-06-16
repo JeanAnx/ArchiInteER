@@ -10,9 +10,9 @@
 				if ($image != "" && $image != " "){
 
 				?>
-				<div>
+				<div class="spinner">
 					<a class="lightbox" href="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
-						<img src="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+						<img class="loading-image" src="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
 					</a>
 				</div>		
 			<?php } 
@@ -31,9 +31,9 @@
 			<?php foreach ($theProject['imagesTextArticle'] as $image) {
 				if ($image != "" && $image != " "){
 					?>
-				<div>
+				<div class="spinner">
 					<a class="lightbox" href="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
-						<img src="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
+						<img  class="loading-image" src="<?=$to_root?>img/imagesArticles/<?= $image ?>" alt="Projet Émilie Robert">
 					</a>
 				</div>	
 			

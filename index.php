@@ -3,7 +3,8 @@
 session_start();
 
 if (isset($_SERVER['PATH_INFO'])) {
-  $path = str_replace('/', '\\', $_SERVER['PATH_INFO']);
+  // $path = str_replace('/', '\\', $_SERVER['PATH_INFO']);
+  $path = $_SERVER['PATH_INFO'];
 }
 
 $to_root = '';
@@ -12,6 +13,9 @@ $to_root = '';
   if (isset($path) && !empty($path)) {
   if ($path != '\\') {
     if(is_file(__DIR__ . '\\' . 'controller'. $path .'Controller.php')) {
+
+      // PROD if ($path != '/') {
+      // PROD   if(is_file(__DIR__ . '/' . 'controller'. $path .'Controller.php')) {
       $to_root = ('../');
       require 'view/headerView.phtml';
       require_once 'controller'. $path .'Controller.php';
@@ -24,7 +28,7 @@ else
   require 'model/db.php';
   
   require 'view/headerView.phtml';
-  require_once '/controller/homeController.php';
+  require_once 'controller/homeController.php';
 }
 require 'view/footerView.phtml';
 /*

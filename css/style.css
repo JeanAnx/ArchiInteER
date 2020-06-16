@@ -83,6 +83,14 @@ h1#titre {
 
 /** Classes génériques */
 
+.spinner {
+	background: center / contain no-repeat url("../spin2.gif");
+	background-size: 10%;
+	width: 100%;
+}
+.spinner > a {
+	opacity: 0;
+}
 
 .align-center {
 	text-align: center;

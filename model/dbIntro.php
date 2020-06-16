@@ -1,6 +1,5 @@
 <?php 
 
-
 function getIntro() {
 	$db = openDatabase(); 
 	$sql = "SELECT * FROM `intro` ORDER BY `id` DESC LIMIT 1 ";
