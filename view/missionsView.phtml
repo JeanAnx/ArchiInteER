@@ -1,8 +1,8 @@
 
 <main>
     <section class="missions-header">
-        <div class="image-slogan align-center overflow-hidden width-100 height-500">
-            <img class="width-100" src="<?=$image_mission_header?>" alt="">
+        <div class="image-slogan align-center overflow-hidden width-100 height-500 spinner">
+            <img class="width-100 loading-image" src="<?=$image_mission_header?>" alt="">
         </div>
         <p class="slogan block width-max-content align-center margin-auto padding-1 background-grey">
             <?= $text_image_mission_header ?>
@@ -14,7 +14,9 @@
     <div class="missions max-width-1200 margin-auto">
     <?php foreach ($missions as $key => $mission) { ?>
     <div class="display-flex flex-row">
-        <div class="width-50pc overflow-hidden height-400"><img class="" src="<?=$to_root?>img/imagesBlocsMissions/<?=$mission['image']?>" alt=""></div>    
+        <div class="width-50pc overflow-hidden height-400 spinner">
+            <img class="loading-image" src="<?=$to_root?>img/imagesBlocsMissions/<?=$mission['image']?>" alt="">
+        </div>    
         <div class="ml-3">
             <div class="font-3">    
                 <?= $mission['titre'] ?>
@@ -27,3 +29,5 @@
         <?php } ?>
     </div>
 </main>
+<script src="<?=$to_root?>js/images.js"></script>
+

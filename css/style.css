@@ -88,7 +88,7 @@ h1#titre {
 	background-size: 10%;
 	width: 100%;
 }
-.spinner > a {
+.spinner > a, .spinner > img {
 	opacity: 0;
 }
 
