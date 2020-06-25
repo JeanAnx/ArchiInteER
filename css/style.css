@@ -59,7 +59,6 @@ div.flexslider {
 html {
 	font-size: 62.5%;
 	font-family: "Brandon Grotesque" , 'Open Sans', sans-serif;
-	font-weight: normal;
 }
 
 h1 {
@@ -79,6 +78,16 @@ p {
 h1#titre {
 	font-weight: normal;
 	font-size: 3.7rem;
+}
+
+.mentions {
+	padding-top:250px;
+	width: 80%;
+	margin:auto;
+	font-size:2vw;
+}
+.mentions p {
+	font-size:2vw;
 }
 
 /** Classes génériques */
@@ -281,6 +290,37 @@ a {
 	color: black;
 }
 
+
+
+/**
+* Page MISSIONS
+*/
+
+.missions-header {
+  padding-top: 120px;
+}
+
+.intro-missions {
+  padding-bottom: 9rem;
+}
+
+.intro-missions > p {
+  margin-top: 0;
+}
+
+.missions-header > p {
+  position: relative;
+  top: -180px;
+  font-size: 4rem;
+}
+
+.missions > div {
+  padding-bottom: 3rem;;
+}
+
+.missions img {
+  height: 100%;
+}
 
 
 

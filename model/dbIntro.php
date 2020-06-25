@@ -1,7 +1,7 @@
 <?php 
 
 function getIntro() {
-	$db = openDatabase(); 
+	$db = openDatabase();
 	$sql = "SELECT * FROM `intro` ORDER BY `id` DESC LIMIT 1 ";
 	$statement = $db->query($sql , \PDO::FETCH_ASSOC);
 	$intro = [];

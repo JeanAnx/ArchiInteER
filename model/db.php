@@ -3,8 +3,8 @@
 function openDatabase() {
 
 	// CONFIG PROD 
-	/*
-	$user = 'loupsdesgh798';
+	
+	/*$user = 'loupsdesgh798';
 	$pass = 'm12gi8gefxJWJRGs';
 	$db = new PDO('mysql:host=loupsdesgh798.mysql.db;dbname=loupsdesgh798' , $user , $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	$db->exec('SET NAMES UTF8');*/
@@ -14,6 +14,8 @@ function openDatabase() {
 	$pass = 'm12gi8gefxJWJRGs';
 	$db = new PDO('mysql:host=localhost;dbname=siteemilie' , $user , $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	$db->exec('SET NAMES UTF8');
+
+
 	return $db;
 }
 
