@@ -19,5 +19,5 @@ $(document).ready(function() {
       };
   setTimeout(function() {
     voitureBalai();
-  }, 4000);
+  }, 3000);
 }) 
