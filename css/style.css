@@ -207,11 +207,6 @@ h1#titre {
 }
 
 
-.background-grey {
-	background-color: rgba(0, 0, 0, .1);
-}
-/** */
-
 p#sousTitre {
 
 	padding-left: 15px;
@@ -311,7 +306,7 @@ a {
 .missions-header > p {
   position: relative;
   top: -180px;
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 .missions > div {
@@ -321,6 +316,14 @@ a {
 .missions img {
   height: 100%;
 }
+
+
+/** Footer */
+
+footer #logoFooter {
+	width: 120px;
+}
+
 
 
 
@@ -518,15 +521,13 @@ p#sousTitre {
 	footer #logoFooter {
 		position: relative;
 		top: -20px;
-		width: 9%;
-
 	}
 
 	footer #infosFooter {
 		margin: -35px auto 0 auto;
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: center;
+		justify-content: space-between;
 		width: 95%;
 	}
 
@@ -565,7 +566,6 @@ p#sousTitre {
 	footer #navFooter a:hover , #navFooter2 a:hover {
 		color: grey;
 	}
-
 
 	/******** ACCUEIL SLIDER PRESENTATION IPAD *****/
 
@@ -700,7 +700,6 @@ p#sousTitre {
 */
 
 .contactForm {
-	padding-top: 150px;
 	font-size: 2.3em;
 	width: 800px;
 	margin: 0 auto;
@@ -835,17 +834,16 @@ p#sousTitre {
 	}
 
 	#sectionFooter {
-		width: 1000px;
+		width: 90%;
 		margin: 0 auto;
 	}
 
 	footer #logoFooter {
 		top: -50px;
-		width: 10%;
 	}
 
 	#infosFooter div {
-		width: 400px;
+		width: 45%;
 	}
 	
 
@@ -923,14 +921,9 @@ p#sousTitre {
 				height: 500px;
 			}
 
-			#sectionFooter {
-				width: 1000px;
-				margin: 0 auto;
-			}
 
 			footer #logoFooter {
 				top: -60px;
-				width: 12%;
 			}
 		
 			footer #infosFooter {

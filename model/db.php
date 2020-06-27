@@ -28,4 +28,5 @@ require 'dbAdmin.php';
 require 'dbInspirations.php';
 require 'dbMissions.php';
 require 'dbMentions.php';
+require 'dbContact';
 require 'security.php';

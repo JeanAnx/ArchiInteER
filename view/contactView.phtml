@@ -1,6 +1,47 @@
+<?php 
 
 
-<form class="contactForm" action="contact.php" method="post">
+if (!empty($_POST)) {
+
+	$infos = [];
+
+	foreach ($_POST as $row) {
+			if ($row == "" || $row == " ") {
+					$row = "Non renseigné";
+			}
+			// If attempting to send file, GTFO.
+			if (strpos($row, "#") === FALSE) {
+					$infos[] = clean($row);
+			}
+	}
+
+	$headers = "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+	
+	$mail = 
+	"<html><body>" .
+	"<h3>Message de " . $infos[0] . "</h3>"
+	. "<h3>Email : </h3><p>" . $infos[1] . " </p>"
+	. "<h3>Message : </h3><p>" . $infos[2] . "</p>"
+	."</body></html>";
+	$_SESSION['messages'][] = '<h2 class="message" style="text-align:center;color:green">Votre message a bien été envoyé </h2>';
+	mail('jean.annaix@gmail.com','Nouveau message Contact',$mail,$headers);
+
+}
+
+
+?>
+
+	<section class="missions-header">
+		<div class="image-slogan align-center overflow-hidden width-100 height-500 spinner">
+				<img class="width-100 loading-image" src="<?= '../img/imageContact/' . getImageContact()['name'] ?>" alt="">
+		</div>
+		<p class="slogan block width-max-content max-width-80 align-center margin-auto padding-1 background-grey">
+				<?= getContactText()['text'] ?>
+		</p>
+	</section>
+
+<form class="contactForm" action="" method="post">
 
 	<?php if (isset($_SESSION['messages']) && !empty($_SESSION['messages'])) { ?>
 
@@ -15,15 +56,10 @@
 
 	<?php } ?>
 
+
 	<fieldset>
 
-		<legend>Informations personnelles</legend>
-
 		<ul>
-			<li>
-				<label for="prenom">Prénom : *</label>
-				<input type="text" name="prenom" id="prenom" maxlength="40" required>
-			</li>
 			<li>
 				<label for="nom">Nom : *</label>
 				<input type="text" name="nom" id="nom" maxlength="40" required>
@@ -34,53 +70,11 @@
 				<input type="email" name="email" id="email" maxlength="64" required>
 			
 			</li>
-
-			<li>
-
-				<label for="adresse">Adresse : </label>
-				<input type="text" name="adresse" id="adresse" maxlength="64">
-
-
-			</li>
-
-			<li>
-				<label for="codePostal">Code postal : </label>
-				<input type="number" name="code_postal" id="code_postal" max="99999">
-
-			</li>
-
-			<li>
-
-				<label for="ville">Ville : </label>
-				<input type="text" name="ville" id="ville" maxlength="40">
-
-
-			</li>
-
-
-			<li>
-
-				<label for="telephone">Téléphone (sans espaces) : </label>
-				<input type="tel" name="telephone" id="telephone" pattern="[0-9]{10}">
-
-
-			</li>
-
-
 		</ul>
-
-
-
 	</fieldset>
 
 	<fieldset>
-
-		<legend>Votre message :</legend>
 			<ul>
-				<li>
-					<label for="objet">Objet : *</label>
-					<input type="text" name="objet" id="objet" maxlength="70" required>
-				</li>
 				<li>
 					<label for="message">Message : *</label>
 					<textarea name="message" id="message" cols="40" rows="10" required></textarea>
@@ -93,3 +87,5 @@
 	</fieldset>
 
 </form>
+
+<script src="<?=$to_root?>js/images.js"></script>
