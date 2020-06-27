@@ -24,7 +24,7 @@ if (!empty($_POST)) {
 	. "<h3>Email : </h3><p>" . $infos[1] . " </p>"
 	. "<h3>Message : </h3><p>" . $infos[2] . "</p>"
 	."</body></html>";
-	$_SESSION['messages'][] = '<h2 class="message" style="text-align:center;color:green">Votre message a bien été envoyé </h2>';
+	$_SESSION['messages'][] = '<h1 class="message" style="text-align:center;color:green">Votre message a bien été envoyé </h1>';
 	mail('jean.annaix@gmail.com','Nouveau message Contact',$mail,$headers);
 
 }
@@ -89,3 +89,22 @@ if (!empty($_POST)) {
 </form>
 
 <script src="<?=$to_root?>js/images.js"></script>
+
+<script>
+	if (document.getElementsByClassName('messages').length > 0) {
+		var messagesList = document.getElementsByClassName('messages');
+		for (let index = 0; index < messagesList.length; index++) {
+				let element = messagesList[index];
+				element.style.transition = "all 0.5s ease";
+				setTimeout(function () {
+						element.style.opacity = "0";
+				} , 3000)
+				setTimeout(function () {
+						$message = document.getElementById('successMessage');
+						$message.style.transform = "scale(0)";
+						$message.style.margin = "0";
+				} , 3500)
+	}
+			}
+
+</script>

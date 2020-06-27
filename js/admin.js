@@ -17,8 +17,9 @@ $('document').ready(function() {
     })
 
 
-if ($('messages') != null) {
+if ($('.messages') != null) {
     const messagesList = document.getElementsByClassName('messages');
+    console.log(messagesList);
     for (let index = 0; index < messagesList.length; index++) {
         let element = messagesList[index];
         element.style.transition = "all 0.5s ease";
@@ -31,9 +32,7 @@ if ($('messages') != null) {
             $message.style.margin = "0";
         } , 3500)
     }
-
         }
-
 
 
 })
