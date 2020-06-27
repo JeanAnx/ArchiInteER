@@ -141,7 +141,7 @@ session_start();
 		<?php 
 
 		if (isset($image_mission_header)) { ?>
-			<img class="imgMiniature" src="<?=$image_mission_header?>">
+			<img class="width-100" src="<?=$image_mission_header?>">
 			<?php } else { ?>
 					<h3 class="noPicture">Pas d'image</h3>
 			<?php } ?>
@@ -184,7 +184,7 @@ session_start();
 						<div class="display-image-header-missions">
 						<?php 
 						if (isset($mission['image'])) { ?>
-							<img class="imgMiniature" src="img/imagesBlocsMissions/<?=$mission['image']?>">
+							<img class="width-100" src="img/imagesBlocsMissions/<?=$mission['image']?>">
 							<?php } else { ?>
 									<h3 class="noPicture">Pas d'image</h3>
 							<?php }; ?>
@@ -194,7 +194,8 @@ session_start();
 			<form class="margin-2" action="" method="POST">
 				<fieldset>
 					<label class="mt-2 block" for="title-mission-<?= $key ?>">Titre du bloc mission :</label>
-					<input type="text" value="<?=$mission['titre']?>" id="title-mission-<?= $key ?>" name="title-mission-<?= $key ?>">
+					<textarea name="title-mission-<?= $key ?>" id="title-mission-<?= $key ?>" cols="30" rows="5">
+					<?php if ($mission['titre']) { echo $mission['titre']; }?></textarea>
 					<label class="mt-2 block" for="text-mission-<?= $key ?>">Texte du bloc mission :</label>
 					<textarea name="text-mission-<?= $key ?>" id="text-mission-<?= $key ?>" cols="30" rows="5">
 					<?php if ($mission['texte']) { echo $mission['texte']; }?></textarea>

@@ -113,7 +113,7 @@ session_start();
 		<?php 
 
 		if (isset($image_contact_header)) { ?>
-			<img class="imgMiniature" src="<?=$image_contact_header?>">
+			<img class="width-100" src="<?=$image_contact_header?>">
 			<?php } else { ?>
 					<h3 class="noPicture">Pas d'image</h3>
 			<?php } ?>

@@ -84,7 +84,7 @@ if ($_SESSION['admin'] == 'yes') {
             <form class="introForm" action="" method="post">
 
                 <label for="text">Titre actuel :</label>
-                <input name="title" id="title" placeholder="<?=$titre_inspirations?>">
+                <textarea name="title" id="title" cols="30" rows="60"><?= $titre_inspirations ?></textarea>
                 <input type="submit" value="Modifier">
             </form>
 

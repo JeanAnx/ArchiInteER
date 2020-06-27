@@ -162,7 +162,7 @@
 
 
 			<div class="articleTools">
-				<a href="index?p=theProject&n=<?= $theProjet['id'] ?>">Voir 
+				<a href="index/projet?n=<?= $theProjet['id'] ?>">Voir 
 					<i class="fas fa-eye"></i>
 				</a>
 				<a href="projectEdit?pid=<?= $theProjet['id'] ?>">Modifier 
@@ -219,7 +219,7 @@
 			<textarea name="text" id="text" cols="30" rows="10"></textarea>
 			
 			<label class="publishLabel" for="published">Cocher pour publier</label>
-			<input id="publicationCheckbox" name="published" type="checkbox" value="1">
+			<input style="margin:auto" id="publicationCheckbox" name="published" type="checkbox" value="1">
 
 			<input id="submitNewProject" type="submit" value="Enregistrer et ajouter des images">
 
