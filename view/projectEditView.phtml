@@ -37,7 +37,7 @@
 		<form action="?pid=<?=$theProject['id'] ?>" method="POST">
 
 			<label for="title">Titre du projet :</label>
-			<input type="text" placeholder="" value="<?=$theProject['titre'] ?>" id="title" name="title">
+			<textarea name="title" id="title" cols="30" rows="5"><?=$theProject['titre'] ?></textarea>
 
 			<label for="galleryText">Texte de présentation (galerie) :</label>
 			<textarea name="galleryText" id="galleryText" cols="30" rows="5"><?=$theProject['texteGalerie'] ?></textarea>

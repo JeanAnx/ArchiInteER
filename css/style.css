@@ -91,13 +91,13 @@ h1#titre {
 }
 
 .mentions {
-	padding-top:250px;
+	padding-top: 250px;
 	width: 80%;
 	margin:auto;
-	font-size:2vw;
 }
+
 .mentions p {
-	font-size:2vw;
+	font-size: 1.5rem;
 }
 
 /** Classes génériques */
@@ -317,7 +317,7 @@ a {
   margin-top: 0;
 }
 
-.missions-header > p {
+.missions-header > .slogan {
   position: relative;
   top: -180px;
   font-size: 3.5rem;
